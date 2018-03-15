@@ -21,7 +21,7 @@
     'node_shared_openssl%': 'false',
     'node_v8_options%': '',
     'node_enable_v8_vtunejit%': 'false',
-    'node_core_target_name%': 'node',
+    'node_core_target_name%': 'node8-shared',
     'library_files': [
       'lib/internal/bootstrap_node.js',
       'lib/async_hooks.js',
@@ -764,9 +764,9 @@
       ],
 
       'variables': {
-        'OBJ_PATH': '<(OBJ_DIR)/node/src',
-        'OBJ_GEN_PATH': '<(OBJ_DIR)/node/gen',
-        'OBJ_TRACING_PATH': '<(OBJ_DIR)/node/src/tracing',
+        'OBJ_PATH': '<(OBJ_DIR)/<(node_core_target_name)/src',
+        'OBJ_GEN_PATH': '<(OBJ_DIR)/<(node_core_target_name)/gen',
+        'OBJ_TRACING_PATH': '<(OBJ_DIR)/<(node_core_target_name)/src/tracing',
         'OBJ_SUFFIX': 'o',
         'OBJ_SEPARATOR': '/',
         'conditions': [
@@ -1025,7 +1025,7 @@
     ['OS=="aix"', {
       'targets': [
         {
-          'target_name': 'node',
+          'target_name': '<(node_core_target_name)',
           'conditions': [
             ['node_shared=="true"', {
               'type': 'shared_library',
@@ -1104,7 +1104,7 @@
                 'common.gypi',
             ],
 
-            'ldflags': ['-L<(PRODUCT_DIR)/obj.target/','-l:libnode.so.48'],
+            'ldflags': ['-L<(PRODUCT_DIR)/obj.target/','-l:libnode8-shared.so.57'],
         } ]
     } ], # end targets
   ], # end conditions block

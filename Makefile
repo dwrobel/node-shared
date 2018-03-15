@@ -104,8 +104,7 @@ config.gypi: configure
 install: all ## Installs node into $PREFIX (default=/usr/local).
 	$(PYTHON) tools/install.py $@ '$(DESTDIR)' '$(PREFIX)'
 	mkdir -p $(DESTDIR)/$(PREFIX)/lib/pkgconfig
-	sed s:%PREFIX%:$(PREFIX):g v8.pc > $(DESTDIR)/$(PREFIX)/lib/pkgconfig/v8.pc
-	(cd $(DESTDIR)/$(PREFIX)/lib/pkgconfig; ln -sf v8.pc node.pc)
+	sed s:%PREFIX%:$(PREFIX):g v8.pc > $(DESTDIR)/$(PREFIX)/lib/pkgconfig/node8.pc
 
 uninstall: ## Uninstalls node from $PREFIX (default=/usr/local).
 	$(PYTHON) tools/install.py $@ '$(DESTDIR)' '$(PREFIX)'
