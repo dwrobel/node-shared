@@ -118,7 +118,7 @@ def subdir_files(path, dest, action):
 
 def files(action):
   is_windows = sys.platform == 'win32'
-  output_file = 'node'
+  output_file = 'node8-shared'
   output_prefix = 'out/Release/'
 
   if 'false' == variables.get('node_shared'):
