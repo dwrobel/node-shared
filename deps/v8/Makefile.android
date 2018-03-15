@@ -58,7 +58,7 @@ DEFINES += OS=android
 $(ANDROID_BUILDS): $(OUTDIR)/Makefile.$$@
 	@$(MAKE) -C "$(OUTDIR)" -f Makefile.$@ \
 	          BUILDTYPE=$(shell echo $(subst .,,$(suffix $@)) | \
-	                      python -c "print raw_input().capitalize()") \
+	                      python2 -c "print raw_input().capitalize()") \
 	          builddir="$(shell pwd)/$(OUTDIR)/$@"
 
 # Android GYP file generation targets.
