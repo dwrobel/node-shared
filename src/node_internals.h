@@ -38,6 +38,17 @@
 
 #include <string>
 
+#if (UV_VERSION_MAJOR == 1) && (UV_VERSION_MINOR < 18)
+#  include <sys/types.h>
+#  include <unistd.h>
+
+   typedef pid_t uv_pid_t;
+
+   inline uv_pid_t uv_os_getpid(void) {
+     return getpid();
+   }
+#endif
+
 enum {
   NM_F_BUILTIN  = 1 << 0,
   NM_F_LINKED   = 1 << 1,
