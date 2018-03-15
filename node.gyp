@@ -1083,7 +1083,29 @@
             }
           ]
         }
-      ], # end targets
-    }], # end aix section
+      ], # end aix section
+    }],
+    ['node_shared=="true" and OS=="linux"', {
+        'targets': [ 
+        {
+            'target_name': 'nodejs',
+            'type': 'executable',
+            'dependencies': ['<(node_core_target_name)'],
+
+            'include_dirs': [
+                'src',
+                'deps/v8/include',
+            ],
+
+            'sources': [
+                'src/node_main.cc',
+                '<@(library_files)',
+                # node.gyp is added to the project by default.
+                'common.gypi',
+            ],
+
+            'ldflags': ['-L<(PRODUCT_DIR)/obj.target/','-l:libnode.so.48'],
+        } ]
+    } ], # end targets
   ], # end conditions block
 }
