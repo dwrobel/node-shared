@@ -523,6 +523,55 @@ class ContextifyContext {
   }
 };
 
+}
+/*MODIFIED CODE BEGIN*/
+void deleteContextifyContext(void *ctx)
+{
+  ContextifyContext* context =  (ContextifyContext*)ctx;
+  if (nullptr != context)
+    delete context;
+}
+
+v8::Handle<Context> makeContext(v8::Isolate *isolate, v8::Handle<Object> sandbox)  // basically MakeContext()  circa line 268
+{
+    Environment* env = Environment::GetCurrent(isolate);
+
+    if (!sandbox->IsObject()) {
+      env->ThrowTypeError("sandbox argument must be an object.");
+      return Local<Context>();
+    }
+    EscapableHandleScope  scope( isolate );
+
+    // Don't allow contextifying a sandbox multiple times.
+    CHECK(
+        !sandbox->HasPrivate(
+            env->context(),
+            env->contextify_context_private_symbol()).FromJust());
+
+    TryCatch try_catch(env->isolate());
+    ContextifyContext* context = new ContextifyContext(env, sandbox);
+
+    if (try_catch.HasCaught()) {
+        try_catch.ReThrow();
+        return Local<Context>();
+    }
+
+    if (context->context().IsEmpty())
+        return Local<Context>();
+
+    sandbox->SetPrivate(
+        env->context(),
+        env->contextify_context_private_symbol(),
+        External::New(env->isolate(), context));
+
+    Local<Context>  local_context = context->context(); // returns a local context
+
+    return scope.Escape( local_context );
+}
+/*MODIFIED CODE END*/
+
+namespace {
+
 class ContextifyScript : public BaseObject {
  private:
   Persistent<UnboundScript> script_;

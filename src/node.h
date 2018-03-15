@@ -191,6 +191,10 @@ typedef intptr_t ssize_t;
 
 namespace node {
 
+NODE_EXTERN extern v8::Isolate* node_isolate;
+NODE_EXTERN bool ShouldAbortOnUncaughtException(v8::Isolate* isolate);
+NODE_EXTERN extern bool node_is_initialized;
+
 NODE_EXTERN extern bool no_deprecation;
 #if HAVE_OPENSSL
 NODE_EXTERN extern bool ssl_openssl_cert_store;

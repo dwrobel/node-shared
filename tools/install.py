@@ -166,9 +166,43 @@ def headers(action):
     'src/node_api.h',
     'src/node_api_types.h',
     'src/node_buffer.h',
+
+    'src/node_internals.h',
+    'src/node_javascript.h',
+    'src/util.h',
+    'src/util-inl.h',
+    'src/env.h',
+    'src/env-inl.h',
+    'src/node_mutex.h',
+    'src/inspector_agent.h',
+    'src/handle_wrap.h',
+    'src/async_wrap.h',
+    'src/base-object.h',
+    'src/req-wrap.h',
+    'src/aliased_buffer.h',
+    'src/node_debug_options.h',
+    'src/node_platform.h',
+    'src/node_perf_common.h',
+    'src/node_http2_state.h',
+
     'src/node_object_wrap.h',
     'src/node_version.h',
+    'src/node_contextify_mods.h',
+
+    'deps/cares/include/ares.h',
+    'deps/cares/include/ares_build.h',
+    'deps/cares/include/ares_rules.h',
+    'deps/cares/include/ares_version.h',
+    'deps/cares/include/nameser.h',
   ], 'include/node/')
+
+  action([
+    'src/tracing/agent.h',
+    'src/tracing/node_trace_buffer.h',
+    'src/tracing/node_trace_writer.h',
+    'src/tracing/trace_event.h',
+    'src/tracing/trace_event_common.h',
+  ], 'include/node/tracing/')
 
   # Add the expfile that is created on AIX
   if sys.platform.startswith('aix'):

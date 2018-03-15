@@ -9,7 +9,7 @@
       },
     }, {
       'defines': [
-        'NODE_SHARED_MODE',
+        '_NODE_SHARED_MODE',
       ],
     }],
     [ 'node_enable_d8=="true"', {
