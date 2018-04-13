@@ -312,6 +312,7 @@ class ArrayBufferAllocator : public v8::ArrayBuffer::Allocator {
   virtual void* AllocateUninitialized(size_t size)
     { return node::UncheckedMalloc(size); }
   virtual void Free(void* data, size_t) { free(data); }
+  virtual void Free(void* data, size_t length, AllocationMode mode) { free(data); }
 
  private:
   uint32_t zero_fill_field_ = 1;  // Boolean but exposed as uint32 to JS land.
