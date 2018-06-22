@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Internationalization Support | Node.js v8.11.1 Documentation</title>
+  <title>Internationalization Support | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="intl" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -134,16 +134,16 @@ programs. Some of them are:</p>
 <ul>
 <li>Locale-sensitive or Unicode-aware functions in the <a href="https://tc39.github.io/ecma262/">ECMAScript Language
 Specification</a>:<ul>
-<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"><code>String.prototype.normalize()</code></a></li>
-<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase"><code>String.prototype.toLowerCase()</code></a></li>
-<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase"><code>String.prototype.toUpperCase()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"><code>String.prototype.normalize()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase"><code>String.prototype.toLowerCase()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase"><code>String.prototype.toUpperCase()</code></a></li>
 </ul>
 </li>
 <li>All functionality described in the <a href="https://tc39.github.io/ecma402/">ECMAScript Internationalization API
 Specification</a> (aka ECMA-402):<ul>
-<li><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl"><code>Intl</code></a> object</li>
-<li>Locale-sensitive methods like <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare"><code>String.prototype.localeCompare()</code></a> and
-<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString"><code>Date.prototype.toLocaleString()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"><code>Intl</code></a> object</li>
+<li>Locale-sensitive methods like <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare"><code>String.prototype.localeCompare()</code></a> and
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString"><code>Date.prototype.toLocaleString()</code></a></li>
 </ul>
 </li>
 <li>The <a href="url.html#url_the_whatwg_url_api">WHATWG URL parser</a>&#39;s <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name">internationalized domain names</a> (IDNs) support</li>
@@ -182,7 +182,7 @@ option:</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"><code>String.prototype.normalize()</code></a></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"><code>String.prototype.normalize()</code></a></td>
 <td>none (function is no-op)</td>
 <td>full</td>
 <td>full</td>
@@ -196,14 +196,14 @@ option:</p>
 <td>full</td>
 </tr>
 <tr>
-<td><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl"><code>Intl</code></a></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl"><code>Intl</code></a></td>
 <td>none (object does not exist)</td>
 <td>partial/full (depends on OS)</td>
 <td>partial (English-only)</td>
 <td>full</td>
 </tr>
 <tr>
-<td><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare"><code>String.prototype.localeCompare()</code></a></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare"><code>String.prototype.localeCompare()</code></a></td>
 <td>partial (not locale-aware)</td>
 <td>full</td>
 <td>full</td>
@@ -217,7 +217,7 @@ option:</p>
 <td>full</td>
 </tr>
 <tr>
-<td><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString"><code>Number.prototype.toLocaleString()</code></a></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString"><code>Number.prototype.toLocaleString()</code></a></td>
 <td>partial (not locale-aware)</td>
 <td>partial/full (depends on OS)</td>
 <td>partial (English-only)</td>
@@ -273,7 +273,7 @@ most Linux distributions already come with ICU installed, and this option would
 make it possible to reuse the same set of data used by other components in the
 OS.</p>
 <p>Functionalities that only require the ICU library itself, such as
-<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"><code>String.prototype.normalize()</code></a> and the <a href="url.html#url_the_whatwg_url_api">WHATWG URL parser</a>, are fully
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"><code>String.prototype.normalize()</code></a> and the <a href="url.html#url_the_whatwg_url_api">WHATWG URL parser</a>, are fully
 supported under <code>system-icu</code>. Features that require ICU locale data in
 addition, such as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat"><code>Intl.DateTimeFormat</code></a> <em>may</em> be fully or partially
 supported, depending on the completeness of the ICU data installed on the
@@ -283,7 +283,7 @@ system.</p>
 and includes a subset of ICU data (typically only the English locale) within
 the <code>node</code> executable.</p>
 <p>Functionalities that only require the ICU library itself, such as
-<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"><code>String.prototype.normalize()</code></a> and the <a href="url.html#url_the_whatwg_url_api">WHATWG URL parser</a>, are fully
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize"><code>String.prototype.normalize()</code></a> and the <a href="url.html#url_the_whatwg_url_api">WHATWG URL parser</a>, are fully
 supported under <code>small-icu</code>. Features that require ICU locale data in addition,
 such as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat"><code>Intl.DateTimeFormat</code></a>, generally only work with the English locale:</p>
 <pre><code class="lang-js">const january = new Date(9e8);

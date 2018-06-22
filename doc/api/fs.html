@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>File System | Node.js v8.11.1 Documentation</title>
+  <title>File System | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="fs" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -249,7 +249,7 @@
         <h1>File System<span><a class="mark" href="#fs_file_system" id="fs_file_system">#</a></span></h1>
 <!--introduced_in=v0.10.0-->
 <div class="api_stability api_stability_2"><a href="documentation.html#documentation_stability_index">Stability: 2</a> - Stable</div><!--name=fs-->
-<p>File I/O is provided by simple wrappers around standard POSIX functions.  To
+<p>File I/O is provided by simple wrappers around standard POSIX functions. To
 use this module do <code>require(&#39;fs&#39;)</code>. All the methods have asynchronous and
 synchronous forms.</p>
 <p>The asynchronous form always takes a completion callback as its last argument.
@@ -296,7 +296,7 @@ The correct way to do this is to chain the callbacks.</p>
 </code></pre>
 <p>In busy processes, the programmer is <em>strongly encouraged</em> to use the
 asynchronous versions of these calls. The synchronous versions will block
-the entire process until they complete--halting all connections.</p>
+the entire process until they complete — halting all connections.</p>
 <p>The relative path to a filename can be used. Remember, however, that this path
 will be relative to <code>process.cwd()</code>.</p>
 <p>While it is not recommended, most fs functions allow the callback argument to
@@ -529,23 +529,23 @@ similar to this:</p>
 </code></pre>
 <p><em>Note</em>: <code>atimeMs</code>, <code>mtimeMs</code>, <code>ctimeMs</code>, <code>birthtimeMs</code> are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">numbers</a>
 that hold the corresponding times in milliseconds. Their precision is platform
-specific. <code>atime</code>, <code>mtime</code>, <code>ctime</code>, and <code>birthtime</code> are <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a>
+specific. <code>atime</code>, <code>mtime</code>, <code>ctime</code>, and <code>birthtime</code> are <a href="https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date"><code>Date</code></a>
 object alternate representations of the various times. The <code>Date</code> and number
 values are not connected. Assigning a new number value, or mutating the <code>Date</code>
 value, will not be reflected in the corresponding alternate representation.</p>
 <h3>Stat Time Values<span><a class="mark" href="#fs_stat_time_values" id="fs_stat_time_values">#</a></span></h3>
 <p>The times in the stat object have the following semantics:</p>
 <ul>
-<li><code>atime</code> &quot;Access Time&quot; - Time when file data last accessed.  Changed
+<li><code>atime</code> &quot;Access Time&quot; - Time when file data last accessed. Changed
 by the <a href="http://man7.org/linux/man-pages/man2/mknod.2.html">mknod(2)</a>, <a href="http://man7.org/linux/man-pages/man2/utimes.2.html">utimes(2)</a>, and <a href="http://man7.org/linux/man-pages/man2/read.2.html">read(2)</a> system calls.</li>
 <li><code>mtime</code> &quot;Modified Time&quot; - Time when file data last modified.
 Changed by the <a href="http://man7.org/linux/man-pages/man2/mknod.2.html">mknod(2)</a>, <a href="http://man7.org/linux/man-pages/man2/utimes.2.html">utimes(2)</a>, and <a href="http://man7.org/linux/man-pages/man2/write.2.html">write(2)</a> system calls.</li>
 <li><code>ctime</code> &quot;Change Time&quot; - Time when file status was last changed
-(inode data modification).  Changed by the <a href="http://man7.org/linux/man-pages/man2/chmod.2.html">chmod(2)</a>, <a href="http://man7.org/linux/man-pages/man2/chown.2.html">chown(2)</a>,
+(inode data modification). Changed by the <a href="http://man7.org/linux/man-pages/man2/chmod.2.html">chmod(2)</a>, <a href="http://man7.org/linux/man-pages/man2/chown.2.html">chown(2)</a>,
 <a href="http://man7.org/linux/man-pages/man2/link.2.html">link(2)</a>, <a href="http://man7.org/linux/man-pages/man2/mknod.2.html">mknod(2)</a>, <a href="http://man7.org/linux/man-pages/man2/rename.2.html">rename(2)</a>, <a href="http://man7.org/linux/man-pages/man2/unlink.2.html">unlink(2)</a>, <a href="http://man7.org/linux/man-pages/man2/utimes.2.html">utimes(2)</a>,
 <a href="http://man7.org/linux/man-pages/man2/read.2.html">read(2)</a>, and <a href="http://man7.org/linux/man-pages/man2/write.2.html">write(2)</a> system calls.</li>
-<li><code>birthtime</code> &quot;Birth Time&quot; -  Time of file creation. Set once when the
-file is created.  On filesystems where birthtime is not available,
+<li><code>birthtime</code> &quot;Birth Time&quot; - Time of file creation. Set once when the
+file is created. On filesystems where birthtime is not available,
 this field may instead hold either the <code>ctime</code> or
 <code>1970-01-01T00:00Z</code> (ie, unix epoch timestamp <code>0</code>). Note that this
 value may be greater than <code>atime</code> or <code>mtime</code> in this case. On Darwin
@@ -554,7 +554,7 @@ set to an earlier value than the current <code>birthtime</code> using the
 <a href="http://man7.org/linux/man-pages/man2/utimes.2.html">utimes(2)</a> system call.</li>
 </ul>
 <p>Prior to Node v0.12, the <code>ctime</code> held the <code>birthtime</code> on Windows
-systems.  Note that as of v0.12, <code>ctime</code> is not &quot;creation time&quot;, and
+systems. Note that as of v0.12, <code>ctime</code> is not &quot;creation time&quot;, and
 on Unix systems, it never was.</p>
 <h2>Class: fs.WriteStream<span><a class="mark" href="#fs_class_fs_writestream" id="fs_class_fs_writestream">#</a></span></h2>
 <div class="api_metadata">
@@ -726,7 +726,8 @@ process.</p>
             <a href="url.html#url_the_whatwg_url_api" class="type">&lt;URL&gt;</a></li>
 <li><code>mode</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a> <strong>Default:</strong> <code>fs.constants.F_OK</code></li>
-<li>Returns: <code>undefined</code></li>
+<li>Returns: 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Undefined_type" class="type">&lt;undefined&gt;</a></li>
 </ul>
 <p>Synchronously tests a user&#39;s permissions for the file or directory specified by
 <code>path</code>. The <code>mode</code> argument is an optional integer that specifies the
@@ -1142,7 +1143,7 @@ This is the synchronous version of <a href="#fs_fs_chown_path_uid_gid_callback">
 </ul>
 </li>
 </ul>
-<p>Asynchronous <a href="http://man7.org/linux/man-pages/man2/close.2.html">close(2)</a>.  No arguments other than a possible exception are given
+<p>Asynchronous <a href="http://man7.org/linux/man-pages/man2/close.2.html">close(2)</a>. No arguments other than a possible exception are given
 to the completion callback.</p>
 <h2>fs.closeSync(fd)<span><a class="mark" href="#fs_fs_closesync_fd" id="fs_fs_closesync_fd">#</a></span></h2>
 <div class="api_metadata">
@@ -1296,7 +1297,7 @@ default value of 64 kb for the same parameter.</p>
 };
 </code></pre>
 <p><code>options</code> can include <code>start</code> and <code>end</code> values to read a range of bytes from
-the file instead of the entire file.  Both <code>start</code> and <code>end</code> are inclusive and
+the file instead of the entire file. Both <code>start</code> and <code>end</code> are inclusive and
 start counting at 0. If <code>fd</code> is specified and <code>start</code> is omitted or <code>undefined</code>,
 <code>fs.createReadStream()</code> reads sequentially from the current file position.
 The <code>encoding</code> can be any one of those accepted by <a href="buffer.html#buffer_buffer"><code>Buffer</code></a>.</p>
@@ -1371,7 +1372,7 @@ file was created.</p>
 };
 </code></pre>
 <p><code>options</code> may also include a <code>start</code> option to allow writing data at
-some position past the beginning of the file.  Modifying a file rather
+some position past the beginning of the file. Modifying a file rather
 than replacing it may require a <code>flags</code> mode of <code>r+</code> rather than the
 default mode <code>w</code>. The <code>encoding</code> can be any one of those accepted by
 <a href="buffer.html#buffer_buffer"><code>Buffer</code></a>.</p>
@@ -1414,7 +1415,7 @@ file descriptor leak.</p>
 </li>
 </ul>
 <p>Test whether or not the given path exists by checking with the file system.
-Then call the <code>callback</code> argument with either true or false.  Example:</p>
+Then call the <code>callback</code> argument with either true or false. Example:</p>
 <pre><code class="lang-js">fs.exists(&#39;/etc/passwd&#39;, (exists) =&gt; {
   console.log(exists ? &#39;it\&#39;s there&#39; : &#39;no passwd!&#39;);
 });
@@ -1643,7 +1644,8 @@ given to the completion callback.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a><ul>
 <li><code>err</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="type">&lt;Error&gt;</a></li>
-<li><code>stats</code> <span class="type">&lt;fs.Stats&gt;</span></li>
+<li><code>stats</code> 
+            <a href="fs.html#fs_class_fs_stats" class="type">&lt;fs.Stats&gt;</a></li>
 </ul>
 </li>
 </ul>
@@ -1991,7 +1993,8 @@ the completion callback.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a><ul>
 <li><code>err</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="type">&lt;Error&gt;</a></li>
-<li><code>stats</code> <span class="type">&lt;fs.Stats&gt;</span></li>
+<li><code>stats</code> 
+            <a href="fs.html#fs_class_fs_stats" class="type">&lt;fs.Stats&gt;</a></li>
 </ul>
 </li>
 </ul>
@@ -2248,7 +2251,7 @@ created. On POSIX systems, <code>path</code> is considered to exist even if it i
 to a non-existent file. The exclusive flag may or may not work with network file
 systems.</p>
 <p><code>flags</code> can also be a number as documented by <a href="http://man7.org/linux/man-pages/man2/open.2.html">open(2)</a>; commonly used constants
-are available from <code>fs.constants</code>.  On Windows, flags are translated to
+are available from <code>fs.constants</code>. On Windows, flags are translated to
 their equivalent ones where applicable, e.g. <code>O_WRONLY</code> to <code>FILE_GENERIC_WRITE</code>,
 or <code>O_EXCL|O_CREAT</code> to <code>CREATE_NEW</code>, as accepted by CreateFileW.</p>
 <p>On Linux, positional writes don&#39;t work when the file is opened in append mode.
@@ -2391,7 +2394,7 @@ a Promise for an object with <code>bytesRead</code> and <code>buffer</code> prop
 </ul>
 </li>
 </ul>
-<p>Asynchronous <a href="http://man7.org/linux/man-pages/man3/readdir.3.html">readdir(3)</a>.  Reads the contents of a directory.
+<p>Asynchronous <a href="http://man7.org/linux/man-pages/man3/readdir.3.html">readdir(3)</a>. Reads the contents of a directory.
 The callback gets two arguments <code>(err, files)</code> where <code>files</code> is an array of
 the names of the files in the directory excluding <code>&#39;.&#39;</code> and <code>&#39;..&#39;</code>.</p>
 <p>The optional <code>options</code> argument can be a string specifying an encoding, or an
@@ -2894,7 +2897,8 @@ error on Windows and an <code>ENOTDIR</code> error on POSIX.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a><ul>
 <li><code>err</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="type">&lt;Error&gt;</a></li>
-<li><code>stats</code> <span class="type">&lt;fs.Stats&gt;</span></li>
+<li><code>stats</code> 
+            <a href="fs.html#fs_class_fs_stats" class="type">&lt;fs.Stats&gt;</a></li>
 </ul>
 </li>
 </ul>
@@ -3105,7 +3109,7 @@ effectively stopping watching of <code>filename</code>.</p>
 <p>Calling <code>fs.unwatchFile()</code> with a filename that is not being watched is a
 no-op, not an error.</p>
 <p><em>Note</em>: <a href="#fs_fs_watch_filename_options_listener"><code>fs.watch()</code></a> is more efficient than <code>fs.watchFile()</code> and
-<code>fs.unwatchFile()</code>.  <code>fs.watch()</code> should be used instead of <code>fs.watchFile()</code>
+<code>fs.unwatchFile()</code>. <code>fs.watch()</code> should be used instead of <code>fs.watchFile()</code>
 and <code>fs.unwatchFile()</code> when possible.</p>
 <h2>fs.utimes(path, atime, mtime, callback)<span><a class="mark" href="#fs_fs_utimes_path_atime_mtime_callback" id="fs_fs_utimes_path_atime_mtime_callback">#</a></span></h2>
 <div class="api_metadata">
@@ -3236,10 +3240,10 @@ specified, and only on supported platforms (See <a href="#fs_caveats">Caveats</a
 </li>
 </ul>
 <p>Watch for changes on <code>filename</code>, where <code>filename</code> is either a file or a
-directory.  The returned object is a <a href="#fs_class_fs_fswatcher"><code>fs.FSWatcher</code></a>.</p>
+directory. The returned object is a <a href="#fs_class_fs_fswatcher"><code>fs.FSWatcher</code></a>.</p>
 <p>The second argument is optional. If <code>options</code> is provided as a string, it
 specifies the <code>encoding</code>. Otherwise <code>options</code> should be passed as an object.</p>
-<p>The listener callback gets two arguments <code>(eventType, filename)</code>.  <code>eventType</code> is either
+<p>The listener callback gets two arguments <code>(eventType, filename)</code>. <code>eventType</code> is either
 <code>&#39;rename&#39;</code> or <code>&#39;change&#39;</code>, and <code>filename</code> is the name of the file which triggered
 the event.</p>
 <p>Note that on most platforms, <code>&#39;rename&#39;</code> is emitted whenever a filename appears
@@ -3284,7 +3288,7 @@ content, and one for truncation).</p>
 <h4>Filename Argument<span><a class="mark" href="#fs_filename_argument" id="fs_filename_argument">#</a></span></h4>
 <!--type=misc-->
 <p>Providing <code>filename</code> argument in the callback is only supported on Linux,
-macOS, Windows, and AIX.  Even on supported platforms, <code>filename</code> is not always
+macOS, Windows, and AIX. Even on supported platforms, <code>filename</code> is not always
 guaranteed to be provided. Therefore, don&#39;t assume that <code>filename</code> argument is
 always provided in the callback, and have some fallback logic if it is null.</p>
 <pre><code class="lang-js">fs.watch(&#39;somedir&#39;, (eventType, filename) =&gt; {
@@ -3324,8 +3328,10 @@ always provided in the callback, and have some fallback logic if it is null.</p>
 </li>
 <li><code>listener</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a><ul>
-<li><code>current</code> <span class="type">&lt;fs.Stats&gt;</span></li>
-<li><code>previous</code> <span class="type">&lt;fs.Stats&gt;</span></li>
+<li><code>current</code> 
+            <a href="fs.html#fs_class_fs_stats" class="type">&lt;fs.Stats&gt;</a></li>
+<li><code>previous</code> 
+            <a href="fs.html#fs_class_fs_stats" class="type">&lt;fs.Stats&gt;</a></li>
 </ul>
 </li>
 </ul>
@@ -3460,7 +3466,7 @@ the end of the file.</p>
 </ul>
 </li>
 </ul>
-<p>Write <code>string</code> to the file specified by <code>fd</code>.  If <code>string</code> is not a string, then
+<p>Write <code>string</code> to the file specified by <code>fd</code>. If <code>string</code> is not a string, then
 the value will be coerced to one.</p>
 <p><code>position</code> refers to the offset from the beginning of the file where this data
 should be written. If <code>typeof position !== &#39;number&#39;</code> the data will be written at

@@ -1,9 +1,0 @@
-prefix=%PREFIX%
-libdir=${prefix}/lib
-includedir=${prefix}/include/node/
-
-Name: v8
-Description: node.js in library configuration has v8 inside
-Version: 6.9.0
-Cflags: -I${includedir}
-Libs: -L${libdir} -l:libnode.so.57

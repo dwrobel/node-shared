@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>HTTP | Node.js v8.11.1 Documentation</title>
+  <title>HTTP | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="http" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -231,7 +231,7 @@
 <p>The HTTP interfaces in Node.js are designed to support many features
 of the protocol which have been traditionally difficult to use.
 In particular, large, possibly chunk-encoded, messages. The interface is
-careful to never buffer entire requests or responses--the
+careful to never buffer entire requests or responses — the
 user is able to stream data.</p>
 <p>HTTP message headers are represented by an object like this:</p>
 <!-- eslint-skip -->
@@ -248,7 +248,7 @@ parsing only. It parses a message into headers and body but it does not
 parse the actual headers or the body.</p>
 <p>See <a href="#http_message_headers"><code>message.headers</code></a> for details on how duplicate headers are handled.</p>
 <p>The raw headers as they were received are retained in the <code>rawHeaders</code>
-property, which is an array of <code>[key, value, key2, value2, ...]</code>.  For
+property, which is an array of <code>[key, value, key2, value2, ...]</code>. For
 example, the previous message header object might have a <code>rawHeaders</code>
 list like the following:</p>
 <!-- eslint-disable semi -->
@@ -324,10 +324,10 @@ for TCP Keep-Alive packets. Ignored when the
 <code>keepAlive</code> option is <code>false</code> or <code>undefined</code>. Defaults to <code>1000</code>.</li>
 <li><code>maxSockets</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Maximum number of sockets to allow per
-host.  Defaults to <code>Infinity</code>.</li>
+host. Defaults to <code>Infinity</code>.</li>
 <li><code>maxFreeSockets</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Maximum number of sockets to leave open
-in a free state.  Only relevant if <code>keepAlive</code> is set to <code>true</code>.
+in a free state. Only relevant if <code>keepAlive</code> is set to <code>true</code>.
 Defaults to <code>256</code>.</li>
 </ul>
 </li>
@@ -392,9 +392,9 @@ the keep-alive options. Default behavior is to:</p>
 <div class="api_metadata">
 <span>Added in: v0.11.4</span>
 </div><p>Destroy any sockets that are currently in use by the agent.</p>
-<p>It is usually not necessary to do this.  However, if using an
+<p>It is usually not necessary to do this. However, if using an
 agent with <code>keepAlive</code> enabled, then it is best to explicitly shut down
-the agent when it will no longer be used.  Otherwise,
+the agent when it will no longer be used. Otherwise,
 sockets may hang open for quite a long time before the server
 terminates them.</p>
 <h3>agent.freeSockets<span><a class="mark" href="#http_agent_freesockets" id="http_agent_freesockets">#</a></span></h3>
@@ -405,7 +405,7 @@ terminates them.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a></li>
 </ul>
 <p>An object which contains arrays of sockets currently awaiting use by
-the agent when <code>keepAlive</code> is enabled.  Do not modify.</p>
+the agent when <code>keepAlive</code> is enabled. Do not modify.</p>
 <h3>agent.getName(options)<span><a class="mark" href="#http_agent_getname_options" id="http_agent_getname_options">#</a></span></h3>
 <div class="api_metadata">
 <span>Added in: v0.11.4</span>
@@ -438,7 +438,7 @@ that determine socket reusability.</p>
 <li>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a></li>
 </ul>
-<p>By default set to 256.  For agents with <code>keepAlive</code> enabled, this
+<p>By default set to 256. For agents with <code>keepAlive</code> enabled, this
 sets the maximum number of sockets that will be left open in the free
 state.</p>
 <h3>agent.maxSockets<span><a class="mark" href="#http_agent_maxsockets" id="http_agent_maxsockets">#</a></span></h3>
@@ -467,27 +467,27 @@ sockets. Do not modify.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a></li>
 </ul>
 <p>An object which contains arrays of sockets currently in use by the
-agent.  Do not modify.</p>
+agent. Do not modify.</p>
 <h2>Class: http.ClientRequest<span><a class="mark" href="#http_class_http_clientrequest" id="http_class_http_clientrequest">#</a></span></h2>
 <div class="api_metadata">
 <span>Added in: v0.1.17</span>
-</div><p>This object is created internally and returned from <a href="#http_http_request_options_callback"><code>http.request()</code></a>.  It
-represents an <em>in-progress</em> request whose header has already been queued.  The
+</div><p>This object is created internally and returned from <a href="#http_http_request_options_callback"><code>http.request()</code></a>. It
+represents an <em>in-progress</em> request whose header has already been queued. The
 header is still mutable using the <a href="#http_request_setheader_name_value"><code>setHeader(name, value)</code></a>,
- <a href="#http_request_getheader_name"><code>getHeader(name)</code></a>, <a href="#http_request_removeheader_name"><code>removeHeader(name)</code></a> API.  The actual header will
+ <a href="#http_request_getheader_name"><code>getHeader(name)</code></a>, <a href="#http_request_removeheader_name"><code>removeHeader(name)</code></a> API. The actual header will
 be sent along with the first data chunk or when calling <a href="#http_request_end_data_encoding_callback"><code>request.end()</code></a>.</p>
 <p>To get the response, add a listener for <a href="#http_event_response"><code>&#39;response&#39;</code></a> to the request object.
 <a href="#http_event_response"><code>&#39;response&#39;</code></a> will be emitted from the request object when the response
-headers have been received.  The <a href="#http_event_response"><code>&#39;response&#39;</code></a> event is executed with one
+headers have been received. The <a href="#http_event_response"><code>&#39;response&#39;</code></a> event is executed with one
 argument which is an instance of <a href="#http_class_http_incomingmessage"><code>http.IncomingMessage</code></a>.</p>
 <p>During the <a href="#http_event_response"><code>&#39;response&#39;</code></a> event, one can add listeners to the
 response object; particularly to listen for the <code>&#39;data&#39;</code> event.</p>
 <p>If no <a href="#http_event_response"><code>&#39;response&#39;</code></a> handler is added, then the response will be
-entirely discarded.  However, if a <a href="#http_event_response"><code>&#39;response&#39;</code></a> event handler is added,
+entirely discarded. However, if a <a href="#http_event_response"><code>&#39;response&#39;</code></a> event handler is added,
 then the data from the response object <strong>must</strong> be consumed, either by
 calling <code>response.read()</code> whenever there is a <code>&#39;readable&#39;</code> event, or
 by adding a <code>&#39;data&#39;</code> handler, or by calling the <code>.resume()</code> method.
-Until the data is consumed, the <code>&#39;end&#39;</code> event will not fire.  Also, until
+Until the data is consumed, the <code>&#39;end&#39;</code> event will not fire. Also, until
 the data is read it will consume memory that can eventually lead to a
 &#39;process out of memory&#39; error.</p>
 <p><em>Note</em>: Node.js does not check whether Content-Length and the length of the
@@ -695,7 +695,7 @@ is finished.</p>
 <code>request.end()</code> is called or the first chunk of request data is written. It
 then tries to pack the request headers and data into a single TCP packet.</p>
 <p>That&#39;s usually desired (it saves a TCP round-trip), but not when the first
-data is not sent until possibly much later.  <code>request.flushHeaders()</code> bypasses
+data is not sent until possibly much later. <code>request.flushHeaders()</code> bypasses
 the optimization and kickstarts the request.</p>
 <h3>request.getHeader(name)<span><a class="mark" href="#http_request_getheader_name" id="http_request_getheader_name">#</a></span></h3>
 <div class="api_metadata">
@@ -809,16 +809,18 @@ req.once(&#39;response&#39;, (res) =&gt; {
 <li><code>callback</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a></li>
 </ul>
-<p>Sends a chunk of the body.  By calling this method
+<p>Sends a chunk of the body. By calling this method
 many times, a request body can be sent to a
-server--in that case it is suggested to use the
+server — in that case it is suggested to use the
 <code>[&#39;Transfer-Encoding&#39;, &#39;chunked&#39;]</code> header line when
 creating the request.</p>
 <p>The <code>encoding</code> argument is optional and only applies when <code>chunk</code> is a string.
 Defaults to <code>&#39;utf8&#39;</code>.</p>
 <p>The <code>callback</code> argument is optional and will be called when this chunk of data
 is flushed.</p>
-<p>Returns <code>request</code>.</p>
+<p>Returns <code>true</code> if the entire data was flushed successfully to the kernel
+buffer. Returns <code>false</code> if all or part of the data was queued in user memory.
+<code>&#39;drain&#39;</code> will be emitted when the buffer is free again.</p>
 <h2>Class: http.Server<span><a class="mark" href="#http_class_http_server" id="http_class_http_server">#</a></span></h2>
 <div class="api_metadata">
 <span>Added in: v0.1.17</span>
@@ -975,7 +977,7 @@ sent to the server on that socket.</p>
 <li><code>callback</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a></li>
 </ul>
-<p>Stops the server from accepting new connections.  See <a href="net.html#net_server_close_callback"><code>net.Server.close()</code></a>.</p>
+<p>Stops the server from accepting new connections. See <a href="net.html#net_server_close_callback"><code>net.Server.close()</code></a>.</p>
 <h3>server.listen()<span><a class="mark" href="#http_server_listen" id="http_server_listen">#</a></span></h3>
 <p>Starts the HTTP server listening for connections.
 This method is identical to <a href="net.html#net_server_listen"><code>server.listen()</code></a> from <a href="net.html#net_class_net_server"><code>net.Server</code></a>.</p>
@@ -1012,7 +1014,7 @@ occurs.</p>
 <p>If there is a <code>&#39;timeout&#39;</code> event listener on the Server object, then it
 will be called with the timed-out socket as an argument.</p>
 <p>By default, the Server&#39;s timeout value is 2 minutes, and sockets are
-destroyed automatically if they time out.  However, if a callback is assigned
+destroyed automatically if they time out. However, if a callback is assigned
 to the Server&#39;s <code>&#39;timeout&#39;</code> event, timeouts must be handled explicitly.</p>
 <p>Returns <code>server</code>.</p>
 <h3>server.timeout<span><a class="mark" href="#http_server_timeout" id="http_server_timeout">#</a></span></h3>
@@ -1047,7 +1049,7 @@ value only affects new connections to the server, not any existing connections.<
 <h2>Class: http.ServerResponse<span><a class="mark" href="#http_class_http_serverresponse" id="http_class_http_serverresponse">#</a></span></h2>
 <div class="api_metadata">
 <span>Added in: v0.1.17</span>
-</div><p>This object is created internally by an HTTP server--not by the user. It is
+</div><p>This object is created internally by an HTTP server — not by the user. It is
 passed as the second parameter to the <a href="#http_event_request"><code>&#39;request&#39;</code></a> event.</p>
 <p>The response implements, but does not inherit from, the <a href="stream.html#stream_class_stream_writable">Writable Stream</a>
 interface. This is an <a href="events.html#events_class_eventemitter"><code>EventEmitter</code></a> with the following events:</p>
@@ -1229,8 +1231,8 @@ in responses.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> | 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string[]&gt;</a></li>
 </ul>
-<p>Sets a single header value for implicit headers.  If this header already exists
-in the to-be-sent headers, its value will be replaced.  Use an array of strings
+<p>Sets a single header value for implicit headers. If this header already exists
+in the to-be-sent headers, its value will be replaced. Use an array of strings
 here to send multiple headers with the same name.</p>
 <p>Example:</p>
 <pre><code class="lang-js">response.setHeader(&#39;Content-Type&#39;, &#39;text/html&#39;);
@@ -1260,11 +1262,11 @@ const server = http.createServer((req, res) =&gt; {
 <li><code>callback</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a></li>
 </ul>
-<p>Sets the Socket&#39;s timeout value to <code>msecs</code>.  If a callback is
+<p>Sets the Socket&#39;s timeout value to <code>msecs</code>. If a callback is
 provided, then it is added as a listener on the <code>&#39;timeout&#39;</code> event on
 the response object.</p>
 <p>If no <code>&#39;timeout&#39;</code> listener is added to the request, the response, or
-the server, then sockets are destroyed when they time out.  If a handler is
+the server, then sockets are destroyed when they time out. If a handler is
 assigned to the request, the response, or the server&#39;s <code>&#39;timeout&#39;</code> events,
 timed out sockets must be handled explicitly.</p>
 <p>Returns <code>response</code>.</p>
@@ -1498,8 +1500,8 @@ Probably either <code>&#39;1.1&#39;</code> or <code>&#39;1.0&#39;</code>.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">&lt;Array&gt;</a></li>
 </ul>
 <p>The raw request/response headers list exactly as they were received.</p>
-<p>Note that the keys and values are in the same list.  It is <em>not</em> a
-list of tuples.  So, the even-numbered offsets are key values, and the
+<p>Note that the keys and values are in the same list. It is <em>not</em> a
+list of tuples. So, the even-numbered offsets are key values, and the
 odd-numbered offsets are the associated values.</p>
 <p>Header names are not lowercased, and duplicates are not merged.</p>
 <pre><code class="lang-js">// Prints something like:
@@ -1522,7 +1524,7 @@ console.log(request.rawHeaders);
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">&lt;Array&gt;</a></li>
 </ul>
 <p>The raw request/response trailer keys and values exactly as they were
-received.  Only populated at the <code>&#39;end&#39;</code> event.</p>
+received. Only populated at the <code>&#39;end&#39;</code> event.</p>
 <h3>message.setTimeout(msecs, callback)<span><a class="mark" href="#http_message_settimeout_msecs_callback" id="http_message_settimeout_msecs_callback">#</a></span></h3>
 <div class="api_metadata">
 <span>Added in: v0.5.9</span>
@@ -1589,7 +1591,7 @@ Accept: text/plain\r\n
 <pre><code class="lang-js">&#39;/status?name=ryan&#39;
 </code></pre>
 <p>To parse the url into its parts <code>require(&#39;url&#39;).parse(request.url)</code>
-can be used.  Example:</p>
+can be used. Example:</p>
 <pre><code class="lang-txt">$ node
 &gt; require(&#39;url&#39;).parse(&#39;/status?name=ryan&#39;)
 Url {
@@ -1642,7 +1644,7 @@ Url {
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a></li>
 </ul>
 <p>A collection of all the standard HTTP response status codes, and the
-short description of each.  For example, <code>http.STATUS_CODES[404] === &#39;Not
+short description of each. For example, <code>http.STATUS_CODES[404] === &#39;Not
 Found&#39;</code>.</p>
 <h2>http.createServer([requestListener])<span><a class="mark" href="#http_http_createserver_requestlistener" id="http_http_createserver_requestlistener">#</a></span></h2>
 <div class="api_metadata">
@@ -1886,6 +1888,54 @@ const req = http.request(options, (res) =&gt; {
   // ...
 });
 </code></pre>
+<p>In a successful request, the following events will be emitted in the following
+order:</p>
+<ul>
+<li><code>socket</code></li>
+<li><code>response</code><ul>
+<li><code>data</code> any number of times, on the <code>res</code> object
+(<code>data</code> will not be emitted at all if the response body is empty, for
+instance, in most redirects)</li>
+<li><code>end</code> on the <code>res</code> object</li>
+</ul>
+</li>
+<li><code>close</code></li>
+</ul>
+<p>In the case of a connection error, the following events will be emitted:</p>
+<ul>
+<li><code>socket</code></li>
+<li><code>error</code></li>
+<li><code>close</code></li>
+</ul>
+<p>If <code>req.abort()</code> is called before the connection succeeds, the following events
+will be emitted in the following order:</p>
+<ul>
+<li><code>socket</code></li>
+<li>(<code>req.abort()</code> called here)</li>
+<li><code>abort</code></li>
+<li><code>close</code></li>
+<li><code>error</code> with an error with message <code>Error: socket hang up</code> and code
+<code>ECONNRESET</code></li>
+</ul>
+<p>If <code>req.abort()</code> is called after the response is received, the following events
+will be emitted in the following order:</p>
+<ul>
+<li><code>socket</code></li>
+<li><code>response</code><ul>
+<li><code>data</code> any number of times, on the <code>res</code> object</li>
+</ul>
+</li>
+<li>(<code>req.abort()</code> called here)</li>
+<li><code>abort</code></li>
+<li><code>close</code><ul>
+<li><code>aborted</code> on the <code>res</code> object</li>
+<li><code>end</code> on the <code>res</code> object</li>
+<li><code>close</code> on the <code>res</code> object</li>
+</ul>
+</li>
+</ul>
+<p>Note that setting the <code>timeout</code> option or using the <code>setTimeout</code> function will
+not abort the request or do anything besides add a <code>timeout</code> event.</p>
 
       </div>
     </div>

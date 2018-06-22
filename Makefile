@@ -92,8 +92,8 @@ $(NODE_G_EXE): config.gypi out/Makefile
 	$(MAKE) -C out BUILDTYPE=Debug V=$(V)
 	if [ ! -r $@ -o ! -L $@ ]; then ln -fs out/Debug/$(NODE_EXE) $@; fi
 
-out/Makefile: common.gypi \
-              deps/v8/gypfiles/toolchain.gypi \
+out/Makefile: common.gypi deps/uv/uv.gyp deps/http_parser/http_parser.gyp \
+              deps/zlib/zlib.gyp deps/v8/gypfiles/toolchain.gypi \
               deps/v8/gypfiles/features.gypi deps/v8/src/v8.gyp node.gyp \
               config.gypi
 	$(PYTHON) tools/gyp_node.py -f make
@@ -103,8 +103,6 @@ config.gypi: configure
 
 install: all ## Installs node into $PREFIX (default=/usr/local).
 	$(PYTHON) tools/install.py $@ '$(DESTDIR)' '$(PREFIX)'
-	mkdir -p $(DESTDIR)/$(PREFIX)/lib/pkgconfig
-	sed s:%PREFIX%:$(PREFIX):g v8.pc > $(DESTDIR)/$(PREFIX)/lib/pkgconfig/node8.pc
 
 uninstall: ## Uninstalls node from $PREFIX (default=/usr/local).
 	$(PYTHON) tools/install.py $@ '$(DESTDIR)' '$(PREFIX)'
@@ -560,7 +558,7 @@ doc-only: $(apidoc_dirs) $(apiassets)
 	if [ ! -d doc/api/assets ]; then \
 		$(MAKE) tools/doc/node_modules/js-yaml/package.json; \
 	fi;
-	@$(MAKE) -s $(apidocs_html) $(apidocs_json)
+	@$(MAKE) $(apidocs_html) $(apidocs_json)
 
 doc: $(NODE_EXE) doc-only
 
@@ -1010,26 +1008,31 @@ lint-md-clean:
 lint-md-build:
 	@if [ ! -d tools/remark-cli/node_modules ]; then \
 		echo "Markdown linter: installing remark-cli into tools/"; \
-		cd tools/remark-cli && ../../$(NODE) ../../$(NPM) install; fi
+		cd tools/remark-cli && $(call available-node,$(run-npm-install)) fi
 	@if [ ! -d tools/remark-preset-lint-node/node_modules ]; then \
 		echo "Markdown linter: installing remark-preset-lint-node into tools/"; \
-		cd tools/remark-preset-lint-node && ../../$(NODE) ../../$(NPM) install; fi
+		cd tools/remark-preset-lint-node && $(call available-node,$(run-npm-install)) fi
+
 
 ifneq ("","$(wildcard tools/remark-cli/node_modules/)")
-LINT_MD_TARGETS = src lib benchmark tools/doc tools/icu
-LINT_MD_ROOT_DOCS := $(wildcard *.md)
-LINT_MD_FILES := $(shell find $(LINT_MD_TARGETS) -type f \
-  -not -path '*node_modules*' -name '*.md') $(LINT_MD_ROOT_DOCS)
-LINT_DOC_MD_FILES = $(shell ls doc/**/*.md)
 
-tools/.docmdlintstamp: $(LINT_DOC_MD_FILES)
+LINT_MD_DOC_FILES = $(shell ls doc/**/*.md)
+run-lint-doc-md = tools/remark-cli/cli.js -q -f $(LINT_MD_DOC_FILES)
+# Lint all changed markdown files under doc/
+tools/.docmdlintstamp: $(LINT_MD_DOC_FILES)
 	@echo "Running Markdown linter on docs..."
-	@$(NODE) tools/remark-cli/cli.js -q -f $(LINT_DOC_MD_FILES)
+	@$(call available-node,$(run-lint-doc-md))
 	@touch $@
 
-tools/.miscmdlintstamp: $(LINT_MD_FILES)
+LINT_MD_TARGETS = src lib benchmark tools/doc tools/icu
+LINT_MD_ROOT_DOCS := $(wildcard *.md)
+LINT_MD_MISC_FILES := $(shell find $(LINT_MD_TARGETS) -type f \
+  -not -path '*node_modules*' -name '*.md') $(LINT_MD_ROOT_DOCS)
+run-lint-misc-md = tools/remark-cli/cli.js -q -f $(LINT_MD_MISC_FILES)
+# Lint other changed markdown files maintained by us
+tools/.miscmdlintstamp: $(LINT_MD_MISC_FILES)
 	@echo "Running Markdown linter on misc docs..."
-	@$(NODE) tools/remark-cli/cli.js -q -f $(LINT_MD_FILES)
+	@$(call available-node,$(run-lint-misc-md))
 	@touch $@
 
 tools/.mdlintstamp: tools/.miscmdlintstamp tools/.docmdlintstamp
@@ -1042,37 +1045,29 @@ lint-md:
 endif
 
 LINT_JS_TARGETS = benchmark doc lib test tools
-LINT_JS_CMD = tools/eslint/bin/eslint.js --cache \
-	--rulesdir=tools/eslint-rules --ext=.js,.mjs,.md \
-	$(LINT_JS_TARGETS)
+
+run-lint-js = tools/eslint/bin/eslint.js --cache \
+	--rulesdir=tools/eslint-rules --ext=.js,.mjs,.md $(LINT_JS_TARGETS)
+run-lint-js-fix = $(run-lint-js) --fix
 
 lint-js-fix:
-	@if [ -x $(NODE) ]; then \
-		$(NODE) $(LINT_JS_CMD) --fix; \
-	else \
-		node $(LINT_JS_CMD) --fix; \
-	fi
+	@$(call available-node,$(run-lint-js-fix))
 
 lint-js:
 	@echo "Running JS linter..."
-	@if [ -x $(NODE) ]; then \
-		$(NODE) $(LINT_JS_CMD); \
-	else \
-		node $(LINT_JS_CMD); \
-	fi
+	@$(call available-node,$(run-lint-js))
 
 jslint: lint-js
 	@echo "Please use lint-js instead of jslint"
 
+run-lint-js-ci = tools/lint-js.js $(PARALLEL_ARGS) -f tap -o test-eslint.tap \
+		$(LINT_JS_TARGETS)
+
+.PHONY: lint-js-ci
+# On the CI the output is emitted in the TAP format.
 lint-js-ci:
 	@echo "Running JS linter..."
-	@if [ -x $(NODE) ]; then \
-		$(NODE) tools/lint-js.js $(PARALLEL_ARGS) -f tap -o test-eslint.tap \
-		$(LINT_JS_TARGETS); \
-	else \
-		node tools/lint-js.js $(PARALLEL_ARGS) -f tap -o test-eslint.tap \
-		$(LINT_JS_TARGETS); \
-	fi
+	@$(call available-node,$(run-lint-js-ci))
 
 jslint-ci: lint-js-ci
 	@echo "Please use lint-js-ci instead of jslint-ci"
@@ -1130,6 +1125,7 @@ lint: ## Run JS, C++, MD and doc linters.
 	$(MAKE) lint-cpp || EXIT_STATUS=$$? ; \
 	$(MAKE) lint-md || EXIT_STATUS=$$? ; \
 	$(MAKE) lint-addon-docs || EXIT_STATUS=$$? ; \
+	$(MAKE) lint-md || EXIT_STATUS=$$? ; \
 	exit $$EXIT_STATUS
 CONFLICT_RE=^>>>>>>> [0-9A-Fa-f]+|^<<<<<<< [A-Za-z]+
 lint-ci: lint-js-ci lint-cpp lint-md lint-addon-docs

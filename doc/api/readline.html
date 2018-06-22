@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Readline | Node.js v8.11.1 Documentation</title>
+  <title>Readline | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="readline" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -372,7 +372,7 @@ whenever <code>rl.prompt()</code> is called.</p>
 </ul>
 </li>
 </ul>
-<p>The <code>rl.write()</code> method will write either <code>data</code> or a key sequence  identified
+<p>The <code>rl.write()</code> method will write either <code>data</code> or a key sequence identified
 by <code>key</code> to the <code>output</code>. The <code>key</code> argument is supported only if <code>output</code> is
 a <a href="tty.html">TTY</a> text terminal.</p>
 <p>If <code>key</code> is specified, <code>data</code> is ignored.</p>
@@ -391,7 +391,8 @@ Interface&#39;s <code>input</code> <em>as if it were provided by the user</em>.<
 <div class="api_metadata">
 <span>Added in: v0.7.7</span>
 </div><ul>
-<li><code>stream</code> <span class="type">&lt;Writable&gt;</span></li>
+<li><code>stream</code> 
+            <a href="stream.html#stream_class_stream_writable" class="type">&lt;stream.Writable&gt;</a></li>
 <li><code>dir</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a><ul>
 <li><code>-1</code> - to the left from cursor</li>
@@ -406,7 +407,8 @@ in a specified direction identified by <code>dir</code>.</p>
 <div class="api_metadata">
 <span>Added in: v0.7.7</span>
 </div><ul>
-<li><code>stream</code> <span class="type">&lt;Writable&gt;</span></li>
+<li><code>stream</code> 
+            <a href="stream.html#stream_class_stream_writable" class="type">&lt;stream.Writable&gt;</a></li>
 </ul>
 <p>The <code>readline.clearScreenDown()</code> method clears the given <a href="tty.html">TTY</a> stream from
 the current position of the cursor down.</p>
@@ -435,9 +437,11 @@ the current position of the cursor down.</p>
 </div><ul>
 <li><code>options</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a><ul>
-<li><code>input</code> <span class="type">&lt;Readable&gt;</span> The <a href="stream.html#stream_readable_streams">Readable</a> stream to listen to. This option is
+<li><code>input</code> 
+            <a href="stream.html#stream_class_stream_readable" class="type">&lt;stream.Readable&gt;</a> The <a href="stream.html#stream_readable_streams">Readable</a> stream to listen to. This option is
 <em>required</em>.</li>
-<li><code>output</code> <span class="type">&lt;Writable&gt;</span> The <a href="stream.html#stream_writable_streams">Writable</a> stream to write readline data to.</li>
+<li><code>output</code> 
+            <a href="stream.html#stream_class_stream_writable" class="type">&lt;stream.Writable&gt;</a> The <a href="stream.html#stream_writable_streams">Writable</a> stream to write readline data to.</li>
 <li><code>completer</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> An optional function used for Tab autocompletion.</li>
 <li><code>terminal</code> 
@@ -509,7 +513,8 @@ arguments:</p>
 <div class="api_metadata">
 <span>Added in: v0.7.7</span>
 </div><ul>
-<li><code>stream</code> <span class="type">&lt;Writable&gt;</span></li>
+<li><code>stream</code> 
+            <a href="stream.html#stream_class_stream_writable" class="type">&lt;stream.Writable&gt;</a></li>
 <li><code>x</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a></li>
 <li><code>y</code> 
@@ -521,8 +526,10 @@ given <a href="tty.html">TTY</a> <code>stream</code>.</p>
 <div class="api_metadata">
 <span>Added in: v0.7.7</span>
 </div><ul>
-<li><code>stream</code> <span class="type">&lt;Readable&gt;</span></li>
-<li><code>interface</code> <span class="type">&lt;readline.Interface&gt;</span></li>
+<li><code>stream</code> 
+            <a href="stream.html#stream_class_stream_readable" class="type">&lt;stream.Readable&gt;</a></li>
+<li><code>interface</code> 
+            <a href="readline.html#readline_class_interface" class="type">&lt;readline.Interface&gt;</a></li>
 </ul>
 <p>The <code>readline.emitKeypressEvents()</code> method causes the given <a href="stream.html#stream_readable_streams">Readable</a>
 <code>stream</code> to begin emitting <code>&#39;keypress&#39;</code> events corresponding to received input.</p>
@@ -540,7 +547,8 @@ if (process.stdin.isTTY)
 <div class="api_metadata">
 <span>Added in: v0.7.7</span>
 </div><ul>
-<li><code>stream</code> <span class="type">&lt;Writable&gt;</span></li>
+<li><code>stream</code> 
+            <a href="stream.html#stream_class_stream_writable" class="type">&lt;stream.Writable&gt;</a></li>
 <li><code>dx</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a></li>
 <li><code>dy</code> 

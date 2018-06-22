@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Cluster | Node.js v8.11.1 Documentation</title>
+  <title>Cluster | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="cluster" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -233,8 +233,8 @@ idea of what the number 7 file descriptor references.</li>
 the worker to use the supplied handle, rather than talk to the master
 process.</li>
 <li><code>server.listen(0)</code> Normally, this will cause servers to listen on a
-random port.  However, in a cluster, each worker will receive the
-same &quot;random&quot; port each time they do <code>listen(0)</code>.  In essence, the
+random port. However, in a cluster, each worker will receive the
+same &quot;random&quot; port each time they do <code>listen(0)</code>. In essence, the
 port is random the first time, but predictable thereafter. To listen
 on a unique port, generate a port number based on the cluster worker ID.</li>
 </ol>
@@ -243,8 +243,8 @@ design an application such that it does not rely too heavily on in-memory data
 objects for things like sessions and login.</p>
 <p>Because workers are all separate processes, they can be killed or
 re-spawned depending on a program&#39;s needs, without affecting other
-workers.  As long as there are some workers still alive, the server will
-continue to accept connections.  If no workers are alive, existing connections
+workers. As long as there are some workers still alive, the server will
+continue to accept connections. If no workers are alive, existing connections
 will be dropped and new connections will be refused. Node.js does not
 automatically manage the number of workers, however. It is the application&#39;s
 responsibility to manage the worker pool based on its own needs.</p>
@@ -382,7 +382,8 @@ if (cluster.isMaster) {
 </table>
 </details>
 </div><ul>
-<li>Returns: <span class="type">&lt;Worker&gt;</span> A reference to <code>worker</code>.</li>
+<li>Returns: 
+            <a href="cluster.html#cluster_class_worker" class="type">&lt;cluster.Worker&gt;</a> A reference to <code>worker</code>.</li>
 </ul>
 <p>In a worker, this function will close all servers, wait for the <code>&#39;close&#39;</code> event on
 those servers, and then disconnect the IPC channel.</p>
@@ -586,7 +587,7 @@ future.</p>
 <p>Emitted after the worker IPC channel has disconnected. This can occur when a
 worker exits gracefully, is killed, or is disconnected manually (such as with
 worker.disconnect()).</p>
-<p>There may be a delay between the <code>&#39;disconnect&#39;</code> and <code>&#39;exit&#39;</code> events.  These events
+<p>There may be a delay between the <code>&#39;disconnect&#39;</code> and <code>&#39;exit&#39;</code> events. These events
 can be used to detect if the process is stuck in a cleanup or if there are
 long-living connections.</p>
 <pre><code class="lang-js">cluster.on(&#39;disconnect&#39;, (worker) =&gt; {
@@ -665,7 +666,7 @@ worker is listening on more than one address.</p>
 <li><code>4</code> (TCPv4)</li>
 <li><code>6</code> (TCPv6)</li>
 <li><code>-1</code> (unix domain socket)</li>
-<li><code>&quot;udp4&quot;</code> or <code>&quot;udp6&quot;</code> (UDP v4 or v6)</li>
+<li><code>&#39;udp4&#39;</code> or <code>&#39;udp6&#39;</code> (UDP v4 or v6)</li>
 </ul>
 <h2>Event: &#39;message&#39;<span><a class="mark" href="#cluster_event_message_1" id="cluster_event_message_1">#</a></span></h2>
 <div class="api_metadata">
@@ -786,7 +787,7 @@ Windows will change to <code>SCHED_RR</code> once libuv is able to effectively
 distribute IOCP handles without incurring a large performance hit.</p>
 <p><code>cluster.schedulingPolicy</code> can also be set through the
 <code>NODE_CLUSTER_SCHED_POLICY</code> environment variable. Valid
-values are <code>&quot;rr&quot;</code> and <code>&quot;none&quot;</code>.</p>
+values are <code>&#39;rr&#39;</code> and <code>&#39;none&#39;</code>.</p>
 <h2>cluster.settings<span><a class="mark" href="#cluster_cluster_settings" id="cluster_cluster_settings">#</a></span></h2>
 <div class="api_metadata">
 <details class="changelog"><summary>History</summary>
@@ -826,7 +827,8 @@ cluster module relies on IPC to function, this configuration must contain an
 <li><code>gid</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Sets the group identity of the process. (See <a href="http://man7.org/linux/man-pages/man2/setgid.2.html">setgid(2)</a>.)</li>
 <li><code>inspectPort</code> 
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> | <span class="type">&lt;function&gt;</span> Sets inspector port of worker.
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> | 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> Sets inspector port of worker.
 This can be a number, or a function that takes no arguments and returns a
 number. By default each worker gets its own port, incremented from the
 master&#39;s <code>process.debugPort</code>.</li>

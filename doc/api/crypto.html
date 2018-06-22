@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Crypto | Node.js v8.11.1 Documentation</title>
+  <title>Crypto | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="crypto" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -460,7 +460,7 @@ using <code>0x0</code> instead of PKCS padding.</p>
 its value must be one of <code>&#39;utf8&#39;</code>, <code>&#39;ascii&#39;</code>, or <code>&#39;latin1&#39;</code> and the <code>data</code>
 argument is a string using the specified encoding. If the <code>inputEncoding</code>
 argument is not given, <code>data</code> must be a <a href="buffer.html"><code>Buffer</code></a>, <code>TypedArray</code>, or
-<code>DataView</code>.  If <code>data</code> is a <a href="buffer.html"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code>, then
+<code>DataView</code>. If <code>data</code> is a <a href="buffer.html"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code>, then
 <code>inputEncoding</code> is ignored.</p>
 <p>The <code>outputEncoding</code> specifies the output format of the enciphered
 data, and can be <code>&#39;latin1&#39;</code>, <code>&#39;base64&#39;</code> or <code>&#39;hex&#39;</code>. If the <code>outputEncoding</code>
@@ -586,6 +586,13 @@ supported), the <code>decipher.setAuthTag()</code> method is used to pass in the
 received <em>authentication tag</em>. If no tag is provided, or if the cipher text
 has been tampered with, <a href="#crypto_decipher_final_outputencoding"><code>decipher.final()</code></a> will throw, indicating that the
 cipher text should be discarded due to failed authentication.</p>
+<p>Note that this Node.js version does not verify the length of GCM authentication
+tags. Such a check <em>must</em> be implemented by applications and is crucial to the
+authenticity of the encrypted data, otherwise, an attacker can use an
+arbitrarily short authentication tag to increase the chances of successfully
+passing authentication (up to 0.39%). It is highly recommended to associate one
+of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit
+authentication tags of that length, see <a href="http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf">NIST SP 800-38D</a>.</p>
 <p>The <code>decipher.setAuthTag()</code> method must be called before
 <a href="#crypto_decipher_final_outputencoding"><code>decipher.final()</code></a>.</p>
 <h3>decipher.setAutoPadding([autoPadding])<span><a class="mark" href="#crypto_decipher_setautopadding_autopadding" id="crypto_decipher_setautopadding_autopadding">#</a></span></h3>
@@ -707,7 +714,7 @@ or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided a string 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 </ul>
 <p>Returns the Diffie-Hellman generator in the specified <code>encoding</code>, which can
-be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If  <code>encoding</code> is provided a string is
+be <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided a string is
 returned; otherwise a <a href="buffer.html"><code>Buffer</code></a> is returned.</p>
 <h3>diffieHellman.getPrime([encoding])<span><a class="mark" href="#crypto_diffiehellman_getprime_encoding" id="crypto_diffiehellman_getprime_encoding">#</a></span></h3>
 <div class="api_metadata">
@@ -1439,7 +1446,9 @@ they are used in order to avoid the risk of IV reuse that causes
 vulnerabilities. For the case when IV is reused in GCM, see <a href="https://github.com/nonce-disrespect/nonce-disrespect">Nonce-Disrespecting
 Adversaries</a> for details.</p>
 <h3>crypto.createCipheriv(algorithm, key, iv[, options])<span><a class="mark" href="#crypto_crypto_createcipheriv_algorithm_key_iv_options" id="crypto_crypto_createcipheriv_algorithm_key_iv_options">#</a></span></h3>
-<div class="signature"><ul>
+<div class="api_metadata">
+<span>Added in: v0.1.94</span>
+</div><ul>
 <li><code>algorithm</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
 <li><code>key</code> 
@@ -1455,7 +1464,7 @@ Adversaries</a> for details.</p>
 <li><code>options</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a> <a href="stream.html#stream_new_stream_transform_options"><code>stream.transform</code> options</a></li>
 </ul>
-</div><p>Creates and returns a <code>Cipher</code> object, with the given <code>algorithm</code>, <code>key</code> and
+<p>Creates and returns a <code>Cipher</code> object, with the given <code>algorithm</code>, <code>key</code> and
 initialization vector (<code>iv</code>). Optional <code>options</code> argument controls stream behavior.</p>
 <p>The <code>algorithm</code> is dependent on OpenSSL, examples are <code>&#39;aes192&#39;</code>, etc. On
 recent OpenSSL releases, <code>openssl list-cipher-algorithms</code> will display the
@@ -1528,8 +1537,8 @@ behavior.</p>
 recent OpenSSL releases, <code>openssl list-cipher-algorithms</code> will display the
 available cipher algorithms.</p>
 <p>The <code>key</code> is the raw key used by the <code>algorithm</code> and <code>iv</code> is an
-<a href="https://en.wikipedia.org/wiki/Initialization_vector">initialization vector</a>. Both arguments must be <code>&#39;utf8&#39;</code> encoded strings or
-<a href="buffer.html">buffers</a>.</p>
+<a href="https://en.wikipedia.org/wiki/Initialization_vector">initialization vector</a>. Both arguments must be <code>&#39;utf8&#39;</code> encoded strings,
+<a href="buffer.html">Buffers</a>, <code>TypedArray</code>, or <code>DataView</code>s.</p>
 <h3>crypto.createDiffieHellman(prime[, primeEncoding][, generator][, generatorEncoding])<span><a class="mark" href="#crypto_crypto_creatediffiehellman_prime_primeencoding_generator_generatorencoding" id="crypto_crypto_creatediffiehellman_prime_primeencoding_generator_generatorencoding">#</a></span></h3>
 <div class="api_metadata">
 <details class="changelog"><summary>History</summary>
@@ -1879,7 +1888,8 @@ console.log(key.toString(&#39;hex&#39;));  // &#39;3745e48...08d59ae&#39;
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> A PEM encoded private key.</li>
 <li><code>passphrase</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> An optional passphrase for the private key.</li>
-<li><code>padding</code> <span class="type">&lt;crypto.constants&gt;</span> An optional padding value defined in
+<li><code>padding</code> 
+            <a href="crypto.html#crypto_crypto_constants_1" class="type">&lt;crypto.constants&gt;</a> An optional padding value defined in
 <code>crypto.constants</code>, which may be: <code>crypto.constants.RSA_NO_PADDING</code>,
 <code>RSA_PKCS1_PADDING</code>, or <code>crypto.constants.RSA_PKCS1_OAEP_PADDING</code>.</li>
 </ul>
@@ -1905,7 +1915,8 @@ treated as the key with no passphrase and will use <code>RSA_PKCS1_OAEP_PADDING<
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> A PEM encoded private key.</li>
 <li><code>passphrase</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> An optional passphrase for the private key.</li>
-<li><code>padding</code> <span class="type">&lt;crypto.constants&gt;</span> An optional padding value defined in
+<li><code>padding</code> 
+            <a href="crypto.html#crypto_crypto_constants_1" class="type">&lt;crypto.constants&gt;</a> An optional padding value defined in
 <code>crypto.constants</code>, which may be: <code>crypto.constants.RSA_NO_PADDING</code> or
 <code>RSA_PKCS1_PADDING</code>.</li>
 </ul>
@@ -1931,7 +1942,8 @@ treated as the key with no passphrase and will use <code>RSA_PKCS1_PADDING</code
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> A PEM encoded public or private key.</li>
 <li><code>passphrase</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> An optional passphrase for the private key.</li>
-<li><code>padding</code> <span class="type">&lt;crypto.constants&gt;</span> An optional padding value defined in
+<li><code>padding</code> 
+            <a href="crypto.html#crypto_crypto_constants_1" class="type">&lt;crypto.constants&gt;</a> An optional padding value defined in
 <code>crypto.constants</code>, which may be: <code>crypto.constants.RSA_NO_PADDING</code> or
 <code>RSA_PKCS1_PADDING</code>.</li>
 </ul>
@@ -1959,7 +1971,8 @@ be passed instead of a public key.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> A PEM encoded public or private key.</li>
 <li><code>passphrase</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> An optional passphrase for the private key.</li>
-<li><code>padding</code> <span class="type">&lt;crypto.constants&gt;</span> An optional padding value defined in
+<li><code>padding</code> 
+            <a href="crypto.html#crypto_crypto_constants_1" class="type">&lt;crypto.constants&gt;</a> An optional padding value defined in
 <code>crypto.constants</code>, which may be: <code>crypto.constants.RSA_NO_PADDING</code>,
 <code>RSA_PKCS1_PADDING</code>, or <code>crypto.constants.RSA_PKCS1_OAEP_PADDING</code>.</li>
 </ul>
@@ -2097,7 +2110,8 @@ client request.</p>
 </div><ul>
 <li><code>engine</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a></li>
-<li><code>flags</code> <span class="type">&lt;crypto.constants&gt;</span> Defaults to <code>crypto.constants.ENGINE_METHOD_ALL</code>.</li>
+<li><code>flags</code> 
+            <a href="crypto.html#crypto_crypto_constants_1" class="type">&lt;crypto.constants&gt;</a> Defaults to <code>crypto.constants.ENGINE_METHOD_ALL</code>.</li>
 </ul>
 <p>Load and set the <code>engine</code> for some or all OpenSSL functions (selected by flags).</p>
 <p><code>engine</code> could be either an id or a path to the engine&#39;s shared library.</p>

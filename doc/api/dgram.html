@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>UDP / Datagram Sockets | Node.js v8.11.1 Documentation</title>
+  <title>UDP / Datagram Sockets | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="dgram" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -265,7 +265,7 @@ properties.</p>
 messages on a named <code>port</code> and optional <code>address</code>. If <code>port</code> is not
 specified or is <code>0</code>, the operating system will attempt to bind to a
 random port. If <code>address</code> is not specified, the operating system will
-attempt to listen on all addresses.  Once binding is complete, a
+attempt to listen on all addresses. Once binding is complete, a
 <code>&#39;listening&#39;</code> event is emitted and the optional <code>callback</code> function is
 called.</p>
 <p>Note that specifying both a <code>&#39;listening&#39;</code> event listener and passing a
@@ -318,7 +318,7 @@ messages on a named <code>port</code> and optional <code>address</code> that are
 properties of an <code>options</code> object passed as the first argument. If
 <code>port</code> is not specified or is <code>0</code>, the operating system will attempt
 to bind to a random port. If <code>address</code> is not specified, the operating
-system will attempt to listen on all addresses.  Once binding is
+system will attempt to listen on all addresses. Once binding is
 complete, a <code>&#39;listening&#39;</code> event is emitted and the optional <code>callback</code>
 function is called.</p>
 <p>Note that specifying both a <code>&#39;listening&#39;</code> event listener and passing a
@@ -365,14 +365,14 @@ drop membership on all valid interfaces.</p>
 <div class="api_metadata">
 <span>Added in: v8.7.0</span>
 </div><ul>
-<li>Returns 
+<li>Returns: 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> the <code>SO_RCVBUF</code> socket receive buffer size in bytes.</li>
 </ul>
 <h3>socket.getSendBufferSize()<span><a class="mark" href="#dgram_socket_getsendbuffersize" id="dgram_socket_getsendbuffersize">#</a></span></h3>
 <div class="api_metadata">
 <span>Added in: v8.7.0</span>
 </div><ul>
-<li>Returns 
+<li>Returns: 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> the <code>SO_SNDBUF</code> socket send buffer size in bytes.</li>
 </ul>
 <h3>socket.ref()<span><a class="mark" href="#dgram_socket_ref" id="dgram_socket_ref">#</a></span></h3>
@@ -434,17 +434,17 @@ the <code>offset</code> and <code>length</code> specify the offset within the <c
 message begins and the number of bytes in the message, respectively.
 If <code>msg</code> is a <code>String</code>, then it is automatically converted to a <code>Buffer</code>
 with <code>&#39;utf8&#39;</code> encoding. With messages that
-contain  multi-byte characters, <code>offset</code> and <code>length</code> will be calculated with
+contain multi-byte characters, <code>offset</code> and <code>length</code> will be calculated with
 respect to <a href="buffer.html#buffer_class_method_buffer_bytelength_string_encoding">byte length</a> and not the character position.
 If <code>msg</code> is an array, <code>offset</code> and <code>length</code> must not be specified.</p>
 <p>The <code>address</code> argument is a string. If the value of <code>address</code> is a host name,
-DNS will be used to resolve the address of the host.  If <code>address</code> is not
+DNS will be used to resolve the address of the host. If <code>address</code> is not
 provided or otherwise falsy, <code>&#39;127.0.0.1&#39;</code> (for <code>udp4</code> sockets) or <code>&#39;::1&#39;</code>
 (for <code>udp6</code> sockets) will be used by default.</p>
 <p>If the socket has not been previously bound with a call to <code>bind</code>, the socket
 is assigned a random port number and is bound to the &quot;all interfaces&quot; address
 (<code>&#39;0.0.0.0&#39;</code> for <code>udp4</code> sockets, <code>&#39;::0&#39;</code> for <code>udp6</code> sockets.)</p>
-<p>An optional <code>callback</code> function  may be specified to as a way of reporting
+<p>An optional <code>callback</code> function may be specified to as a way of reporting
 DNS errors or for determining when it is safe to reuse the <code>buf</code> object.
 Note that DNS lookups delay the time to send for at least one tick of the
 Node.js event loop.</p>
@@ -508,7 +508,7 @@ source that the data did not reach its intended recipient.</p>
 <li><code>flag</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a></li>
 </ul>
-<p>Sets or clears the <code>SO_BROADCAST</code> socket option.  When set to <code>true</code>, UDP
+<p>Sets or clears the <code>SO_BROADCAST</code> socket option. When set to <code>true</code>, UDP
 packets may be sent to a local interface&#39;s broadcast address.</p>
 <h3>socket.setMulticastInterface(multicastInterface)<span><a class="mark" href="#dgram_socket_setmulticastinterface_multicastinterface" id="dgram_socket_setmulticastinterface_multicastinterface">#</a></span></h3>
 <div class="api_metadata">
@@ -575,7 +575,7 @@ for future multicast packets.</p>
 <li><code>flag</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a></li>
 </ul>
-<p>Sets or clears the <code>IP_MULTICAST_LOOP</code> socket option.  When set to <code>true</code>,
+<p>Sets or clears the <code>IP_MULTICAST_LOOP</code> socket option. When set to <code>true</code>,
 multicast packets will also be received on the local interface.</p>
 <h3>socket.setMulticastTTL(ttl)<span><a class="mark" href="#dgram_socket_setmulticastttl_ttl" id="dgram_socket_setmulticastttl_ttl">#</a></span></h3>
 <div class="api_metadata">
@@ -584,9 +584,9 @@ multicast packets will also be received on the local interface.</p>
 <li><code>ttl</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Integer.</li>
 </ul>
-<p>Sets the <code>IP_MULTICAST_TTL</code> socket option.  While TTL generally stands for
+<p>Sets the <code>IP_MULTICAST_TTL</code> socket option. While TTL generally stands for
 &quot;Time to Live&quot;, in this context it specifies the number of IP hops that a
-packet is allowed to travel through, specifically for multicast traffic.  Each
+packet is allowed to travel through, specifically for multicast traffic. Each
 router or gateway that forwards a packet decrements the TTL. If the TTL is
 decremented to 0 by a router, it will not be forwarded.</p>
 <p>The argument passed to <code>socket.setMulticastTTL()</code> is a number of hops
@@ -618,8 +618,8 @@ in bytes.</p>
 </ul>
 <p>Sets the <code>IP_TTL</code> socket option. While TTL generally stands for &quot;Time to Live&quot;,
 in this context it specifies the number of IP hops that a packet is allowed to
-travel through.  Each router or gateway that forwards a packet decrements the
-TTL.  If the TTL is decremented to 0 by a router, it will not be forwarded.
+travel through. Each router or gateway that forwards a packet decrements the
+TTL. If the TTL is decremented to 0 by a router, it will not be forwarded.
 Changing TTL values is typically done for network probes or when multicasting.</p>
 <p>The argument to <code>socket.setTTL()</code> is a number of hops between 1 and 255.
 The default on most systems is 64 but can vary.</p>
@@ -691,7 +691,7 @@ Defaults to <code>false</code>.</li>
 </ul>
 <p>Creates a <code>dgram.Socket</code> object. Once the socket is created, calling
 <a href="#dgram_socket_bind_port_address_callback"><code>socket.bind()</code></a> will instruct the socket to begin listening for datagram
-messages. When <code>address</code> and <code>port</code> are not passed to  <a href="#dgram_socket_bind_port_address_callback"><code>socket.bind()</code></a> the
+messages. When <code>address</code> and <code>port</code> are not passed to <a href="#dgram_socket_bind_port_address_callback"><code>socket.bind()</code></a> the
 method will bind the socket to the &quot;all interfaces&quot; address on a random port
 (it does the right thing for both <code>udp4</code> and <code>udp6</code> sockets). The bound address
 and port can be retrieved using <a href="#dgram_socket_address"><code>socket.address().address</code></a> and
@@ -712,7 +712,7 @@ can be either <code>udp4</code> or <code>udp6</code>. An optional <code>callback
 which is added as a listener for <code>&#39;message&#39;</code> events.</p>
 <p>Once the socket is created, calling <a href="#dgram_socket_bind_port_address_callback"><code>socket.bind()</code></a> will instruct the
 socket to begin listening for datagram messages. When <code>address</code> and <code>port</code> are
-not passed to  <a href="#dgram_socket_bind_port_address_callback"><code>socket.bind()</code></a> the method will bind the socket to the &quot;all
+not passed to <a href="#dgram_socket_bind_port_address_callback"><code>socket.bind()</code></a> the method will bind the socket to the &quot;all
 interfaces&quot; address on a random port (it does the right thing for both <code>udp4</code>
 and <code>udp6</code> sockets). The bound address and port can be retrieved using
 <a href="#dgram_socket_address"><code>socket.address().address</code></a> and <a href="#dgram_socket_address"><code>socket.address().port</code></a>.</p>

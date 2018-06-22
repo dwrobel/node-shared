@@ -208,7 +208,7 @@
               "params": []
             }
           ],
-          "desc": "<p>The <code>os.loadavg()</code> method returns an array containing the 1, 5, and 15 minute\nload averages.</p>\n<p>The load average is a measure of system activity, calculated by the operating\nsystem and expressed as a fractional number.  As a rule of thumb, the load\naverage should ideally be less than the number of logical CPUs in the system.</p>\n<p>The load average is a UNIX-specific concept with no real equivalent on\nWindows platforms. On Windows, the return value is always <code>[0, 0, 0]</code>.</p>\n"
+          "desc": "<p>The <code>os.loadavg()</code> method returns an array containing the 1, 5, and 15 minute\nload averages.</p>\n<p>The load average is a measure of system activity, calculated by the operating\nsystem and expressed as a fractional number. As a rule of thumb, the load\naverage should ideally be less than the number of logical CPUs in the system.</p>\n<p>The load average is a UNIX-specific concept with no real equivalent on\nWindows platforms. On Windows, the return value is always <code>[0, 0, 0]</code>.</p>\n"
         },
         {
           "textRaw": "os.networkInterfaces()",
@@ -434,7 +434,7 @@
               ]
             }
           ],
-          "desc": "<p>The <code>os.userInfo()</code> method returns information about the currently effective\nuser -- on POSIX platforms, this is typically a subset of the password file. The\nreturned object includes the <code>username</code>, <code>uid</code>, <code>gid</code>, <code>shell</code>, and <code>homedir</code>.\nOn Windows, the <code>uid</code> and <code>gid</code> fields are <code>-1</code>, and <code>shell</code> is <code>null</code>.</p>\n<p>The value of <code>homedir</code> returned by <code>os.userInfo()</code> is provided by the operating\nsystem. This differs from the result of <code>os.homedir()</code>, which queries several\nenvironment variables for the home directory before falling back to the\noperating system response.</p>\n"
+          "desc": "<p>The <code>os.userInfo()</code> method returns information about the currently effective\nuser — on POSIX platforms, this is typically a subset of the password file. The\nreturned object includes the <code>username</code>, <code>uid</code>, <code>gid</code>, <code>shell</code>, and <code>homedir</code>.\nOn Windows, the <code>uid</code> and <code>gid</code> fields are <code>-1</code>, and <code>shell</code> is <code>null</code>.</p>\n<p>The value of <code>homedir</code> returned by <code>os.userInfo()</code> is provided by the operating\nsystem. This differs from the result of <code>os.homedir()</code>, which queries several\nenvironment variables for the home directory before falling back to the\noperating system response.</p>\n"
         }
       ],
       "modules": [

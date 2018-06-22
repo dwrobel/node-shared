@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Assert | Node.js v8.11.1 Documentation</title>
+  <title>Assert | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="assert" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -192,7 +192,7 @@ not enumerable:</p>
 <pre><code class="lang-js">// WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 </code></pre>
-<p>An exception is made for <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a> and <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a>. Maps and Sets have their
+<p>An exception is made for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a>. Maps and Sets have their
 contained items compared too, as expected.</p>
 <p>&quot;Deep&quot; equality means that the enumerable &quot;own&quot; properties of child objects
 are evaluated also:</p>
@@ -405,7 +405,8 @@ parameter is undefined, a default error message is assigned.</p>
 <li><code>message</code> <span class="type">&lt;any&gt;</span></li>
 <li><code>operator</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> <strong>Default:</strong> &#39;!=&#39;</li>
-<li><code>stackStartFunction</code> <span class="type">&lt;function&gt;</span> <strong>Default:</strong> <code>assert.fail</code></li>
+<li><code>stackStartFunction</code> 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> <strong>Default:</strong> <code>assert.fail</code></li>
 </ul>
 <p>Throws an <code>AssertionError</code>. If <code>message</code> is falsy, the error message is set as
 the values of <code>actual</code> and <code>expected</code> separated by the provided <code>operator</code>.

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Console | Node.js v8.11.1 Documentation</title>
+  <title>Console | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="console" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -152,7 +152,7 @@ JavaScript console mechanism provided by web browsers.</p>
 <li>A <code>Console</code> class with methods such as <code>console.log()</code>, <code>console.error()</code> and
 <code>console.warn()</code> that can be used to write to any Node.js stream.</li>
 <li>A global <code>console</code> instance configured to write to <a href="process.html#process_process_stdout"><code>process.stdout</code></a> and
-<a href="process.html#process_process_stderr"><code>process.stderr</code></a>.  The global <code>console</code> can be used without calling
+<a href="process.html#process_process_stderr"><code>process.stderr</code></a>. The global <code>console</code> can be used without calling
 <code>require(&#39;console&#39;)</code>.</li>
 </ul>
 <p><strong><em>Warning</em></strong>: The global console object&#39;s methods are neither consistently
@@ -207,8 +207,10 @@ or <code>console.Console</code> (or their destructured counterparts):</p>
 </code></pre>
 <h3>new Console(stdout[, stderr])<span><a class="mark" href="#console_new_console_stdout_stderr" id="console_new_console_stdout_stderr">#</a></span></h3>
 <div class="signature"><ul>
-<li><code>stdout</code> <span class="type">&lt;Writable&gt;</span></li>
-<li><code>stderr</code> <span class="type">&lt;Writable&gt;</span></li>
+<li><code>stdout</code> 
+            <a href="stream.html#stream_class_stream_writable" class="type">&lt;stream.Writable&gt;</a></li>
+<li><code>stderr</code> 
+            <a href="stream.html#stream_class_stream_writable" class="type">&lt;stream.Writable&gt;</a></li>
 </ul>
 </div><p>Creates a new <code>Console</code> with one or two writable stream instances. <code>stdout</code> is a
 writable stream to print log or info output. <code>stderr</code> is used for warning or

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>ECMAScript Modules | Node.js v8.11.1 Documentation</title>
+  <title>ECMAScript Modules | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="esm" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -245,27 +245,27 @@ module. This can be one of the following:</p>
 </thead>
 <tbody>
 <tr>
-<td><code>&quot;esm&quot;</code></td>
+<td><code>&#39;esm&#39;</code></td>
 <td>Load a standard JavaScript module</td>
 </tr>
 <tr>
-<td><code>&quot;commonjs&quot;</code></td>
+<td><code>&#39;commonjs&#39;</code></td>
 <td>Load a node-style CommonJS module</td>
 </tr>
 <tr>
-<td><code>&quot;builtin&quot;</code></td>
+<td><code>&#39;builtin&#39;</code></td>
 <td>Load a node builtin CommonJS module</td>
 </tr>
 <tr>
-<td><code>&quot;json&quot;</code></td>
+<td><code>&#39;json&#39;</code></td>
 <td>Load a JSON file</td>
 </tr>
 <tr>
-<td><code>&quot;addon&quot;</code></td>
+<td><code>&#39;addon&#39;</code></td>
 <td>Load a <a href="addons.html">C++ Addon</a></td>
 </tr>
 <tr>
-<td><code>&quot;dynamic&quot;</code></td>
+<td><code>&#39;dynamic&#39;</code></td>
 <td>Use a <a href="#esm_dynamic_instantiate_hook">dynamic instantiate hook</a></td>
 </tr>
 </tbody>
@@ -314,7 +314,7 @@ export function resolve(specifier, parentModuleURL/*, defaultResolve */) {
 <h3>Dynamic instantiate hook<span><a class="mark" href="#esm_dynamic_instantiate_hook" id="esm_dynamic_instantiate_hook">#</a></span></h3>
 <p>To create a custom dynamic module that doesn&#39;t correspond to one of the
 existing <code>format</code> interpretations, the <code>dynamicInstantiate</code> hook can be used.
-This hook is called only for modules that return <code>format: &quot;dynamic&quot;</code> from
+This hook is called only for modules that return <code>format: &#39;dynamic&#39;</code> from
 the <code>resolve</code> hook.</p>
 <pre><code class="lang-js">export async function dynamicInstantiate(url) {
   return {

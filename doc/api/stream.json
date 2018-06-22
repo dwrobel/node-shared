@@ -241,9 +241,9 @@
                       "signatures": [
                         {
                           "return": {
-                            "textRaw": "Returns: `this` ",
+                            "textRaw": "Returns: {this} ",
                             "name": "return",
-                            "desc": "`this`"
+                            "type": "this"
                           },
                           "params": [
                             {
@@ -364,9 +364,9 @@
                       "signatures": [
                         {
                           "return": {
-                            "textRaw": "Returns: `this` ",
+                            "textRaw": "Returns: {this} ",
                             "name": "return",
-                            "desc": "`this`"
+                            "type": "this"
                           },
                           "params": [
                             {
@@ -413,7 +413,7 @@
                 {
                   "textRaw": "Two Modes",
                   "name": "two_modes",
-                  "desc": "<p>Readable streams effectively operate in one of two modes: flowing and paused.</p>\n<p>When in flowing mode, data is read from the underlying system automatically\nand provided to an application as quickly as possible using events via the\n<a href=\"events.html#events_class_eventemitter\"><code>EventEmitter</code></a> interface.</p>\n<p>In paused mode, the <a href=\"#stream_readable_read_size\"><code>stream.read()</code></a> method must be called\nexplicitly to read chunks of data from the stream.</p>\n<p>All <a href=\"#stream_class_stream_readable\">Readable</a> streams begin in paused mode but can be switched to flowing\nmode in one of the following ways:</p>\n<ul>\n<li>Adding a <a href=\"#stream_event_data\"><code>&#39;data&#39;</code></a> event handler.</li>\n<li>Calling the <a href=\"#stream_readable_resume\"><code>stream.resume()</code></a> method.</li>\n<li>Calling the <a href=\"#stream_readable_pipe_destination_options\"><code>stream.pipe()</code></a> method to send the data to a <a href=\"#stream_class_stream_writable\">Writable</a>.</li>\n</ul>\n<p>The Readable can switch back to paused mode using one of the following:</p>\n<ul>\n<li>If there are no pipe destinations, by calling the\n<a href=\"#stream_readable_pause\"><code>stream.pause()</code></a> method.</li>\n<li>If there are pipe destinations, by removing any <a href=\"#stream_event_data\"><code>&#39;data&#39;</code></a> event\nhandlers, and removing all pipe destinations by calling the\n<a href=\"#stream_readable_unpipe_destination\"><code>stream.unpipe()</code></a> method.</li>\n</ul>\n<p>The important concept to remember is that a Readable will not generate data\nuntil a mechanism for either consuming or ignoring that data is provided. If\nthe consuming mechanism is disabled or taken away, the Readable will <em>attempt</em>\nto stop generating the data.</p>\n<p><em>Note</em>: For backwards compatibility reasons, removing <a href=\"#stream_event_data\"><code>&#39;data&#39;</code></a> event\nhandlers will <strong>not</strong> automatically pause the stream. Also, if there are piped\ndestinations, then calling <a href=\"#stream_readable_pause\"><code>stream.pause()</code></a> will not guarantee\nthat the stream will <em>remain</em> paused once those destinations drain and ask for\nmore data.</p>\n<p><em>Note</em>: If a <a href=\"#stream_class_stream_readable\">Readable</a> is switched into flowing mode and there are no\nconsumers available to handle the data, that data will be lost. This can occur,\nfor instance, when the <code>readable.resume()</code> method is called without a listener\nattached to the <code>&#39;data&#39;</code> event, or when a <code>&#39;data&#39;</code> event handler is removed\nfrom the stream.</p>\n",
+                  "desc": "<p>Readable streams effectively operate in one of two modes: flowing and paused.</p>\n<p>When in flowing mode, data is read from the underlying system automatically\nand provided to an application as quickly as possible using events via the\n<a href=\"events.html#events_class_eventemitter\"><code>EventEmitter</code></a> interface.</p>\n<p>In paused mode, the <a href=\"#stream_readable_read_size\"><code>stream.read()</code></a> method must be called\nexplicitly to read chunks of data from the stream.</p>\n<p>All <a href=\"#stream_class_stream_readable\">Readable</a> streams begin in paused mode but can be switched to flowing\nmode in one of the following ways:</p>\n<ul>\n<li>Adding a <a href=\"#stream_event_data\"><code>&#39;data&#39;</code></a> event handler.</li>\n<li>Calling the <a href=\"#stream_readable_resume\"><code>stream.resume()</code></a> method.</li>\n<li>Calling the <a href=\"#stream_readable_pipe_destination_options\"><code>stream.pipe()</code></a> method to send the data to a <a href=\"#stream_class_stream_writable\">Writable</a>.</li>\n</ul>\n<p>The Readable can switch back to paused mode using one of the following:</p>\n<ul>\n<li>If there are no pipe destinations, by calling the\n<a href=\"#stream_readable_pause\"><code>stream.pause()</code></a> method.</li>\n<li>If there are pipe destinations, by removing all pipe destinations.\nMultiple pipe destinations may be removed by calling the\n<a href=\"#stream_readable_unpipe_destination\"><code>stream.unpipe()</code></a> method.</li>\n</ul>\n<p>The important concept to remember is that a Readable will not generate data\nuntil a mechanism for either consuming or ignoring that data is provided. If\nthe consuming mechanism is disabled or taken away, the Readable will <em>attempt</em>\nto stop generating the data.</p>\n<p><em>Note</em>: For backwards compatibility reasons, removing <a href=\"#stream_event_data\"><code>&#39;data&#39;</code></a> event\nhandlers will <strong>not</strong> automatically pause the stream. Also, if there are piped\ndestinations, then calling <a href=\"#stream_readable_pause\"><code>stream.pause()</code></a> will not guarantee\nthat the stream will <em>remain</em> paused once those destinations drain and ask for\nmore data.</p>\n<p><em>Note</em>: If a <a href=\"#stream_class_stream_readable\">Readable</a> is switched into flowing mode and there are no\nconsumers available to handle the data, that data will be lost. This can occur,\nfor instance, when the <code>readable.resume()</code> method is called without a listener\nattached to the <code>&#39;data&#39;</code> event, or when a <code>&#39;data&#39;</code> event handler is removed\nfrom the stream.</p>\n",
                   "type": "module",
                   "displayName": "Two Modes"
                 },
@@ -549,9 +549,9 @@
                       "signatures": [
                         {
                           "return": {
-                            "textRaw": "Returns: `this` ",
+                            "textRaw": "Returns: {this} ",
                             "name": "return",
-                            "desc": "`this`"
+                            "type": "this"
                           },
                           "params": []
                         },
@@ -624,7 +624,7 @@
                       "signatures": [
                         {
                           "return": {
-                            "textRaw": "Return {string|Buffer|null} ",
+                            "textRaw": "Returns: {string|Buffer|null} ",
                             "name": "return",
                             "type": "string|Buffer|null"
                           },
@@ -662,9 +662,9 @@
                       "signatures": [
                         {
                           "return": {
-                            "textRaw": "Returns: `this` ",
+                            "textRaw": "Returns: {this} ",
                             "name": "return",
-                            "desc": "`this`"
+                            "type": "this"
                           },
                           "params": []
                         },
@@ -687,9 +687,9 @@
                       "signatures": [
                         {
                           "return": {
-                            "textRaw": "Returns: `this` ",
+                            "textRaw": "Returns: {this} ",
                             "name": "return",
-                            "desc": "`this`"
+                            "type": "this"
                           },
                           "params": [
                             {
@@ -1051,7 +1051,7 @@
                       ]
                     }
                   ],
-                  "desc": "<p>All Writable stream implementations must provide a\n<a href=\"#stream_writable_write_chunk_encoding_callback_1\"><code>writable._write()</code></a> method to send data to the underlying\nresource.</p>\n<p><em>Note</em>: <a href=\"#stream_class_stream_transform\">Transform</a> streams provide their own implementation of the\n<a href=\"#stream_writable_write_chunk_encoding_callback_1\"><code>writable._write()</code></a>.</p>\n<p><em>Note</em>: This function MUST NOT be called by application code directly. It\nshould be implemented by child classes, and called by the internal Writable\nclass methods only.</p>\n<p>The <code>callback</code> method must be called to signal either that the write completed\nsuccessfully or failed with an error. The first argument passed to the\n<code>callback</code> must be the <code>Error</code> object if the call failed or <code>null</code> if the\nwrite succeeded.</p>\n<p>All calls to <code>writable.write()</code> that occur between the time <code>writable._write()</code>\nis called and the <code>callback</code> is called will cause the written data to be\nbuffered. Once the <code>callback</code> is invoked, the stream will emit a <a href=\"#stream_event_drain\"><code>&#39;drain&#39;</code></a>\nevent. If a stream implementation is capable of processing multiple chunks of\ndata at once, the <code>writable._writev()</code> method should be implemented.</p>\n<p>If the <code>decodeStrings</code> property is set in the constructor options, then\n<code>chunk</code> may be a string rather than a Buffer, and <code>encoding</code> will\nindicate the character encoding of the string. This is to support\nimplementations that have an optimized handling for certain string\ndata encodings. If the <code>decodeStrings</code> property is explicitly set to <code>false</code>,\nthe <code>encoding</code> argument can be safely ignored, and <code>chunk</code> will remain the same\nobject that is passed to <code>.write()</code>.</p>\n<p>The <code>writable._write()</code> method is prefixed with an underscore because it is\ninternal to the class that defines it, and should never be called directly by\nuser programs.</p>\n"
+                  "desc": "<p>All Writable stream implementations must provide a\n<a href=\"#stream_writable_write_chunk_encoding_callback_1\"><code>writable._write()</code></a> method to send data to the underlying\nresource.</p>\n<p><em>Note</em>: <a href=\"#stream_class_stream_transform\">Transform</a> streams provide their own implementation of the\n<a href=\"#stream_writable_write_chunk_encoding_callback_1\"><code>writable._write()</code></a>.</p>\n<p><em>Note</em>: This function MUST NOT be called by application code directly. It\nshould be implemented by child classes, and called by the internal Writable\nclass methods only.</p>\n<p>The <code>callback</code> method must be called to signal either that the write completed\nsuccessfully or failed with an error. The first argument passed to the\n<code>callback</code> must be the <code>Error</code> object if the call failed or <code>null</code> if the\nwrite succeeded.</p>\n<p>All calls to <code>writable.write()</code> that occur between the time <code>writable._write()</code>\nis called and the <code>callback</code> is called will cause the written data to be\nbuffered. When the <code>callback</code> is invoked, the stream might emit a <a href=\"#stream_event_drain\"><code>&#39;drain&#39;</code></a>\nevent. If a stream implementation is capable of processing multiple chunks of\ndata at once, the <code>writable._writev()</code> method should be implemented.</p>\n<p>If the <code>decodeStrings</code> property is set in the constructor options, then\n<code>chunk</code> may be a string rather than a Buffer, and <code>encoding</code> will\nindicate the character encoding of the string. This is to support\nimplementations that have an optimized handling for certain string\ndata encodings. If the <code>decodeStrings</code> property is explicitly set to <code>false</code>,\nthe <code>encoding</code> argument can be safely ignored, and <code>chunk</code> will remain the same\nobject that is passed to <code>.write()</code>.</p>\n<p>The <code>writable._write()</code> method is prefixed with an underscore because it is\ninternal to the class that defines it, and should never be called directly by\nuser programs.</p>\n"
                 },
                 {
                   "textRaw": "writable.\\_writev(chunks, callback)",
@@ -1125,7 +1125,7 @@
                       ]
                     }
                   ],
-                  "desc": "<p>The <code>_destroy()</code> method is called by <a href=\"#stream_writable_destroy_error\"><code>writable.destroy()</code></a>.\nIt can be overriden by child classes but it <strong>must not</strong> be called directly.</p>\n"
+                  "desc": "<p>The <code>_destroy()</code> method is called by <a href=\"#stream_writable_destroy_error\"><code>writable.destroy()</code></a>.\nIt can be overridden by child classes but it <strong>must not</strong> be called directly.</p>\n"
                 },
                 {
                   "textRaw": "writable.\\_final(callback)",
@@ -1163,7 +1163,7 @@
                 {
                   "textRaw": "Errors While Writing",
                   "name": "errors_while_writing",
-                  "desc": "<p>It is recommended that errors occurring during the processing of the\n<code>writable._write()</code> and <code>writable._writev()</code> methods are reported by invoking\nthe callback and passing the error as the first argument. This will cause an\n<code>&#39;error&#39;</code> event to be emitted by the Writable. Throwing an Error from within\n<code>writable._write()</code> can result in unexpected and inconsistent behavior depending\non how the stream is being used.  Using the callback ensures consistent and\npredictable handling of errors.</p>\n<pre><code class=\"lang-js\">const { Writable } = require(&#39;stream&#39;);\n\nconst myWritable = new Writable({\n  write(chunk, encoding, callback) {\n    if (chunk.toString().indexOf(&#39;a&#39;) &gt;= 0) {\n      callback(new Error(&#39;chunk is invalid&#39;));\n    } else {\n      callback();\n    }\n  }\n});\n</code></pre>\n",
+                  "desc": "<p>It is recommended that errors occurring during the processing of the\n<code>writable._write()</code> and <code>writable._writev()</code> methods are reported by invoking\nthe callback and passing the error as the first argument. This will cause an\n<code>&#39;error&#39;</code> event to be emitted by the Writable. Throwing an Error from within\n<code>writable._write()</code> can result in unexpected and inconsistent behavior depending\non how the stream is being used. Using the callback ensures consistent and\npredictable handling of errors.</p>\n<pre><code class=\"lang-js\">const { Writable } = require(&#39;stream&#39;);\n\nconst myWritable = new Writable({\n  write(chunk, encoding, callback) {\n    if (chunk.toString().indexOf(&#39;a&#39;) &gt;= 0) {\n      callback(new Error(&#39;chunk is invalid&#39;));\n    } else {\n      callback();\n    }\n  }\n});\n</code></pre>\n",
                   "type": "module",
                   "displayName": "Errors While Writing"
                 },
@@ -1311,7 +1311,7 @@
                       ]
                     }
                   ],
-                  "desc": "<p>The <code>_destroy()</code> method is called by <a href=\"#stream_readable_destroy_error\"><code>readable.destroy()</code></a>.\nIt can be overriden by child classes but it <strong>must not</strong> be called directly.</p>\n"
+                  "desc": "<p>The <code>_destroy()</code> method is called by <a href=\"#stream_readable_destroy_error\"><code>readable.destroy()</code></a>.\nIt can be overridden by child classes but it <strong>must not</strong> be called directly.</p>\n"
                 },
                 {
                   "textRaw": "readable.push(chunk[, encoding])",
@@ -1342,10 +1342,10 @@
                           "desc": "Chunk of data to push into the read queue. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value."
                         },
                         {
-                          "textRaw": "`encoding` {string} Encoding of string chunks.  Must be a valid Buffer encoding, such as `'utf8'` or `'ascii'` ",
+                          "textRaw": "`encoding` {string} Encoding of string chunks. Must be a valid Buffer encoding, such as `'utf8'` or `'ascii'` ",
                           "name": "encoding",
                           "type": "string",
-                          "desc": "Encoding of string chunks.  Must be a valid Buffer encoding, such as `'utf8'` or `'ascii'`",
+                          "desc": "Encoding of string chunks. Must be a valid Buffer encoding, such as `'utf8'` or `'ascii'`",
                           "optional": true
                         }
                       ]
@@ -1588,7 +1588,7 @@
                       ]
                     }
                   ],
-                  "desc": "<p><em>Note</em>: This function MUST NOT be called by application code directly. It\nshould be implemented by child classes, and called by the internal Readable\nclass methods only.</p>\n<p>All Transform stream implementations must provide a <code>_transform()</code>\nmethod to accept input and produce output. The <code>transform._transform()</code>\nimplementation handles the bytes being written, computes an output, then passes\nthat output off to the readable portion using the <code>readable.push()</code> method.</p>\n<p>The <code>transform.push()</code> method may be called zero or more times to generate\noutput from a single input chunk, depending on how much is to be output\nas a result of the chunk.</p>\n<p>It is possible that no output is generated from any given chunk of input data.</p>\n<p>The <code>callback</code> function must be called only when the current chunk is completely\nconsumed. The first argument passed to the <code>callback</code> must be an <code>Error</code> object\nif an error occurred while processing the input or <code>null</code> otherwise. If a second\nargument is passed to the <code>callback</code>, it will be forwarded on to the\n<code>readable.push()</code> method. In other words the following are equivalent:</p>\n<pre><code class=\"lang-js\">transform.prototype._transform = function(data, encoding, callback) {\n  this.push(data);\n  callback();\n};\n\ntransform.prototype._transform = function(data, encoding, callback) {\n  callback(null, data);\n};\n</code></pre>\n<p>The <code>transform._transform()</code> method is prefixed with an underscore because it\nis internal to the class that defines it, and should never be called directly by\nuser programs.</p>\n<p><code>transform._transform()</code> is never called in  parallel; streams implement a\nqueue mechanism, and to receive the next chunk, <code>callback</code> must be\ncalled, either synchronously or asynchronously.</p>\n"
+                  "desc": "<p><em>Note</em>: This function MUST NOT be called by application code directly. It\nshould be implemented by child classes, and called by the internal Readable\nclass methods only.</p>\n<p>All Transform stream implementations must provide a <code>_transform()</code>\nmethod to accept input and produce output. The <code>transform._transform()</code>\nimplementation handles the bytes being written, computes an output, then passes\nthat output off to the readable portion using the <code>readable.push()</code> method.</p>\n<p>The <code>transform.push()</code> method may be called zero or more times to generate\noutput from a single input chunk, depending on how much is to be output\nas a result of the chunk.</p>\n<p>It is possible that no output is generated from any given chunk of input data.</p>\n<p>The <code>callback</code> function must be called only when the current chunk is completely\nconsumed. The first argument passed to the <code>callback</code> must be an <code>Error</code> object\nif an error occurred while processing the input or <code>null</code> otherwise. If a second\nargument is passed to the <code>callback</code>, it will be forwarded on to the\n<code>readable.push()</code> method. In other words the following are equivalent:</p>\n<pre><code class=\"lang-js\">transform.prototype._transform = function(data, encoding, callback) {\n  this.push(data);\n  callback();\n};\n\ntransform.prototype._transform = function(data, encoding, callback) {\n  callback(null, data);\n};\n</code></pre>\n<p>The <code>transform._transform()</code> method is prefixed with an underscore because it\nis internal to the class that defines it, and should never be called directly by\nuser programs.</p>\n<p><code>transform._transform()</code> is never called in parallel; streams implement a\nqueue mechanism, and to receive the next chunk, <code>callback</code> must be\ncalled, either synchronously or asynchronously.</p>\n"
                 }
               ],
               "modules": [

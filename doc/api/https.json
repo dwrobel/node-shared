@@ -19,7 +19,7 @@
             ],
             "changes": []
           },
-          "desc": "<p>An Agent object for HTTPS similar to <a href=\"http.html#http_class_http_agent\"><code>http.Agent</code></a>.  See <a href=\"#https_https_request_options_callback\"><code>https.request()</code></a>\nfor more information.</p>\n"
+          "desc": "<p>An Agent object for HTTPS similar to <a href=\"http.html#http_class_http_agent\"><code>http.Agent</code></a>. See <a href=\"#https_https_request_options_callback\"><code>https.request()</code></a>\nfor more information.</p>\n"
         },
         {
           "textRaw": "Class: https.Server",

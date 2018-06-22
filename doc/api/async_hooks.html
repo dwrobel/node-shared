@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Async Hooks | Node.js v8.11.1 Documentation</title>
+  <title>Async Hooks | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="async_hooks" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -139,6 +139,7 @@
 </li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#async_hooks_promise_execution_tracking">Promise execution tracking</a></span></li>
 <li><span class="stability_undefined"><a href="#async_hooks_javascript_embedder_api">JavaScript Embedder API</a></span><ul>
 <li><span class="stability_undefined"><a href="#async_hooks_class_asyncresource"><code>class AsyncResource()</code></a></span><ul>
 <li><span class="stability_undefined"><a href="#async_hooks_asyncresource_type_options"><code>AsyncResource(type[, options])</code></a></span></li>
@@ -237,7 +238,8 @@ function promiseResolve(asyncId) { }
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> The <a href="#async_hooks_destroy_asyncid"><code>destroy</code> callback</a>.</li>
 </ul>
 </li>
-<li>Returns: <code>{AsyncHook}</code> Instance used for disabling and enabling hooks</li>
+<li>Returns: 
+            <a href="async_hooks.html#async_hooks_async_hooks_createhook_callbacks" class="type">&lt;AsyncHook&gt;</a> Instance used for disabling and enabling hooks</li>
 </ul>
 <p>Registers functions to be called for different lifetime events of each async
 operation.</p>
@@ -304,7 +306,8 @@ it was the logging itself that caused AsyncHooks callback to call. By
 doing this the otherwise infinite recursion is broken.</p>
 <h4><code>asyncHook.enable()</code><span><a class="mark" href="#async_hooks_asynchook_enable" id="async_hooks_asynchook_enable">#</a></span></h4>
 <div class="signature"><ul>
-<li>Returns: <span class="type">&lt;AsyncHook&gt;</span> A reference to <code>asyncHook</code>.</li>
+<li>Returns: 
+            <a href="async_hooks.html#async_hooks_async_hooks_createhook_callbacks" class="type">&lt;AsyncHook&gt;</a> A reference to <code>asyncHook</code>.</li>
 </ul>
 </div><p>Enable the callbacks for a given <code>AsyncHook</code> instance. If no callbacks are
 provided enabling is a noop.</p>
@@ -316,7 +319,8 @@ const hook = async_hooks.createHook(callbacks).enable();
 </code></pre>
 <h4><code>asyncHook.disable()</code><span><a class="mark" href="#async_hooks_asynchook_disable" id="async_hooks_asynchook_disable">#</a></span></h4>
 <div class="signature"><ul>
-<li>Returns: <span class="type">&lt;AsyncHook&gt;</span> A reference to <code>asyncHook</code>.</li>
+<li>Returns: 
+            <a href="async_hooks.html#async_hooks_async_hooks_createhook_callbacks" class="type">&lt;AsyncHook&gt;</a> A reference to <code>asyncHook</code>.</li>
 </ul>
 </div><p>Disable the callbacks for a given <code>AsyncHook</code> instance from the global pool of
 AsyncHook callbacks to be executed. Once a hook has been disabled it will not
@@ -584,6 +588,8 @@ causality (which is covered by <code>triggerAsyncId()</code>). For example:</p>
   async_hooks.executionAsyncId();
 });
 </code></pre>
+<p>Note that promise contexts may not get precise executionAsyncIds by default.
+See the section on <a href="#async_hooks_promise_execution_tracking">promise execution tracking</a>.</p>
 <h4><code>async_hooks.triggerAsyncId()</code><span><a class="mark" href="#async_hooks_async_hooks_triggerasyncid" id="async_hooks_async_hooks_triggerasyncid">#</a></span></h4>
 <div class="signature"><ul>
 <li>Returns: 
@@ -604,6 +610,45 @@ that is currently being executed.</li>
   async_hooks.triggerAsyncId();
 });
 </code></pre>
+<p>Note that promise contexts may not get valid triggerAsyncIds by default. See
+the section on <a href="#async_hooks_promise_execution_tracking">promise execution tracking</a>.</p>
+<h2>Promise execution tracking<span><a class="mark" href="#async_hooks_promise_execution_tracking" id="async_hooks_promise_execution_tracking">#</a></span></h2>
+<p>By default, promise executions are not assigned asyncIds due to the relatively
+expensive nature of the <a href="https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk">promise introspection API</a> provided by
+V8. This means that programs using promises or <code>async</code>/<code>await</code> will not get
+correct execution and trigger ids for promise callback contexts by default.</p>
+<p>Here&#39;s an example:</p>
+<pre><code class="lang-js">const ah = require(&#39;async_hooks&#39;);
+Promise.resolve(1729).then(() =&gt; {
+  console.log(`eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}`);
+});
+// produces:
+// eid 1 tid 0
+</code></pre>
+<p>Observe that the <code>then</code> callback claims to have executed in the context of the
+outer scope even though there was an asynchronous hop involved. Also note that
+the triggerAsyncId value is 0, which means that we are missing context about the
+resource that caused (triggered) the <code>then</code> callback to be executed.</p>
+<p>Installing async hooks via <code>async_hooks.createHook</code> enables promise execution
+tracking. Example:</p>
+<pre><code class="lang-js">const ah = require(&#39;async_hooks&#39;);
+ah.createHook({ init() {} }).enable(); // forces PromiseHooks to be enabled.
+Promise.resolve(1729).then(() =&gt; {
+  console.log(`eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}`);
+});
+// produces:
+// eid 7 tid 6
+</code></pre>
+<p>In this example, adding any actual hook function enabled the tracking of
+promises. There are two promises in the example above; the promise created by
+<code>Promise.resolve()</code> and the promise returned by the call to <code>then</code>. In the
+example above, the first promise got the asyncId 6 and the latter got asyncId 7.
+During the execution of the <code>then</code> callback, we are executing in the context of
+promise with asyncId 7. This promise was triggered by async resource 6.</p>
+<p>Another subtlety with promises is that <code>before</code> and <code>after</code> callbacks are run
+only on chained promises. That means promises not created by <code>then</code>/<code>catch</code> will
+not have the <code>before</code> and <code>after</code> callbacks fired on them. For more details see
+the details of the V8 <a href="https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk">PromiseHooks</a> API.</p>
 <h2>JavaScript Embedder API<span><a class="mark" href="#async_hooks_javascript_embedder_api" id="async_hooks_javascript_embedder_api">#</a></span></h2>
 <p>Library developers that handle their own asynchronous resources performing tasks
 like I/O, connection pooling, or managing callback queues may use the <code>AsyncWrap</code>
@@ -649,7 +694,7 @@ asyncResource.triggerAsyncId();
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a><ul>
 <li><code>triggerAsyncId</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> The ID of the execution context that created this
-async event.  <strong>Default:</strong> <code>executionAsyncId()</code></li>
+async event. <strong>Default:</strong> <code>executionAsyncId()</code></li>
 <li><code>requireManualDestroy</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> Disables automatic <code>emitDestroy</code> when the
 object is garbage collected. This usually does not need to be set (even if

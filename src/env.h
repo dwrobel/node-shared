@@ -93,6 +93,8 @@ class ModuleWrap;
   V(processed_private_symbol, "node:processed")                               \
   V(selected_npn_buffer_private_symbol, "node:selectedNpnBuffer")             \
   V(domain_private_symbol, "node:domain")                                     \
+  V(napi_env, "node:napi:env")                                                \
+  V(napi_wrapper, "node:napi:wrapper")                                        \
 
 // Strings are per-isolate primitives but Environment proxies them
 // for the sake of convenience.  Strings should be ASCII-only.
@@ -199,6 +201,7 @@ class ModuleWrap;
   V(nsname_string, "nsname")                                                  \
   V(nexttick_string, "nextTick")                                              \
   V(ocsp_request_string, "OCSPRequest")                                       \
+  V(onaltsvc_string, "onaltsvc")                                              \
   V(onchange_string, "onchange")                                              \
   V(onclienthello_string, "onclienthello")                                    \
   V(oncomplete_string, "oncomplete")                                          \
@@ -315,6 +318,7 @@ class ModuleWrap;
   V(domains_stack_array, v8::Array)                                           \
   V(http2ping_constructor_template, v8::ObjectTemplate)                       \
   V(http2stream_constructor_template, v8::ObjectTemplate)                     \
+  V(http2settings_constructor_template, v8::ObjectTemplate)                   \
   V(inspector_console_api_object, v8::Object)                                 \
   V(module_load_list_array, v8::Array)                                        \
   V(pbkdf2_constructor_template, v8::ObjectTemplate)                          \
@@ -686,7 +690,11 @@ class Environment {
   bool EmitNapiWarning();
 
   typedef void (*native_immediate_callback)(Environment* env, void* data);
-  inline void SetImmediate(native_immediate_callback cb, void* data);
+  // cb will be called as cb(env, data) on the next event loop iteration.
+  // obj will be kept alive between now and after the callback has run.
+  inline void SetImmediate(native_immediate_callback cb,
+                           void* data,
+                           v8::Local<v8::Object> obj = v8::Local<v8::Object>());
   // This needs to be available for the JS-land setImmediate().
   void ActivateImmediateCheck();
 
@@ -754,6 +762,7 @@ class Environment {
   struct NativeImmediateCallback {
     native_immediate_callback cb_;
     void* data_;
+    std::unique_ptr<v8::Persistent<v8::Object>> keep_alive_;
   };
   std::vector<NativeImmediateCallback> native_immediate_callbacks_;
   void RunAndClearNativeImmediates();

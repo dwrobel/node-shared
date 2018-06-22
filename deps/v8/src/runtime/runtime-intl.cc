@@ -632,7 +632,7 @@ RUNTIME_FUNCTION(Runtime_PluralRulesSelect) {
   return *isolate->factory()
               ->NewStringFromTwoByte(Vector<const uint16_t>(
                   reinterpret_cast<const uint16_t*>(
-                      result.getBuffer()),
+                      icu::toUCharPtr(result.getBuffer())),
                   result.length()))
               .ToHandleChecked();
 }

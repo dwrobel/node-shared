@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Net | Node.js v8.11.1 Documentation</title>
+  <title>Net | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="net" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -243,7 +243,8 @@ double-backslashes, such as:</p>
 </div><p>This class is used to create a TCP or <a href="#net_ipc_support">IPC</a> server.</p>
 <h3>new net.Server([options][, connectionListener])<span><a class="mark" href="#net_new_net_server_options_connectionlistener" id="net_new_net_server_options_connectionlistener">#</a></span></h3>
 <div class="signature"><ul>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 </div><p>See <a href="#net_net_createserver_options_connectionlistener"><code>net.createServer([options][, connectionListener])</code></a>.</p>
 <p><code>net.Server</code> is an <a href="events.html#events_class_eventemitter"><code>EventEmitter</code></a> with the following events:</p>
@@ -304,7 +305,8 @@ server.listen(() =&gt; {
 <div class="api_metadata">
 <span>Added in: v0.1.90</span>
 </div><ul>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>Stops the server from accepting new connections and keeps existing
 connections. This function is asynchronous, the server is finally
@@ -324,7 +326,8 @@ connections use asynchronous <a href="#net_server_getconnections_callback"><code
 <div class="api_metadata">
 <span>Added in: v0.9.7</span>
 </div><ul>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>Asynchronously get the number of concurrent connections on the server. Works
 when sockets were sent to forks.</p>
@@ -341,8 +344,8 @@ for <a href="#net_ipc_support">IPC</a> servers</li>
 <li><a href="#net_server_listen_port_host_backlog_callback"><code>server.listen([port][, host][, backlog][, callback])</code></a>
 for TCP servers</li>
 </ul>
-<p>This function is asynchronous.  When the server starts listening, the
-<a href="#net_event_listening"><code>&#39;listening&#39;</code></a> event will be emitted.  The last parameter <code>callback</code>
+<p>This function is asynchronous. When the server starts listening, the
+<a href="#net_event_listening"><code>&#39;listening&#39;</code></a> event will be emitted. The last parameter <code>callback</code>
 will be added as a listener for the <a href="#net_event_listening"><code>&#39;listening&#39;</code></a> event.</p>
 <p>All <code>listen()</code> methods can take a <code>backlog</code> parameter to specify the maximum
 length of the queue of pending connections. The actual length will be determined
@@ -381,7 +384,8 @@ after a certain amount of time:</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Common parameter of <a href="#net_server_listen"><code>server.listen()</code></a> functions</li>
 <li><code>callback</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> Common parameter of <a href="#net_server_listen"><code>server.listen()</code></a> functions</li>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>Start a server listening for connections on a given <code>handle</code> that has
 already been bound to a port, a UNIX domain socket, or a Windows named pipe.</p>
@@ -412,7 +416,8 @@ functions.</li>
 <li><code>callback</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> Common parameter of <a href="#net_server_listen"><code>server.listen()</code></a>
 functions.</li>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>If <code>port</code> is specified, it behaves the same as
 <a href="#net_server_listen_port_host_backlog_callback"><code>server.listen([port][, hostname][, backlog][, callback])</code></a>.
@@ -441,7 +446,8 @@ shown below.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Common parameter of <a href="#net_server_listen"><code>server.listen()</code></a> functions.</li>
 <li><code>callback</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> Common parameter of <a href="#net_server_listen"><code>server.listen()</code></a> functions.</li>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>Start a <a href="#net_ipc_support">IPC</a> server listening for connections on the given <code>path</code>.</p>
 <h4>server.listen([port][, host][, backlog][, callback])<span><a class="mark" href="#net_server_listen_port_host_backlog_callback" id="net_server_listen_port_host_backlog_callback">#</a></span></h4>
@@ -456,7 +462,8 @@ shown below.</p>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Common parameter of <a href="#net_server_listen"><code>server.listen()</code></a> functions.</li>
 <li><code>callback</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> Common parameter of <a href="#net_server_listen"><code>server.listen()</code></a> functions.</li>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>Start a TCP server listening for connections on the given <code>port</code> and <code>host</code>.</p>
 <p>If <code>port</code> is omitted or is 0, the operating system will assign an arbitrary
@@ -484,7 +491,8 @@ with <a href="child_process.html#child_process_child_process_fork_modulepath_arg
 <div class="api_metadata">
 <span>Added in: v0.9.1</span>
 </div><ul>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>Opposite of <code>unref</code>, calling <code>ref</code> on a previously <code>unref</code>d server will <em>not</em>
 let the program exit if it&#39;s the only server left (the default behavior). If
@@ -493,7 +501,8 @@ the server is <code>ref</code>d calling <code>ref</code> again will have no effe
 <div class="api_metadata">
 <span>Added in: v0.9.1</span>
 </div><ul>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>Calling <code>unref</code> on a server will allow the program to exit if this is the only
 active server in the event system. If the server is already <code>unref</code>d calling
@@ -560,8 +569,8 @@ See <a href="#net_net_createconnection"><code>net.createConnection()</code></a>.
 <li>
             <a href="buffer.html#buffer_class_buffer" class="type">&lt;Buffer&gt;</a></li>
 </ul>
-<p>Emitted when data is received.  The argument <code>data</code> will be a <code>Buffer</code> or
-<code>String</code>.  Encoding of data is set by <code>socket.setEncoding()</code>.
+<p>Emitted when data is received. The argument <code>data</code> will be a <code>Buffer</code> or
+<code>String</code>. Encoding of data is set by <code>socket.setEncoding()</code>.
 (See the <a href="stream.html#stream_class_stream_readable">Readable Stream</a> section for more information.)</p>
 <p>Note that the <strong>data will be lost</strong> if there is no listener when a <code>Socket</code>
 emits a <code>&#39;data&#39;</code> event.</p>
@@ -589,7 +598,7 @@ FIN packet back).</p>
 <li>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="type">&lt;Error&gt;</a></li>
 </ul>
-<p>Emitted when an error occurs.  The <code>&#39;close&#39;</code> event will be called directly
+<p>Emitted when an error occurs. The <code>&#39;close&#39;</code> event will be called directly
 following this event.</p>
 <h3>Event: &#39;lookup&#39;<span><a class="mark" href="#net_event_lookup" id="net_event_lookup">#</a></span></h3>
 <div class="api_metadata">
@@ -609,12 +618,12 @@ Not applicable to UNIX sockets.</p>
 <ul>
 <li><code>err</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="type">&lt;Error&gt;</a> | 
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">&lt;null&gt;</a> The error object.  See <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>.</li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">&lt;null&gt;</a> The error object. See <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>.</li>
 <li><code>address</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The IP address.</li>
 <li><code>family</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> | 
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">&lt;null&gt;</a> The address type.  See <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>.</li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">&lt;null&gt;</a> The address type. See <a href="dns.html#dns_dns_lookup_hostname_options_callback"><code>dns.lookup()</code></a>.</li>
 <li><code>host</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The hostname.</li>
 </ul>
@@ -915,7 +924,7 @@ active socket in the event system. If the socket is already <code>unref</code>d 
 <div class="api_metadata">
 <span>Added in: v0.1.90</span>
 </div><p>Sends data on the socket. The second parameter specifies the encoding in the
-case of a string--it defaults to UTF8 encoding.</p>
+case of a string — it defaults to UTF8 encoding.</p>
 <p>Returns <code>true</code> if the entire data was flushed successfully to the kernel
 buffer. Returns <code>false</code> if all or part of the data was queued in user memory.
 <a href="#net_event_drain"><code>&#39;drain&#39;</code></a> will be emitted when the buffer is again free.</p>
@@ -1072,7 +1081,8 @@ paused on incoming connections. <strong>Default:</strong> <code>false</code></li
 <li><code>connectionListener</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a> Automatically set as a listener for the
 <a href="#net_event_connection"><code>&#39;connection&#39;</code></a> event.</li>
-<li>Returns: <span class="type">&lt;net.Server&gt;</span></li>
+<li>Returns: 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a></li>
 </ul>
 <p>If <code>allowHalfOpen</code> is set to <code>true</code>, when the other end of the socket
 sends a FIN packet, the server will only send a FIN packet back when

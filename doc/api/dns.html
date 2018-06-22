@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>DNS | Node.js v8.11.1 Documentation</title>
+  <title>DNS | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="dns" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -282,7 +282,7 @@ flags may be passed by bitwise <code>OR</code>ing their values.</li>
 an array. Otherwise, returns a single address. <strong>Default:</strong> <code>false</code></li>
 <li><code>verbatim</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> When <code>true</code>, the callback receives IPv4 and IPv6
-addresses in the order the DNS resolver returned them.  When <code>false</code>,
+addresses in the order the DNS resolver returned them. When <code>false</code>,
 IPv4 addresses are placed before IPv6 addresses.
 <strong>Default:</strong> currently <code>false</code> (addresses are reordered) but this is expected
 to change in the not too distant future.
@@ -801,43 +801,43 @@ will be present on the object:</p>
 </thead>
 <tbody>
 <tr>
-<td><code>&quot;A&quot;</code></td>
+<td><code>&#39;A&#39;</code></td>
 <td><code>address</code> / <code>ttl</code></td>
 </tr>
 <tr>
-<td><code>&quot;AAAA&quot;</code></td>
+<td><code>&#39;AAAA&#39;</code></td>
 <td><code>address</code> / <code>ttl</code></td>
 </tr>
 <tr>
-<td><code>&quot;CNAME&quot;</code></td>
+<td><code>&#39;CNAME&#39;</code></td>
 <td><code>value</code></td>
 </tr>
 <tr>
-<td><code>&quot;MX&quot;</code></td>
+<td><code>&#39;MX&#39;</code></td>
 <td>Refer to <a href="#dns_dns_resolvemx_hostname_callback"><code>dns.resolveMx()</code></a></td>
 </tr>
 <tr>
-<td><code>&quot;NAPTR&quot;</code></td>
+<td><code>&#39;NAPTR&#39;</code></td>
 <td>Refer to <a href="#dns_dns_resolvenaptr_hostname_callback"><code>dns.resolveNaptr()</code></a></td>
 </tr>
 <tr>
-<td><code>&quot;NS&quot;</code></td>
+<td><code>&#39;NS&#39;</code></td>
 <td><code>value</code></td>
 </tr>
 <tr>
-<td><code>&quot;PTR&quot;</code></td>
+<td><code>&#39;PTR&#39;</code></td>
 <td><code>value</code></td>
 </tr>
 <tr>
-<td><code>&quot;SOA&quot;</code></td>
+<td><code>&#39;SOA&#39;</code></td>
 <td>Refer to <a href="#dns_dns_resolvesoa_hostname_callback"><code>dns.resolveSoa()</code></a></td>
 </tr>
 <tr>
-<td><code>&quot;SRV&quot;</code></td>
+<td><code>&#39;SRV&#39;</code></td>
 <td>Refer to <a href="#dns_dns_resolvesrv_hostname_callback"><code>dns.resolveSrv()</code></a></td>
 </tr>
 <tr>
-<td><code>&quot;TXT&quot;</code></td>
+<td><code>&#39;TXT&#39;</code></td>
 <td>This type of record contains an array property called <code>entries</code> which refers to <a href="#dns_dns_resolvetxt_hostname_callback"><code>dns.resolveTxt()</code></a>, eg. <code>{ entries: [&#39;...&#39;], type: &#39;TXT&#39; }</code></td>
 </tr>
 </tbody>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>URL | Node.js v8.11.1 Documentation</title>
+  <title>URL | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="url" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -233,7 +233,7 @@ properties of a WHATWG <code>URL</code> object.</p>
 ├─────────────┴─────────────────────┴─────────────────────┴──────────┴────────────────┴───────┤
 │                                            href                                             │
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
-(all spaces in the &quot;&quot; line should be ignored -- they are purely for formatting)
+(all spaces in the &quot;&quot; line should be ignored — they are purely for formatting)
 </code></pre>
 <p>Parsing the URL string using the WHATWG API:</p>
 <pre><code class="lang-js">const { URL } = require(&#39;url&#39;);
@@ -556,7 +556,7 @@ to customize the serialization process of the URL. For more flexibility,
 value returned is equivalent to that of <a href="#url_url_href"><code>url.href</code></a> and
 <a href="#url_url_tostring"><code>url.toString()</code></a>.</p>
 <p>This method is automatically called when an <code>URL</code> object is serialized
-with <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a>.</p>
+with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>JSON.stringify()</code></a>.</p>
 <pre><code class="lang-js">const { URL } = require(&#39;url&#39;);
 const myURLs = [
   new URL(&#39;https://www.example.com&#39;),
@@ -663,7 +663,7 @@ console.log(params.toString());
 is similar to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a>&#39;s constructor. <code>iterable</code> can be an Array or any
 iterable object. That means <code>iterable</code> can be another <code>URLSearchParams</code>, in
 which case the constructor will simply create a clone of the provided
-<code>URLSearchParams</code>.  Elements of <code>iterable</code> are key-value pairs, and can
+<code>URLSearchParams</code>. Elements of <code>iterable</code> are key-value pairs, and can
 themselves be any iterable object.</p>
 <p>Duplicate keys are allowed.</p>
 <pre><code class="lang-js">const { URLSearchParams } = require(&#39;url&#39;);
@@ -1089,7 +1089,17 @@ string, an <a href="errors.html#errors_class_error"><code>Error</code></a> is th
 </ul>
 <h3>url.parse(urlString[, parseQueryString[, slashesDenoteHost]])<span><a class="mark" href="#url_url_parse_urlstring_parsequerystring_slashesdenotehost" id="url_url_parse_urlstring_parsequerystring_slashesdenotehost">#</a></span></h3>
 <div class="api_metadata">
-<span>Added in: v0.1.25</span>
+<details class="changelog"><summary>History</summary>
+<table>
+<tr><th>Version</th><th>Changes</th></tr>
+<tr><td>v9.0.0</td>
+<td><p>The <code>search</code> property on the returned URL object is now <code>null</code> when no query string is present.</p>
+</td></tr>
+<tr><td>v0.1.25</td>
+<td><p><span>Added in: v0.1.25</span></p>
+</td></tr>
+</table>
+</details>
 </div><ul>
 <li><code>urlString</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The URL string to parse.</li>

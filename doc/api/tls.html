@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>TLS (SSL) | Node.js v8.11.1 Documentation</title>
+  <title>TLS (SSL) | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="tls" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -491,7 +491,7 @@ the client request&#39;s SNI hostname matches the supplied <code>hostname</code>
 <div class="api_metadata">
 <span>Added in: v0.6.0</span>
 </div><p>Returns the bound address, the address family name, and port of the
-server as reported by the operating system.  See <a href="net.html#net_server_address"><code>net.Server.address()</code></a> for
+server as reported by the operating system. See <a href="net.html#net_server_address"><code>net.Server.address()</code></a> for
 more information.</p>
 <h3>server.close([callback])<span><a class="mark" href="#tls_server_close_callback" id="tls_server_close_callback">#</a></span></h3>
 <div class="api_metadata">
@@ -564,8 +564,9 @@ on the client side, <a href="#tls_tls_connect_options_callback"><code>tls.connec
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a><ul>
 <li><code>isServer</code>: The SSL/TLS protocol is asymmetrical, TLSSockets must know if
 they are to behave as a server or a client. If <code>true</code> the TLS socket will be
-instantiated as a server.  Defaults to <code>false</code>.</li>
-<li><code>server</code> <span class="type">&lt;net.Server&gt;</span> An optional <a href="net.html#net_class_net_server"><code>net.Server</code></a> instance.</li>
+instantiated as a server. Defaults to <code>false</code>.</li>
+<li><code>server</code> 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a> An optional <a href="net.html#net_class_net_server"><code>net.Server</code></a> instance.</li>
 <li><code>requestCert</code>: Whether to authenticate the remote peer by requesting a
  certificate. Clients always request a server certificate. Servers
  (<code>isServer</code> is true) may optionally set <code>requestCert</code> to true to request a
@@ -692,7 +693,7 @@ certificate.</p>
    { ... another certificate, possibly with a .issuerCertificate ... },
   raw: &lt; RAW DER buffer &gt;,
   valid_from: &#39;Nov 11 09:52:22 2009 GMT&#39;,
-  valid_to: &#39;Nov  6 09:52:22 2029 GMT&#39;,
+  valid_to: &#39;Nov 6 09:52:22 2029 GMT&#39;,
   fingerprint: &#39;2A:7A:C2:DD:E5:F9:CC:53:72:35:99:7A:02:5A:71:38:52:EC:8A:DF&#39;,
   serialNumber: &#39;B9B0D332A1AA5635&#39; }
 </code></pre>
@@ -870,7 +871,7 @@ specified, <code>host</code> and <code>port</code> are ignored.</li>
 rather than creating a new socket. Typically, this is an instance of
 <a href="net.html#net_class_net_socket"><code>net.Socket</code></a>, but any <code>Duplex</code> stream is allowed.
 If this option is specified, <code>path</code>, <code>host</code> and <code>port</code> are ignored,
-except for certificate validation.  Usually, a socket is already connected
+except for certificate validation. Usually, a socket is already connected
 when passed to <code>tls.connect()</code>, but it can be connected later. Note that
 connection/disconnection/destruction of <code>socket</code> is the user&#39;s
 responsibility, calling <code>tls.connect()</code> will not cause <code>net.connect()</code> to be
@@ -1056,7 +1057,7 @@ decrypted with <code>object.passphrase</code> if provided, or <code>options.pass
             <a href="buffer.html#buffer_class_buffer" class="type">&lt;Buffer[]&gt;</a> | 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object[]&gt;</a> Optional private keys in
 PEM format. PEM allows the option of private keys being encrypted. Encrypted
-keys will be decrypted with <code>options.passphrase</code>.  Multiple keys using
+keys will be decrypted with <code>options.passphrase</code>. Multiple keys using
 different algorithms can be provided either as an array of unencrypted key
 strings or buffers, or an array of objects in the form <code>{pem:
 &lt;string|buffer&gt;[, passphrase: &lt;string&gt;]}</code>. The object form can only occur in
@@ -1074,7 +1075,7 @@ One cert chain should be provided per private key. Each cert chain should
 consist of the PEM formatted certificate for a provided private <code>key</code>,
 followed by the PEM formatted intermediate certificates (if any), in order,
 and not including the root CA (the root CA must be pre-known to the peer,
-see <code>ca</code>).  When providing multiple cert chains, they do not have to be in
+see <code>ca</code>). When providing multiple cert chains, they do not have to be in
 the same order as their private keys in <code>key</code>. If the intermediate
 certificates are not provided, the peer will not be able to validate the
 certificate, and the handshake will fail.</li>
@@ -1088,7 +1089,7 @@ Mozilla&#39;s CAs are completely replaced when CAs are explicitly specified
 using this option. The value can be a string or Buffer, or an Array of
 strings and/or Buffers. Any string or Buffer can contain multiple PEM CAs
 concatenated together. The peer&#39;s certificate must be chainable to a CA
-trusted by the server for the connection to be authenticated.  When using
+trusted by the server for the connection to be authenticated. When using
 certificates that are not chainable to a well-known CA, the certificate&#39;s CA
 must be explicitly specified as a trusted or the connection will fail to
 authenticate.
@@ -1105,7 +1106,7 @@ provided.</li>
 CRLs (Certificate Revocation Lists).</li>
 <li><code>ciphers</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> Optional cipher suite specification, replacing the
-default.  For more information, see <a href="#tls_modifying_the_default_tls_cipher_suite">modifying the default cipher suite</a>.</li>
+default. For more information, see <a href="#tls_modifying_the_default_tls_cipher_suite">modifying the default cipher suite</a>.</li>
 <li><code>honorCipherOrder</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> Attempt to use the server&#39;s cipher suite
 preferences instead of the client&#39;s. When <code>true</code>, causes
@@ -1129,8 +1130,8 @@ for stronger security. If omitted or invalid, the parameters are silently
 discarded and DHE ciphers will not be available.</li>
 <li><code>secureProtocol</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> Optional SSL method to use, default is
-<code>&quot;SSLv23_method&quot;</code>. The possible values are listed as <a href="https://www.openssl.org/docs/man1.0.2/ssl/ssl.html#DEALING-WITH-PROTOCOL-METHODS">SSL_METHODS</a>, use
-the function names as strings. For example, <code>&quot;SSLv3_method&quot;</code> to force SSL
+<code>&#39;SSLv23_method&#39;</code>. The possible values are listed as <a href="https://www.openssl.org/docs/man1.0.2/ssl/ssl.html#DEALING-WITH-PROTOCOL-METHODS">SSL_METHODS</a>, use
+the function names as strings. For example, <code>&#39;SSLv3_method&#39;</code> to force SSL
 version 3.</li>
 <li><code>secureOptions</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Optionally affect the OpenSSL protocol behavior,
@@ -1240,7 +1241,7 @@ servers, the identity options (<code>pfx</code> or <code>key</code>/<code>cert</
 <li><code>secureConnectionListener</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a></li>
 </ul>
-<p>Creates a new <a href="#tls_class_tls_server">tls.Server</a>.  The <code>secureConnectionListener</code>, if provided, is
+<p>Creates a new <a href="#tls_class_tls_server">tls.Server</a>. The <code>secureConnectionListener</code>, if provided, is
 automatically set as a listener for the <a href="#tls_event_secureconnection"><code>&#39;secureConnection&#39;</code></a> event.</p>
 <p><em>Note</em>: The <code>ticketKeys</code> options is automatically shared between <code>cluster</code>
 module workers.</p>
@@ -1367,7 +1368,8 @@ certificate from a connecting client. Only applies when <code>isServer</code> is
  <a href="#tls_tls_createsecurecontext_options"><code>tls.createSecureContext()</code></a></li>
 <li><code>isServer</code>: If <code>true</code> the TLS socket will be instantiated in server-mode.
 Defaults to <code>false</code>.</li>
-<li><code>server</code> <span class="type">&lt;net.Server&gt;</span> An optional <a href="net.html#net_class_net_server"><code>net.Server</code></a> instance</li>
+<li><code>server</code> 
+            <a href="net.html#net_class_net_server" class="type">&lt;net.Server&gt;</a> An optional <a href="net.html#net_class_net_server"><code>net.Server</code></a> instance</li>
 <li><code>requestCert</code>: Optional, see <a href="#tls_tls_createserver_options_secureconnectionlistener"><code>tls.createServer()</code></a></li>
 <li><code>rejectUnauthorized</code>: Optional, see <a href="#tls_tls_createserver_options_secureconnectionlistener"><code>tls.createServer()</code></a></li>
 <li><code>NPNProtocols</code>: Optional, see <a href="#tls_tls_createserver_options_secureconnectionlistener"><code>tls.createServer()</code></a></li>

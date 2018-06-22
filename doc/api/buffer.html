@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Buffer | Node.js v8.11.1 Documentation</title>
+  <title>Buffer | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="buffer" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -638,7 +638,7 @@ console.log(buf2.toString());
 <li><code>size</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a> The desired length of the new <code>Buffer</code>.</li>
 </ul>
-<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes.  If the <code>size</code> is larger than
+<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes. If the <code>size</code> is larger than
 <a href="#buffer_buffer_constants_max_length"><code>buffer.constants.MAX_LENGTH</code></a> or smaller than 0, a <a href="errors.html#errors_class_rangeerror"><code>RangeError</code></a> will be
 thrown. A zero-length <code>Buffer</code> will be created if <code>size</code> is 0.</p>
 <p>Prior to Node.js 8.0.0, the underlying memory for <code>Buffer</code> instances
@@ -724,7 +724,7 @@ console.log(buf2.toString());
 // Prints: &lt;Buffer 00 00 00 00 00&gt;
 console.log(buf);
 </code></pre>
-<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes.  If the <code>size</code> is larger than
+<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes. If the <code>size</code> is larger than
 <a href="#buffer_buffer_constants_max_length"><code>buffer.constants.MAX_LENGTH</code></a> or smaller than 0, a <a href="errors.html#errors_class_rangeerror"><code>RangeError</code></a> will be
 thrown. A zero-length <code>Buffer</code> will be created if <code>size</code> is 0.</p>
 <p>If <code>fill</code> is specified, the allocated <code>Buffer</code> will be initialized by calling
@@ -764,7 +764,7 @@ contents will <em>never contain sensitive data</em>.</p>
 <li><code>size</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a> The desired length of the new <code>Buffer</code>.</li>
 </ul>
-<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes.  If the <code>size</code> is larger than
+<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes. If the <code>size</code> is larger than
 <a href="#buffer_buffer_constants_max_length"><code>buffer.constants.MAX_LENGTH</code></a> or smaller than 0, a <a href="errors.html#errors_class_rangeerror"><code>RangeError</code></a> will be
 thrown. A zero-length <code>Buffer</code> will be created if <code>size</code> is 0.</p>
 <p>The underlying memory for <code>Buffer</code> instances created in this way is <em>not
@@ -802,7 +802,7 @@ additional performance that <a href="#buffer_class_method_buffer_allocunsafe_siz
 <li><code>size</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a> The desired length of the new <code>Buffer</code>.</li>
 </ul>
-<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes.  If the <code>size</code> is larger than
+<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes. If the <code>size</code> is larger than
 <a href="#buffer_buffer_constants_max_length"><code>buffer.constants.MAX_LENGTH</code></a> or smaller than 0, a <a href="errors.html#errors_class_rangeerror"><code>RangeError</code></a> will be
 thrown. A zero-length <code>Buffer</code> will be created if <code>size</code> is 0.</p>
 <p>The underlying memory for <code>Buffer</code> instances created in this way is <em>not
@@ -1403,8 +1403,11 @@ then only the first bytes of that character that fit into <code>buf</code> are w
 <pre><code class="lang-js">// Prints: &lt;Buffer c8 a2 c8&gt;
 console.log(Buffer.allocUnsafe(3).fill(&#39;\u0222&#39;));
 </code></pre>
-<p>If <code>value</code> contains invalid characters, it is truncated; if no valid
-fill data remains, no filling is performed:</p>
+<p>If <code>value</code> contains invalid characters, it is truncated.</p>
+<p>If no valid fill data remains, then the buffer is either zero-filled or no
+filling is performed, depending on the input type. That behavior is dictated by
+compatibility reasons and was changed to throwing an exception in Node.js v10,
+so it&#39;s not recommended to rely on that.</p>
 <pre><code class="lang-js">const buf = Buffer.allocUnsafe(5);
 // Prints: &lt;Buffer 61 61 61 61 61&gt;
 console.log(buf.fill(&#39;a&#39;));
@@ -2699,7 +2702,7 @@ has observed undue memory retention in their applications.</p>
 <li><code>size</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a> The desired length of the new <code>SlowBuffer</code>.</li>
 </ul>
-<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes.  If the <code>size</code> is larger than
+<p>Allocates a new <code>Buffer</code> of <code>size</code> bytes. If the <code>size</code> is larger than
 <a href="#buffer_buffer_constants_max_length"><code>buffer.constants.MAX_LENGTH</code></a> or smaller than 0, a <a href="errors.html#errors_class_rangeerror"><code>RangeError</code></a> will be
 thrown. A zero-length <code>Buffer</code> will be created if <code>size</code> is 0.</p>
 <p>The underlying memory for <code>SlowBuffer</code> instances is <em>not initialized</em>. The

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Performance Timing API | Node.js v8.11.1 Documentation</title>
+  <title>Performance Timing API | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="perf_hooks" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -110,6 +110,7 @@
         <ul>
 <li><span class="stability_1"><a href="#perf_hooks_performance_timing_api">Performance Timing API</a></span><ul>
 <li><span class="stability_undefined"><a href="#perf_hooks_class_performance">Class: Performance</a></span><ul>
+<li><span class="stability_undefined"><a href="#perf_hooks_performance_clearentries_name">performance.clearEntries(name)</a></span></li>
 <li><span class="stability_undefined"><a href="#perf_hooks_performance_clearfunctions_name">performance.clearFunctions([name])</a></span></li>
 <li><span class="stability_undefined"><a href="#perf_hooks_performance_cleargc">performance.clearGC()</a></span></li>
 <li><span class="stability_undefined"><a href="#perf_hooks_performance_clearmarks_name">performance.clearMarks([name])</a></span></li>
@@ -194,6 +195,11 @@ doSomeLongRunningProcess(() =&gt; {
 <span>Added in: v8.5.0</span>
 </div><p>The <code>Performance</code> provides access to performance metric data. A single
 instance of this class is provided via the <code>performance</code> property.</p>
+<h3>performance.clearEntries(name)<span><a class="mark" href="#perf_hooks_performance_clearentries_name" id="perf_hooks_performance_clearentries_name">#</a></span></h3>
+<div class="api_metadata">
+<span>Added in: v8.11.2</span>
+</div><p>Remove all performance entry objects with <code>entryType</code> equal to <code>name</code> from the
+Performance Timeline.</p>
 <h3>performance.clearFunctions([name])<span><a class="mark" href="#perf_hooks_performance_clearfunctions_name" id="perf_hooks_performance_clearfunctions_name">#</a></span></h3>
 <div class="api_metadata">
 <span>Added in: v8.5.0</span>
@@ -554,8 +560,10 @@ longer needed.</p>
 <div class="api_metadata">
 <span>Added in: v8.5.0</span>
 </div><ul>
-<li><code>list</code> <span class="type">&lt;PerformanceObserverEntryList&gt;</span></li>
-<li><code>observer</code> <span class="type">&lt;PerformanceObserver&gt;</span></li>
+<li><code>list</code> 
+            <a href="perf_hooks.html#perf_hooks_class_performanceobserverentrylist" class="type">&lt;PerformanceObserverEntryList&gt;</a></li>
+<li><code>observer</code> 
+            <a href="perf_hooks.html#perf_hooks_class_performanceobserver_callback" class="type">&lt;PerformanceObserver&gt;</a></li>
 </ul>
 <p>The <code>PerformanceObserverCallback</code> is invoked when a <code>PerformanceObserver</code> is
 notified about new <code>PerformanceEntry</code> instances. The callback receives a

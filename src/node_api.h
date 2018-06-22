@@ -112,6 +112,8 @@ NAPI_EXTERN napi_status
 napi_get_last_error_info(napi_env env,
                          const napi_extended_error_info** result);
 
+NAPI_EXTERN napi_status napi_fatal_exception(napi_env env, napi_value err);
+
 NAPI_EXTERN NAPI_NO_RETURN void napi_fatal_error(const char* location,
                                                  size_t location_len,
                                                  const char* message,
@@ -423,6 +425,14 @@ NAPI_EXTERN napi_status napi_escape_handle(napi_env env,
                                            napi_escapable_handle_scope scope,
                                            napi_value escapee,
                                            napi_value* result);
+
+NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env,
+                                                 napi_value resource_object,
+                                                 napi_async_context context,
+                                                 napi_callback_scope* result);
+
+NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env,
+                                                  napi_callback_scope scope);
 
 // Methods to support error handling
 NAPI_EXTERN napi_status napi_throw(napi_env env, napi_value error);

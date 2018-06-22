@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Child Process | Node.js v8.11.1 Documentation</title>
+  <title>Child Process | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="child_process" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -198,13 +198,13 @@ function provides equivalent functionality in a synchronous manner that blocks
 the event loop until the spawned process either exits or is terminated.</p>
 <p>For convenience, the <code>child_process</code> module provides a handful of synchronous
 and asynchronous alternatives to <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> and
-<a href="#child_process_child_process_spawnsync_command_args_options"><code>child_process.spawnSync()</code></a>.  <em>Note that each of these alternatives are
+<a href="#child_process_child_process_spawnsync_command_args_options"><code>child_process.spawnSync()</code></a>. <em>Note that each of these alternatives are
 implemented on top of <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> or <a href="#child_process_child_process_spawnsync_command_args_options"><code>child_process.spawnSync()</code></a>.</em></p>
 <ul>
 <li><a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>: spawns a shell and runs a command within that shell,
 passing the <code>stdout</code> and <code>stderr</code> to a callback function when complete.</li>
 <li><a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a>: similar to <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> except that
-it spawns the command directly without first spawning a shell.</li>
+it spawns the command directly without first spawning a shell by default.</li>
 <li><a href="#child_process_child_process_fork_modulepath_args_options"><code>child_process.fork()</code></a>: spawns a new Node.js process and invokes a
 specified module with an IPC communication channel established that allows
 sending messages between parent and child.</li>
@@ -232,7 +232,7 @@ when the child process terminates.</p>
 <p>The importance of the distinction between <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> and
 <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a> can vary based on platform. On Unix-type operating
 systems (Unix, Linux, macOS) <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a> can be more efficient
-because it does not spawn a shell. On Windows, however, <code>.bat</code> and <code>.cmd</code>
+because it does not spawn a shell by default. On Windows, however, <code>.bat</code> and <code>.cmd</code>
 files are not executable on their own without a terminal, and therefore cannot
 be launched using <a href="#child_process_child_process_execfile_file_args_options_callback"><code>child_process.execFile()</code></a>. When running on Windows, <code>.bat</code>
 and <code>.cmd</code> files can be invoked using <a href="#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a> with the <code>shell</code>
@@ -305,8 +305,8 @@ exec(&#39;&quot;my script.cmd&quot; a b&#39;, (err, stdout, stderr) =&gt; {
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> <strong>Default:</strong> <code>0</code></li>
 <li><code>maxBuffer</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Largest amount of data in bytes allowed on stdout or
-stderr. <strong>Default:</strong> <code>200*1024</code>. If exceeded, the child process is terminated.
-See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
+stderr. <strong>Default:</strong> <code>200 * 1024</code>. If exceeded, the child process is
+terminated. See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
 <li><code>killSignal</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> | 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a> <strong>Default:</strong> <code>&#39;SIGTERM&#39;</code></li>
@@ -360,7 +360,7 @@ exec(&#39;cat *.js bad_file | wc -l&#39;, (error, stdout, stderr) =&gt; {
 });
 </code></pre>
 <p>If a <code>callback</code> function is provided, it is called with the arguments
-<code>(error, stdout, stderr)</code>. On success, <code>error</code> will be <code>null</code>.  On error,
+<code>(error, stdout, stderr)</code>. On success, <code>error</code> will be <code>null</code>. On error,
 <code>error</code> will be an instance of <a href="errors.html#errors_class_error"><code>Error</code></a>. The <code>error.code</code> property will be
 the exit code of the child process while <code>error.signal</code> will be set to the
 signal that terminated the process. Any exit code other than <code>0</code> is considered
@@ -432,8 +432,8 @@ lsExample();
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> <strong>Default:</strong> <code>0</code></li>
 <li><code>maxBuffer</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Largest amount of data in bytes allowed on stdout or
-stderr. <strong>Default:</strong> <code>200*1024</code> If exceeded, the child process is terminated.
-See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
+stderr. <strong>Default:</strong> <code>200 * 1024</code> If exceeded, the child process is
+terminated. See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
 <li><code>killSignal</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> | 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;integer&gt;</a> <strong>Default:</strong> <code>&#39;SIGTERM&#39;</code></li>
@@ -447,6 +447,12 @@ normally be created on Windows systems. <strong>Default:</strong> <code>false</c
 <li><code>windowsVerbatimArguments</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> No quoting or escaping of arguments is
 done on Windows. Ignored on Unix. <strong>Default:</strong> <code>false</code>.</li>
+<li><code>shell</code> 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> | 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> If <code>true</code>, runs <code>command</code> inside of a shell. Uses
+<code>&#39;/bin/sh&#39;</code> on UNIX, and <code>process.env.ComSpec</code> on Windows. A different
+shell can be specified as a string. See <a href="#child_process_shell_requirements">Shell Requirements</a> and
+<a href="#child_process_default_windows_shell">Default Windows Shell</a>. <strong>Default:</strong> <code>false</code> (no shell).</li>
 </ul>
 </li>
 <li><code>callback</code> 
@@ -465,7 +471,7 @@ done on Windows. Ignored on Unix. <strong>Default:</strong> <code>false</code>.<
             <a href="child_process.html#child_process_class_childprocess" class="type">&lt;ChildProcess&gt;</a></li>
 </ul>
 <p>The <code>child_process.execFile()</code> function is similar to <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>
-except that it does not spawn a shell. Rather, the specified executable <code>file</code>
+except that it does not spawn a shell by default. Rather, the specified executable <code>file</code>
 is spawned directly as a new process making it slightly more efficient than
 <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a>.</p>
 <p>The same options as <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> are supported. Since a shell is not
@@ -496,6 +502,9 @@ async function getVersion() {
 }
 getVersion();
 </code></pre>
+<p><em>Note</em>: If the <code>shell</code> option is enabled, do not pass unsanitized user input
+to this function. Any input containing shell metacharacters may be used to
+trigger arbitrary command execution.</p>
 <h3>child_process.fork(modulePath[, args][, options])<span><a class="mark" href="#child_process_child_process_fork_modulepath_args_options" id="child_process_child_process_fork_modulepath_args_options">#</a></span></h3>
 <div class="api_metadata">
 <details class="changelog"><summary>History</summary>
@@ -727,7 +736,7 @@ disabled</em>.</p>
 <p>On non-Windows platforms, if <code>options.detached</code> is set to <code>true</code>, the child
 process will be made the leader of a new process group and session. Note that
 child processes may continue running after the parent exits regardless of
-whether they are detached or not.  See <a href="http://man7.org/linux/man-pages/man2/setsid.2.html">setsid(2)</a> for more information.</p>
+whether they are detached or not. See <a href="http://man7.org/linux/man-pages/man2/setsid.2.html">setsid(2)</a> for more information.</p>
 <p>By default, the parent will wait for the detached child to exit. To prevent
 the parent from waiting for a given <code>subprocess</code>, use the <code>subprocess.unref()</code>
 method. Doing so will cause the parent&#39;s event loop to not include the child in
@@ -910,13 +919,19 @@ is allowed to run. <strong>Default:</strong> <code>undefined</code></li>
 process will be killed. <strong>Default:</strong> <code>&#39;SIGTERM&#39;</code></li>
 <li><code>maxBuffer</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Largest amount of data in bytes allowed on stdout or
-stderr. <strong>Default:</strong> <code>200*1024</code> If exceeded, the child process is terminated.
-See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
+stderr. <strong>Default:</strong> <code>200 * 1024</code> If exceeded, the child process is
+terminated. See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
 <li><code>encoding</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The encoding used for all stdio inputs and outputs. <strong>Default:</strong> <code>&#39;buffer&#39;</code></li>
 <li><code>windowsHide</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> Hide the subprocess console window that would
 normally be created on Windows systems. <strong>Default:</strong> <code>false</code>.</li>
+<li><code>shell</code> 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">&lt;boolean&gt;</a> | 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> If <code>true</code>, runs <code>command</code> inside of a shell. Uses
+<code>&#39;/bin/sh&#39;</code> on UNIX, and <code>process.env.ComSpec</code> on Windows. A different
+shell can be specified as a string. See <a href="#child_process_shell_requirements">Shell Requirements</a> and
+<a href="#child_process_default_windows_shell">Default Windows Shell</a>. <strong>Default:</strong> <code>false</code> (no shell).</li>
 </ul>
 </li>
 <li>Returns: 
@@ -934,6 +949,9 @@ exited.</p>
 <p>If the process times out or has a non-zero exit code, this method <strong><em>will</em></strong>
 throw an <a href="errors.html#errors_class_error"><code>Error</code></a> that will include the full result of the underlying
 <a href="#child_process_child_process_spawnsync_command_args_options"><code>child_process.spawnSync()</code></a>.</p>
+<p><em>Note</em>: If the <code>shell</code> option is enabled, do not pass unsanitized user input
+to this function. Any input containing shell metacharacters may be used to
+trigger arbitrary command execution.</p>
 <h3>child_process.execSync(command[, options])<span><a class="mark" href="#child_process_child_process_execsync_command_options" id="child_process_child_process_execsync_command_options">#</a></span></h3>
 <div class="api_metadata">
 <details class="changelog"><summary>History</summary>
@@ -991,8 +1009,8 @@ is allowed to run. <strong>Default:</strong> <code>undefined</code></li>
 process will be killed. <strong>Default:</strong> <code>&#39;SIGTERM&#39;</code></li>
 <li><code>maxBuffer</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Largest amount of data in bytes allowed on stdout or
-stderr. <strong>Default:</strong> <code>200*1024</code> If exceeded, the child process is terminated.
-See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
+stderr. <strong>Default:</strong> <code>200 * 1024</code> If exceeded, the child process is
+terminated. See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
 <li><code>encoding</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The encoding used for all stdio inputs and outputs.
 <strong>Default:</strong> <code>&#39;buffer&#39;</code></li>
@@ -1009,11 +1027,11 @@ normally be created on Windows systems. <strong>Default:</strong> <code>false</c
 <a href="#child_process_child_process_exec_command_options_callback"><code>child_process.exec()</code></a> with the exception that the method will not return until
 the child process has fully closed. When a timeout has been encountered and
 <code>killSignal</code> is sent, the method won&#39;t return until the process has completely
-exited. <em>Note that if  the child process intercepts and handles the <code>SIGTERM</code>
+exited. <em>Note that if the child process intercepts and handles the <code>SIGTERM</code>
 signal and doesn&#39;t exit, the parent process will wait until the child
 process has exited.</em></p>
 <p>If the process times out or has a non-zero exit code, this method <strong><em>will</em></strong>
-throw.  The <a href="errors.html#errors_class_error"><code>Error</code></a> object will contain the entire result from
+throw. The <a href="errors.html#errors_class_error"><code>Error</code></a> object will contain the entire result from
 <a href="#child_process_child_process_spawnsync_command_args_options"><code>child_process.spawnSync()</code></a></p>
 <p><em>Note</em>: Never pass unsanitized user input to this function. Any input
 containing shell metacharacters may be used to trigger arbitrary command
@@ -1075,8 +1093,8 @@ is allowed to run. <strong>Default:</strong> <code>undefined</code></li>
 process will be killed. <strong>Default:</strong> <code>&#39;SIGTERM&#39;</code></li>
 <li><code>maxBuffer</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">&lt;number&gt;</a> Largest amount of data in bytes allowed on stdout or
-stderr. <strong>Default:</strong> <code>200*1024</code> If exceeded, the child process is terminated.
-See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
+stderr. <strong>Default:</strong> <code>200 * 1024</code> If exceeded, the child process is
+terminated. See caveat at <a href="#child_process_maxbuffer_and_unicode"><code>maxBuffer</code> and Unicode</a>.</li>
 <li><code>encoding</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string&gt;</a> The encoding used for all stdio inputs and outputs.
 <strong>Default:</strong> <code>&#39;buffer&#39;</code></li>
@@ -1401,7 +1419,7 @@ properties:</p>
 Defaults to <code>false</code>.</li>
 </ul>
 <p>The optional <code>callback</code> is a function that is invoked after the message is
-sent but before the child may have received it.  The function is called with a
+sent but before the child may have received it. The function is called with a
 single argument: <code>null</code> on success, or an <a href="errors.html#errors_class_error"><code>Error</code></a> object on failure.</p>
 <p>If no <code>callback</code> function is provided and the message cannot be sent, an
 <code>&#39;error&#39;</code> event will be emitted by the <a href="#child_process_child_process"><code>ChildProcess</code></a> object. This can happen,

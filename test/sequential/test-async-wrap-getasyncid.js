@@ -6,6 +6,7 @@ const fs = require('fs');
 const net = require('net');
 const providers = Object.assign({}, process.binding('async_wrap').Providers);
 const fixtures = require('../common/fixtures');
+const tmpdir = require('../common/tmpdir');
 
 // Make sure that all Providers are tested.
 {
@@ -25,6 +26,7 @@ const fixtures = require('../common/fixtures');
     delete providers.HTTP2SESSION;
     delete providers.HTTP2STREAM;
     delete providers.HTTP2PING;
+    delete providers.HTTP2SETTINGS;
 
     const obj_keys = Object.keys(providers);
     if (obj_keys.length > 0)
@@ -145,7 +147,7 @@ if (common.hasCrypto) { // eslint-disable-line crypto-check
 }
 
 {
-  common.refreshTmpDir();
+  tmpdir.refresh();
 
   const server = net.createServer(common.mustCall((socket) => {
     server.close();

@@ -178,7 +178,6 @@ NODE_EXTERN v8::Local<v8::Value> MakeCallback(
 #endif
 
 #ifdef _WIN32
-// TODO(tjfontaine) consider changing the usage of ssize_t to ptrdiff_t
 #if !defined(_SSIZE_T_) && !defined(_SSIZE_T_DEFINED)
 typedef intptr_t ssize_t;
 # define _SSIZE_T_
@@ -190,10 +189,6 @@ typedef intptr_t ssize_t;
 
 
 namespace node {
-
-NODE_EXTERN extern v8::Isolate* node_isolate;
-NODE_EXTERN bool ShouldAbortOnUncaughtException(v8::Isolate* isolate);
-NODE_EXTERN extern bool node_is_initialized;
 
 NODE_EXTERN extern bool no_deprecation;
 #if HAVE_OPENSSL

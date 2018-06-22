@@ -38,17 +38,6 @@
 
 #include <string>
 
-#if (UV_VERSION_MAJOR == 1) && (UV_VERSION_MINOR < 18)
-#  include <sys/types.h>
-#  include <unistd.h>
-
-   typedef pid_t uv_pid_t;
-
-   inline uv_pid_t uv_os_getpid(void) {
-     return getpid();
-   }
-#endif
-
 enum {
   NM_F_BUILTIN  = 1 << 0,
   NM_F_LINKED   = 1 << 1,
@@ -229,6 +218,11 @@ void GetSockOrPeerName(const v8::FunctionCallbackInfo<v8::Value>& args) {
   args.GetReturnValue().Set(err);
 }
 
+void FatalException(v8::Isolate* isolate,
+                    v8::Local<v8::Value> error,
+                    v8::Local<v8::Message> message);
+
+
 void SignalExit(int signo);
 #ifdef __POSIX__
 void RegisterSignalHandler(int signal,
@@ -312,7 +306,6 @@ class ArrayBufferAllocator : public v8::ArrayBuffer::Allocator {
   virtual void* AllocateUninitialized(size_t size)
     { return node::UncheckedMalloc(size); }
   virtual void Free(void* data, size_t) { free(data); }
-  virtual void Free(void* data, size_t length, AllocationMode mode) { free(data); }
 
  private:
   uint32_t zero_fill_field_ = 1;  // Boolean but exposed as uint32 to JS land.
@@ -336,6 +329,19 @@ v8::MaybeLocal<v8::Object> New(Environment* env,
 // because ArrayBufferAllocator::Free() deallocates it again with free().
 // Mixing operator new and free() is undefined behavior so don't do that.
 v8::MaybeLocal<v8::Object> New(Environment* env, char* data, size_t length);
+
+inline
+v8::MaybeLocal<v8::Uint8Array> New(Environment* env,
+                                   v8::Local<v8::ArrayBuffer> ab,
+                                   size_t byte_offset,
+                                   size_t length) {
+  v8::Local<v8::Uint8Array> ui = v8::Uint8Array::New(ab, byte_offset, length);
+  v8::Maybe<bool> mb =
+      ui->SetPrototype(env->context(), env->buffer_prototype_object());
+  if (mb.IsNothing())
+    return v8::MaybeLocal<v8::Uint8Array>();
+  return ui;
+}
 
 // Construct a Buffer from a MaybeStackBuffer (and also its subclasses like
 // Utf8Value and TwoByteValue).

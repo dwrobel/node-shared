@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Util | Node.js v8.11.1 Documentation</title>
+  <title>Util | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="util" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -255,9 +255,9 @@ which the <code>debuglog</code> function is being created.</li>
 </ul>
 <p>The <code>util.debuglog()</code> method is used to create a function that conditionally
 writes debug messages to <code>stderr</code> based on the existence of the <code>NODE_DEBUG</code>
-environment variable.  If the <code>section</code> name appears within the value of that
+environment variable. If the <code>section</code> name appears within the value of that
 environment variable, then the returned function operates similar to
-<a href="console.html#console_console_error_data_args"><code>console.error()</code></a>.  If not, then the returned function is a no-op.</p>
+<a href="console.html#console_console_error_data_args"><code>console.error()</code></a>. If not, then the returned function is a no-op.</p>
 <p>For example:</p>
 <pre><code class="lang-js">const util = require(&#39;util&#39;);
 const debuglog = util.debuglog(&#39;foo&#39;);
@@ -268,7 +268,7 @@ debuglog(&#39;hello from foo [%d]&#39;, 123);
 it will output something like:</p>
 <pre><code class="lang-txt">FOO 3245: hello from foo [123]
 </code></pre>
-<p>where <code>3245</code> is the process id.  If it is not run with that
+<p>where <code>3245</code> is the process id. If it is not run with that
 environment variable set, then it will not print anything.</p>
 <p>Multiple comma-separated <code>section</code> names may be specified in the <code>NODE_DEBUG</code>
 environment variable. For example: <code>NODE_DEBUG=fs,net,tls</code>.</p>
@@ -331,7 +331,7 @@ corresponding argument. Supported placeholders are:</p>
 <li><code>%d</code> - Number (integer or floating point value).</li>
 <li><code>%i</code> - Integer.</li>
 <li><code>%f</code> - Floating point value.</li>
-<li><code>%j</code> - JSON.  Replaced with the string <code>&#39;[Circular]&#39;</code> if the argument
+<li><code>%j</code> - JSON. Replaced with the string <code>&#39;[Circular]&#39;</code> if the argument
 contains circular references.</li>
 <li><code>%o</code> - Object. A string representation of an object
 with generic JavaScript object formatting.
@@ -386,7 +386,7 @@ that the two styles are <a href="https://github.com/nodejs/node/issues/4179">sem
 <li><code>superConstructor</code> 
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="type">&lt;Function&gt;</a></li>
 </ul>
-<p>Inherit the prototype methods from one <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/constructor">constructor</a> into another.  The
+<p>Inherit the prototype methods from one <a href="https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor">constructor</a> into another. The
 prototype of <code>constructor</code> will be set to a new object created from
 <code>superConstructor</code>.</p>
 <p>As an additional convenience, <code>superConstructor</code> will be accessible
@@ -968,10 +968,10 @@ applications and modules should be updated to find alternative approaches.</p>
 <h3>util._extend(target, source)<span><a class="mark" href="#util_util_extend_target_source" id="util_util_extend_target_source">#</a></span></h3>
 <div class="api_metadata">
 <span>Added in: v0.7.5</span><span>Deprecated since: v6.0.0</span>
-</div><div class="api_stability api_stability_0"><a href="documentation.html#documentation_stability_index">Stability: 0</a> - Deprecated: Use <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a> instead.</div><p>The <code>util._extend()</code> method was never intended to be used outside of internal
+</div><div class="api_stability api_stability_0"><a href="documentation.html#documentation_stability_index">Stability: 0</a> - Deprecated: Use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a> instead.</div><p>The <code>util._extend()</code> method was never intended to be used outside of internal
 Node.js modules. The community found and used it anyway.</p>
 <p>It is deprecated and should not be used in new code. JavaScript comes with very
-similar built-in functionality through <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>.</p>
+similar built-in functionality through <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>.</p>
 <h3>util.debug(string)<span><a class="mark" href="#util_util_debug_string" id="util_util_debug_string">#</a></span></h3>
 <div class="api_metadata">
 <span>Added in: v0.3.0</span><span>Deprecated since: v0.11.3</span>

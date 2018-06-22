@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>OS | Node.js v8.11.1 Documentation</title>
+  <title>OS | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="os" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -366,7 +366,7 @@ string.</p>
 <p>The <code>os.loadavg()</code> method returns an array containing the 1, 5, and 15 minute
 load averages.</p>
 <p>The load average is a measure of system activity, calculated by the operating
-system and expressed as a fractional number.  As a rule of thumb, the load
+system and expressed as a fractional number. As a rule of thumb, the load
 average should ideally be less than the number of logical CPUs in the system.</p>
 <p>The load average is a UNIX-specific concept with no real equivalent on
 Windows platforms. On Windows, the return value is always <code>[0, 0, 0]</code>.</p>
@@ -544,7 +544,7 @@ values will be <code>Buffer</code> instances. <strong>Default:</strong> <code>&#
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">&lt;Object&gt;</a></li>
 </ul>
 <p>The <code>os.userInfo()</code> method returns information about the currently effective
-user -- on POSIX platforms, this is typically a subset of the password file. The
+user — on POSIX platforms, this is typically a subset of the password file. The
 returned object includes the <code>username</code>, <code>uid</code>, <code>gid</code>, <code>shell</code>, and <code>homedir</code>.
 On Windows, the <code>uid</code> and <code>gid</code> fields are <code>-1</code>, and <code>shell</code> is <code>null</code>.</p>
 <p>The value of <code>homedir</code> returned by <code>os.userInfo()</code> is provided by the operating

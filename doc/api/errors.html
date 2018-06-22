@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Errors | Node.js v8.11.1 Documentation</title>
+  <title>Errors | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="errors" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -156,10 +156,14 @@
 <li><span class="stability_undefined"><a href="#errors_err_http_invalid_char">ERR_HTTP_INVALID_CHAR</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http_invalid_status_code">ERR_HTTP_INVALID_STATUS_CODE</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http_trailer_invalid">ERR_HTTP_TRAILER_INVALID</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_http2_already_shutdown">ERR_HTTP2_ALREADY_SHUTDOWN</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_http2_altsvc_invalid_origin">ERR_HTTP2_ALTSVC_INVALID_ORIGIN</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_http2_altsvc_length">ERR_HTTP2_ALTSVC_LENGTH</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_connect_authority">ERR_HTTP2_CONNECT_AUTHORITY</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_connect_path">ERR_HTTP2_CONNECT_PATH</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_connect_scheme">ERR_HTTP2_CONNECT_SCHEME</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_frame_error">ERR_HTTP2_FRAME_ERROR</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_http2_goaway_session">ERR_HTTP2_GOAWAY_SESSION</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_header_required">ERR_HTTP2_HEADER_REQUIRED</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_header_single_value">ERR_HTTP2_HEADER_SINGLE_VALUE</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_headers_after_respond">ERR_HTTP2_HEADERS_AFTER_RESPOND</a></span></li>
@@ -184,10 +188,11 @@
 <li><span class="stability_undefined"><a href="#errors_err_http2_pseudoheader_not_allowed">ERR_HTTP2_PSEUDOHEADER_NOT_ALLOWED</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_push_disabled">ERR_HTTP2_PUSH_DISABLED</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_send_file">ERR_HTTP2_SEND_FILE</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_http2_session_error">ERR_HTTP2_SESSION_ERROR</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_socket_bound">ERR_HTTP2_SOCKET_BOUND</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_status_101">ERR_HTTP2_STATUS_101</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_status_invalid">ERR_HTTP2_STATUS_INVALID</a></span></li>
-<li><span class="stability_undefined"><a href="#errors_err_http2_stream_closed">ERR_HTTP2_STREAM_CLOSED</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_http2_stream_cancel">ERR_HTTP2_STREAM_CANCEL</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_stream_error">ERR_HTTP2_STREAM_ERROR</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_stream_self_dependency">ERR_HTTP2_STREAM_SELF_DEPENDENCY</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_http2_unsupported_protocol">ERR_HTTP2_UNSUPPORTED_PROTOCOL</a></span></li>
@@ -211,10 +216,16 @@
 <li><span class="stability_undefined"><a href="#errors_err_ipc_one_pipe">ERR_IPC_ONE_PIPE</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_ipc_sync_fork">ERR_IPC_SYNC_FORK</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_missing_args">ERR_MISSING_ARGS</a></span></li>
+<li><span class="stability_1"><a href="#errors_err_missing_dynamic_instantiate_hook">ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK</a></span></li>
+<li><span class="stability_1"><a href="#errors_err_missing_module">ERR_MISSING_MODULE</a></span></li>
+<li><span class="stability_1"><a href="#errors_err_module_resolution_legacy">ERR_MODULE_RESOLUTION_LEGACY</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_multiple_callback">ERR_MULTIPLE_CALLBACK</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_napi_cons_function">ERR_NAPI_CONS_FUNCTION</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_napi_cons_prototype_object">ERR_NAPI_CONS_PROTOTYPE_OBJECT</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_napi_invalid_dataview_args">ERR_NAPI_INVALID_DATAVIEW_ARGS</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_napi_invalid_typedarray_alignment">ERR_NAPI_INVALID_TYPEDARRAY_ALIGNMENT</a></span></li>
+<li><span class="stability_undefined"><a href="#errors_err_napi_invalid_typedarray_length">ERR_NAPI_INVALID_TYPEDARRAY_LENGTH</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_no_icu">ERR_NO_ICU</a></span></li>
-<li><span class="stability_undefined"><a href="#errors_err_outofmemory">ERR_OUTOFMEMORY</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_socket_already_bound">ERR_SOCKET_ALREADY_BOUND</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_socket_bad_port">ERR_SOCKET_BAD_PORT</a></span></li>
 <li><span class="stability_undefined"><a href="#errors_err_socket_bad_type">ERR_SOCKET_BAD_TYPE</a></span></li>
@@ -351,7 +362,7 @@ asynchronous operations over time (as opposed to a single operation that may
 pass or fail).</p>
 <p>For <em>all</em> <code>EventEmitter</code> objects, if an <code>&#39;error&#39;</code> event handler is not
 provided, the error will be thrown, causing the Node.js process to report an
-unhandled exception and  crash unless either: The <a href="domain.html"><code>domain</code></a> module is
+unhandled exception and crash unless either: The <a href="domain.html"><code>domain</code></a> module is
 used appropriately or a handler has been registered for the
 <a href="process.html#process_event_uncaughtexception"><code>process.on(&#39;uncaughtException&#39;)</code></a> event.</p>
 <pre><code class="lang-js">const EventEmitter = require(&#39;events&#39;);
@@ -370,7 +381,7 @@ exactly how errors raised by those methods are propagated.</p>
 <h3>Error-first callbacks<span><a class="mark" href="#errors_error_first_callbacks" id="errors_error_first_callbacks">#</a></span></h3>
 <!--type=misc-->
 <p>Most asynchronous methods exposed by the Node.js core API follow an idiomatic
-pattern  referred to as an <em>error-first callback</em> (sometimes referred to as
+pattern referred to as an <em>error-first callback</em> (sometimes referred to as
 a <em>Node.js style callback</em>). With this pattern, a callback function is passed
 to the method as an argument. When the operation either completes or an error
 is raised, the callback function is called with
@@ -390,7 +401,7 @@ fs.readFile(&#39;/some/file/that/does-not-exist&#39;, errorFirstCallback);
 fs.readFile(&#39;/some/file/that/does-exist&#39;, errorFirstCallback);
 </code></pre>
 <p>The JavaScript <code>try / catch</code> mechanism <strong>cannot</strong> be used to intercept errors
-generated by asynchronous APIs.  A common mistake for beginners is to try to
+generated by asynchronous APIs. A common mistake for beginners is to try to
 use <code>throw</code> inside an error-first callback:</p>
 <pre><code class="lang-js">// THIS WILL NOT WORK:
 const fs = require(&#39;fs&#39;);
@@ -435,7 +446,7 @@ provided text message. If an object is passed as <code>message</code>, the text 
 is generated by calling <code>message.toString()</code>. The <code>error.stack</code> property will
 represent the point in the code at which <code>new Error()</code> was called. Stack traces
 are dependent on <a href="https://github.com/v8/v8/wiki/Stack-Trace-API">V8&#39;s stack trace API</a>. Stack traces extend only to either
-(a) the beginning of  <em>synchronous code execution</em>, or (b) the number of frames
+(a) the beginning of <em>synchronous code execution</em>, or (b) the number of frames
 given by the property <code>Error.stackTraceLimit</code>, whichever is smaller.</p>
 <h3>Error.captureStackTrace(targetObject[, constructorOpt])<span><a class="mark" href="#errors_error_capturestacktrace_targetobject_constructoropt" id="errors_error_capturestacktrace_targetobject_constructoropt">#</a></span></h3>
 <div class="signature"><ul>
@@ -695,7 +706,7 @@ found <a href="http://man7.org/linux/man-pages/man3/errno.3.html">here</a>.</p>
 <li><p><code>EACCES</code> (Permission denied): An attempt was made to access a file in a way
 forbidden by its file access permissions.</p>
 </li>
-<li><p><code>EADDRINUSE</code> (Address already in use):  An attempt to bind a server
+<li><p><code>EADDRINUSE</code> (Address already in use): An attempt to bind a server
 (<a href="net.html"><code>net</code></a>, <a href="http.html"><code>http</code></a>, or <a href="https.html"><code>https</code></a>) to a local address failed due to
 another server on the local system already occupying that address.</p>
 </li>
@@ -723,14 +734,14 @@ file descriptor limit for processes. To remedy a low limit, run
 <code>ulimit -n 2048</code> in the same shell that will run the Node.js process.</p>
 </li>
 <li><p><code>ENOENT</code> (No such file or directory): Commonly raised by <a href="fs.html"><code>fs</code></a> operations
-to indicate that a component of the specified pathname does not exist -- no
+to indicate that a component of the specified pathname does not exist — no
 entity (file or directory) could be found by the given path.</p>
 </li>
 <li><p><code>ENOTDIR</code> (Not a directory): A component of the given pathname existed, but
 was not a directory as expected. Commonly raised by <a href="fs.html#fs_fs_readdir_path_options_callback"><code>fs.readdir</code></a>.</p>
 </li>
 <li><p><code>ENOTEMPTY</code> (Directory not empty): A directory with entries was the target
-of an operation that requires an empty directory -- usually <a href="fs.html#fs_fs_unlink_path_callback"><code>fs.unlink</code></a>.</p>
+of an operation that requires an empty directory — usually <a href="fs.html#fs_fs_unlink_path_callback"><code>fs.unlink</code></a>.</p>
 </li>
 <li><p><code>EPERM</code> (Operation not permitted): An attempt was made to perform an
 operation that requires elevated privileges.</p>
@@ -742,7 +753,7 @@ written to has been closed.</p>
 </li>
 <li><p><code>ETIMEDOUT</code> (Operation timed out): A connect or send request failed because
 the connected party did not properly respond after a period of time. Usually
-encountered by <a href="http.html"><code>http</code></a> or <a href="net.html"><code>net</code></a> -- often a sign that a <code>socket.end()</code>
+encountered by <a href="http.html"><code>http</code></a> or <a href="net.html"><code>net</code></a> — often a sign that a <code>socket.end()</code>
 was not properly called.</p>
 </li>
 </ul>
@@ -786,6 +797,15 @@ phrase).</p>
 <h3>ERR_HTTP_TRAILER_INVALID<span><a class="mark" href="#errors_err_http_trailer_invalid" id="errors_err_http_trailer_invalid">#</a></span><span><a class="mark" href="#ERR_HTTP_TRAILER_INVALID" id="ERR_HTTP_TRAILER_INVALID">#</a></span></h3>
 <p>The <code>Trailer</code> header was set even though the transfer encoding does not support
 that.</p>
+<p><a id="ERR_HTTP2_ALREADY_SHUTDOWN"></a></p>
+<h3>ERR_HTTP2_ALREADY_SHUTDOWN<span><a class="mark" href="#errors_err_http2_already_shutdown" id="errors_err_http2_already_shutdown">#</a></span><span><a class="mark" href="#ERR_HTTP2_ALREADY_SHUTDOWN" id="ERR_HTTP2_ALREADY_SHUTDOWN">#</a></span></h3>
+<p>Occurs with multiple attempts to shutdown an HTTP/2 session.</p>
+<p><a id="ERR_HTTP2_ALTSVC_INVALID_ORIGIN"></a></p>
+<h3>ERR_HTTP2_ALTSVC_INVALID_ORIGIN<span><a class="mark" href="#errors_err_http2_altsvc_invalid_origin" id="errors_err_http2_altsvc_invalid_origin">#</a></span><span><a class="mark" href="#ERR_HTTP2_ALTSVC_INVALID_ORIGIN" id="ERR_HTTP2_ALTSVC_INVALID_ORIGIN">#</a></span></h3>
+<p>HTTP/2 ALTSVC frames require a valid origin.</p>
+<p><a id="ERR_HTTP2_ALTSVC_LENGTH"></a></p>
+<h3>ERR_HTTP2_ALTSVC_LENGTH<span><a class="mark" href="#errors_err_http2_altsvc_length" id="errors_err_http2_altsvc_length">#</a></span><span><a class="mark" href="#ERR_HTTP2_ALTSVC_LENGTH" id="ERR_HTTP2_ALTSVC_LENGTH">#</a></span></h3>
+<p>HTTP/2 ALTSVC frames are limited to a maximum of 16,382 payload bytes.</p>
 <p><a id="ERR_HTTP2_CONNECT_AUTHORITY"></a></p>
 <h3>ERR_HTTP2_CONNECT_AUTHORITY<span><a class="mark" href="#errors_err_http2_connect_authority" id="errors_err_http2_connect_authority">#</a></span><span><a class="mark" href="#ERR_HTTP2_CONNECT_AUTHORITY" id="ERR_HTTP2_CONNECT_AUTHORITY">#</a></span></h3>
 <p>For HTTP/2 requests using the <code>CONNECT</code> method, the <code>:authority</code> pseudo-header
@@ -801,6 +821,10 @@ forbidden.</p>
 <p><a id="ERR_HTTP2_FRAME_ERROR"></a></p>
 <h3>ERR_HTTP2_FRAME_ERROR<span><a class="mark" href="#errors_err_http2_frame_error" id="errors_err_http2_frame_error">#</a></span><span><a class="mark" href="#ERR_HTTP2_FRAME_ERROR" id="ERR_HTTP2_FRAME_ERROR">#</a></span></h3>
 <p>A failure occurred sending an individual frame on the HTTP/2 session.</p>
+<p><a id="ERR_HTTP2_GOAWAY_SESSION"></a></p>
+<h3>ERR_HTTP2_GOAWAY_SESSION<span><a class="mark" href="#errors_err_http2_goaway_session" id="errors_err_http2_goaway_session">#</a></span><span><a class="mark" href="#ERR_HTTP2_GOAWAY_SESSION" id="ERR_HTTP2_GOAWAY_SESSION">#</a></span></h3>
+<p>New HTTP/2 Streams may not be opened after the <code>Http2Session</code> has received a
+<code>GOAWAY</code> frame from the connected peer.</p>
 <p><a id="ERR_HTTP2_HEADER_REQUIRED"></a></p>
 <h3>ERR_HTTP2_HEADER_REQUIRED<span><a class="mark" href="#errors_err_http2_header_required" id="errors_err_http2_header_required">#</a></span><span><a class="mark" href="#ERR_HTTP2_HEADER_REQUIRED" id="ERR_HTTP2_HEADER_REQUIRED">#</a></span></h3>
 <p>A required header was missing in an HTTP/2 message.</p>
@@ -858,7 +882,7 @@ destroyed.</p>
 <p><a id="ERR_HTTP2_MAX_PENDING_SETTINGS_ACK"></a></p>
 <h3>ERR_HTTP2_MAX_PENDING_SETTINGS_ACK<span><a class="mark" href="#errors_err_http2_max_pending_settings_ack" id="errors_err_http2_max_pending_settings_ack">#</a></span><span><a class="mark" href="#ERR_HTTP2_MAX_PENDING_SETTINGS_ACK" id="ERR_HTTP2_MAX_PENDING_SETTINGS_ACK">#</a></span></h3>
 <p>Whenever an HTTP/2 <code>SETTINGS</code> frame is sent to a connected peer, the peer is
-required to send an acknowledgement that it has received and applied the new
+required to send an acknowledgment that it has received and applied the new
 <code>SETTINGS</code>. By default, a maximum number of unacknowledged <code>SETTINGS</code> frames may
 be sent at any given time. This error code is used when that limit has been
 reached.</p>
@@ -876,7 +900,7 @@ limit.</p>
 forbidden.</p>
 <p><a id="ERR_HTTP2_PING_CANCEL"></a></p>
 <h3>ERR_HTTP2_PING_CANCEL<span><a class="mark" href="#errors_err_http2_ping_cancel" id="errors_err_http2_ping_cancel">#</a></span><span><a class="mark" href="#ERR_HTTP2_PING_CANCEL" id="ERR_HTTP2_PING_CANCEL">#</a></span></h3>
-<p>An HTTP/2 ping was cancelled.</p>
+<p>An HTTP/2 ping was canceled.</p>
 <p><a id="ERR_HTTP2_PING_LENGTH"></a></p>
 <h3>ERR_HTTP2_PING_LENGTH<span><a class="mark" href="#errors_err_http2_ping_length" id="errors_err_http2_ping_length">#</a></span><span><a class="mark" href="#ERR_HTTP2_PING_LENGTH" id="ERR_HTTP2_PING_LENGTH">#</a></span></h3>
 <p>HTTP/2 ping payloads must be exactly 8 bytes in length.</p>
@@ -892,6 +916,9 @@ client.</p>
 <h3>ERR_HTTP2_SEND_FILE<span><a class="mark" href="#errors_err_http2_send_file" id="errors_err_http2_send_file">#</a></span><span><a class="mark" href="#ERR_HTTP2_SEND_FILE" id="ERR_HTTP2_SEND_FILE">#</a></span></h3>
 <p>An attempt was made to use the <code>Http2Stream.prototype.responseWithFile()</code> API to
 send something other than a regular file.</p>
+<p><a id="ERR_HTTP2_SESSION_ERROR"></a></p>
+<h3>ERR_HTTP2_SESSION_ERROR<span><a class="mark" href="#errors_err_http2_session_error" id="errors_err_http2_session_error">#</a></span><span><a class="mark" href="#ERR_HTTP2_SESSION_ERROR" id="ERR_HTTP2_SESSION_ERROR">#</a></span></h3>
+<p>The <code>Http2Session</code> closed with a non-zero error code.</p>
 <p><a id="ERR_HTTP2_SOCKET_BOUND"></a></p>
 <h3>ERR_HTTP2_SOCKET_BOUND<span><a class="mark" href="#errors_err_http2_socket_bound" id="errors_err_http2_socket_bound">#</a></span><span><a class="mark" href="#ERR_HTTP2_SOCKET_BOUND" id="ERR_HTTP2_SOCKET_BOUND">#</a></span></h3>
 <p>An attempt was made to connect a <code>Http2Session</code> object to a <code>net.Socket</code> or
@@ -903,9 +930,10 @@ send something other than a regular file.</p>
 <h3>ERR_HTTP2_STATUS_INVALID<span><a class="mark" href="#errors_err_http2_status_invalid" id="errors_err_http2_status_invalid">#</a></span><span><a class="mark" href="#ERR_HTTP2_STATUS_INVALID" id="ERR_HTTP2_STATUS_INVALID">#</a></span></h3>
 <p>An invalid HTTP status code has been specified. Status codes must be an integer
 between <code>100</code> and <code>599</code> (inclusive).</p>
-<p><a id="ERR_HTTP2_STREAM_CLOSED"></a></p>
-<h3>ERR_HTTP2_STREAM_CLOSED<span><a class="mark" href="#errors_err_http2_stream_closed" id="errors_err_http2_stream_closed">#</a></span><span><a class="mark" href="#ERR_HTTP2_STREAM_CLOSED" id="ERR_HTTP2_STREAM_CLOSED">#</a></span></h3>
-<p>An action was performed on an HTTP/2 Stream that had already been closed.</p>
+<p><a id="ERR_HTTP2_STREAM_CANCEL"></a></p>
+<h3>ERR_HTTP2_STREAM_CANCEL<span><a class="mark" href="#errors_err_http2_stream_cancel" id="errors_err_http2_stream_cancel">#</a></span><span><a class="mark" href="#ERR_HTTP2_STREAM_CANCEL" id="ERR_HTTP2_STREAM_CANCEL">#</a></span></h3>
+<p>An <code>Http2Stream</code> was destroyed before any data was transmitted to the connected
+peer.</p>
 <p><a id="ERR_HTTP2_STREAM_ERROR"></a></p>
 <h3>ERR_HTTP2_STREAM_ERROR<span><a class="mark" href="#errors_err_http2_stream_error" id="errors_err_http2_stream_error">#</a></span><span><a class="mark" href="#ERR_HTTP2_STREAM_ERROR" id="ERR_HTTP2_STREAM_ERROR">#</a></span></h3>
 <p>A non-zero error code was been specified in an <code>RST_STREAM</code> frame.</p>
@@ -1016,19 +1044,44 @@ strict compliance with the API specification (which in some cases may accept
 <code>func(undefined)</code> but not <code>func()</code>). In most native Node.js APIs,
 <code>func(undefined)</code> and <code>func()</code> are treated identically, and the
 <a href="#ERR_INVALID_ARG_TYPE"><code>ERR_INVALID_ARG_TYPE</code></a> error code may be used instead.</p>
+<p><a id="ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK"></a></p>
+<h3>ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK<span><a class="mark" href="#errors_err_missing_dynamic_instantiate_hook" id="errors_err_missing_dynamic_instantiate_hook">#</a></span><span><a class="mark" href="#ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK" id="ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK">#</a></span></h3>
+<div class="api_stability api_stability_1"><a href="documentation.html#documentation_stability_index">Stability: 1</a> - Experimental</div><p>Used when an [ES6 module][] loader hook specifies <code>format: &#39;dynamic</code> but does
+not provide a <code>dynamicInstantiate</code> hook.</p>
+<p><a id="ERR_MISSING_MODULE"></a></p>
+<h3>ERR_MISSING_MODULE<span><a class="mark" href="#errors_err_missing_module" id="errors_err_missing_module">#</a></span><span><a class="mark" href="#ERR_MISSING_MODULE" id="ERR_MISSING_MODULE">#</a></span></h3>
+<div class="api_stability api_stability_1"><a href="documentation.html#documentation_stability_index">Stability: 1</a> - Experimental</div><p>Used when an [ES6 module][] cannot be resolved.</p>
+<p><a id="ERR_MODULE_RESOLUTION_LEGACY"></a></p>
+<h3>ERR_MODULE_RESOLUTION_LEGACY<span><a class="mark" href="#errors_err_module_resolution_legacy" id="errors_err_module_resolution_legacy">#</a></span><span><a class="mark" href="#ERR_MODULE_RESOLUTION_LEGACY" id="ERR_MODULE_RESOLUTION_LEGACY">#</a></span></h3>
+<div class="api_stability api_stability_1"><a href="documentation.html#documentation_stability_index">Stability: 1</a> - Experimental</div><p>Used when a failure occurred resolving imports in an [ES6 module][].</p>
+<p><a id="ERR_MULTIPLE_CALLBACK"></a></p>
+<h3>ERR_MULTIPLE_CALLBACK<span><a class="mark" href="#errors_err_multiple_callback" id="errors_err_multiple_callback">#</a></span><span><a class="mark" href="#ERR_MULTIPLE_CALLBACK" id="ERR_MULTIPLE_CALLBACK">#</a></span></h3>
+<p>A callback was called more than once.</p>
+<p><em>Note</em>: A callback is almost always meant to only be called once as the query
+can either be fulfilled or rejected but not both at the same time. The latter
+would be possible by calling a callback more than once.</p>
 <p><a id="ERR_NAPI_CONS_FUNCTION"></a></p>
 <h3>ERR_NAPI_CONS_FUNCTION<span><a class="mark" href="#errors_err_napi_cons_function" id="errors_err_napi_cons_function">#</a></span><span><a class="mark" href="#ERR_NAPI_CONS_FUNCTION" id="ERR_NAPI_CONS_FUNCTION">#</a></span></h3>
 <p>While using <code>N-API</code>, a constructor passed was not a function.</p>
 <p><a id="ERR_NAPI_CONS_PROTOTYPE_OBJECT"></a></p>
 <h3>ERR_NAPI_CONS_PROTOTYPE_OBJECT<span><a class="mark" href="#errors_err_napi_cons_prototype_object" id="errors_err_napi_cons_prototype_object">#</a></span><span><a class="mark" href="#ERR_NAPI_CONS_PROTOTYPE_OBJECT" id="ERR_NAPI_CONS_PROTOTYPE_OBJECT">#</a></span></h3>
 <p>While using <code>N-API</code>, <code>Constructor.prototype</code> was not an object.</p>
+<p><a id="ERR_NAPI_INVALID_DATAVIEW_ARGS"></a></p>
+<h3>ERR_NAPI_INVALID_DATAVIEW_ARGS<span><a class="mark" href="#errors_err_napi_invalid_dataview_args" id="errors_err_napi_invalid_dataview_args">#</a></span><span><a class="mark" href="#ERR_NAPI_INVALID_DATAVIEW_ARGS" id="ERR_NAPI_INVALID_DATAVIEW_ARGS">#</a></span></h3>
+<p>While calling <code>napi_create_dataview()</code>, a given <code>offset</code> was outside the bounds
+of the dataview or <code>offset + length</code> was larger than a length of given <code>buffer</code>.</p>
+<p><a id="ERR_NAPI_INVALID_TYPEDARRAY_ALIGNMENT"></a></p>
+<h3>ERR_NAPI_INVALID_TYPEDARRAY_ALIGNMENT<span><a class="mark" href="#errors_err_napi_invalid_typedarray_alignment" id="errors_err_napi_invalid_typedarray_alignment">#</a></span><span><a class="mark" href="#ERR_NAPI_INVALID_TYPEDARRAY_ALIGNMENT" id="ERR_NAPI_INVALID_TYPEDARRAY_ALIGNMENT">#</a></span></h3>
+<p>While calling <code>napi_create_typedarray()</code>, the provided <code>offset</code> was not a
+multiple of the element size.</p>
+<p><a id="ERR_NAPI_INVALID_TYPEDARRAY_LENGTH"></a></p>
+<h3>ERR_NAPI_INVALID_TYPEDARRAY_LENGTH<span><a class="mark" href="#errors_err_napi_invalid_typedarray_length" id="errors_err_napi_invalid_typedarray_length">#</a></span><span><a class="mark" href="#ERR_NAPI_INVALID_TYPEDARRAY_LENGTH" id="ERR_NAPI_INVALID_TYPEDARRAY_LENGTH">#</a></span></h3>
+<p>While calling <code>napi_create_typedarray()</code>, <code>(length * size_of_element) +
+byte_offset</code> was larger than the length of given <code>buffer</code>.</p>
 <p><a id="ERR_NO_ICU"></a></p>
 <h3>ERR_NO_ICU<span><a class="mark" href="#errors_err_no_icu" id="errors_err_no_icu">#</a></span><span><a class="mark" href="#ERR_NO_ICU" id="ERR_NO_ICU">#</a></span></h3>
 <p>An attempt was made to use features that require <a href="intl.html#intl_internationalization_support">ICU</a>, but Node.js was not
 compiled with ICU support.</p>
-<p><a id="ERR_OUTOFMEMORY"></a></p>
-<h3>ERR_OUTOFMEMORY<span><a class="mark" href="#errors_err_outofmemory" id="errors_err_outofmemory">#</a></span><span><a class="mark" href="#ERR_OUTOFMEMORY" id="ERR_OUTOFMEMORY">#</a></span></h3>
-<p>An operation caused an out-of-memory condition.</p>
 <p><a id="ERR_SOCKET_ALREADY_BOUND"></a></p>
 <h3>ERR_SOCKET_ALREADY_BOUND<span><a class="mark" href="#errors_err_socket_already_bound" id="errors_err_socket_already_bound">#</a></span><span><a class="mark" href="#ERR_SOCKET_ALREADY_BOUND" id="ERR_SOCKET_ALREADY_BOUND">#</a></span></h3>
 <p>An attempt was made to bind a socket that has already been bound.</p>

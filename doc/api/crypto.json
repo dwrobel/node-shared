@@ -108,6 +108,12 @@
               "textRaw": "crypto.createCipheriv(algorithm, key, iv[, options])",
               "type": "method",
               "name": "createCipheriv",
+              "meta": {
+                "added": [
+                  "v0.1.94"
+                ],
+                "changes": []
+              },
               "signatures": [
                 {
                   "params": [
@@ -295,7 +301,7 @@
                   ]
                 }
               ],
-              "desc": "<p>Creates and returns a <code>Decipher</code> object that uses the given <code>algorithm</code>, <code>key</code>\nand initialization vector (<code>iv</code>). Optional <code>options</code> argument controls stream\nbehavior.</p>\n<p>The <code>algorithm</code> is dependent on OpenSSL, examples are <code>&#39;aes192&#39;</code>, etc. On\nrecent OpenSSL releases, <code>openssl list-cipher-algorithms</code> will display the\navailable cipher algorithms.</p>\n<p>The <code>key</code> is the raw key used by the <code>algorithm</code> and <code>iv</code> is an\n<a href=\"https://en.wikipedia.org/wiki/Initialization_vector\">initialization vector</a>. Both arguments must be <code>&#39;utf8&#39;</code> encoded strings or\n<a href=\"buffer.html\">buffers</a>.</p>\n"
+              "desc": "<p>Creates and returns a <code>Decipher</code> object that uses the given <code>algorithm</code>, <code>key</code>\nand initialization vector (<code>iv</code>). Optional <code>options</code> argument controls stream\nbehavior.</p>\n<p>The <code>algorithm</code> is dependent on OpenSSL, examples are <code>&#39;aes192&#39;</code>, etc. On\nrecent OpenSSL releases, <code>openssl list-cipher-algorithms</code> will display the\navailable cipher algorithms.</p>\n<p>The <code>key</code> is the raw key used by the <code>algorithm</code> and <code>iv</code> is an\n<a href=\"https://en.wikipedia.org/wiki/Initialization_vector\">initialization vector</a>. Both arguments must be <code>&#39;utf8&#39;</code> encoded strings,\n<a href=\"buffer.html\">Buffers</a>, <code>TypedArray</code>, or <code>DataView</code>s.</p>\n"
             },
             {
               "textRaw": "crypto.createDiffieHellman(prime[, primeEncoding][, generator][, generatorEncoding])",
@@ -1764,7 +1770,7 @@
                   ]
                 }
               ],
-              "desc": "<p>Updates the cipher with <code>data</code>. If the <code>inputEncoding</code> argument is given,\nits value must be one of <code>&#39;utf8&#39;</code>, <code>&#39;ascii&#39;</code>, or <code>&#39;latin1&#39;</code> and the <code>data</code>\nargument is a string using the specified encoding. If the <code>inputEncoding</code>\nargument is not given, <code>data</code> must be a <a href=\"buffer.html\"><code>Buffer</code></a>, <code>TypedArray</code>, or\n<code>DataView</code>.  If <code>data</code> is a <a href=\"buffer.html\"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code>, then\n<code>inputEncoding</code> is ignored.</p>\n<p>The <code>outputEncoding</code> specifies the output format of the enciphered\ndata, and can be <code>&#39;latin1&#39;</code>, <code>&#39;base64&#39;</code> or <code>&#39;hex&#39;</code>. If the <code>outputEncoding</code>\nis specified, a string using the specified encoding is returned. If no\n<code>outputEncoding</code> is provided, a <a href=\"buffer.html\"><code>Buffer</code></a> is returned.</p>\n<p>The <code>cipher.update()</code> method can be called multiple times with new data until\n<a href=\"#crypto_cipher_final_outputencoding\"><code>cipher.final()</code></a> is called. Calling <code>cipher.update()</code> after\n<a href=\"#crypto_cipher_final_outputencoding\"><code>cipher.final()</code></a> will result in an error being thrown.</p>\n"
+              "desc": "<p>Updates the cipher with <code>data</code>. If the <code>inputEncoding</code> argument is given,\nits value must be one of <code>&#39;utf8&#39;</code>, <code>&#39;ascii&#39;</code>, or <code>&#39;latin1&#39;</code> and the <code>data</code>\nargument is a string using the specified encoding. If the <code>inputEncoding</code>\nargument is not given, <code>data</code> must be a <a href=\"buffer.html\"><code>Buffer</code></a>, <code>TypedArray</code>, or\n<code>DataView</code>. If <code>data</code> is a <a href=\"buffer.html\"><code>Buffer</code></a>, <code>TypedArray</code>, or <code>DataView</code>, then\n<code>inputEncoding</code> is ignored.</p>\n<p>The <code>outputEncoding</code> specifies the output format of the enciphered\ndata, and can be <code>&#39;latin1&#39;</code>, <code>&#39;base64&#39;</code> or <code>&#39;hex&#39;</code>. If the <code>outputEncoding</code>\nis specified, a string using the specified encoding is returned. If no\n<code>outputEncoding</code> is provided, a <a href=\"buffer.html\"><code>Buffer</code></a> is returned.</p>\n<p>The <code>cipher.update()</code> method can be called multiple times with new data until\n<a href=\"#crypto_cipher_final_outputencoding\"><code>cipher.final()</code></a> is called. Calling <code>cipher.update()</code> after\n<a href=\"#crypto_cipher_final_outputencoding\"><code>cipher.final()</code></a> will result in an error being thrown.</p>\n"
             }
           ]
         },
@@ -1892,7 +1898,7 @@
                   ]
                 }
               ],
-              "desc": "<p>When using an authenticated encryption mode (only <code>GCM</code> is currently\nsupported), the <code>decipher.setAuthTag()</code> method is used to pass in the\nreceived <em>authentication tag</em>. If no tag is provided, or if the cipher text\nhas been tampered with, <a href=\"#crypto_decipher_final_outputencoding\"><code>decipher.final()</code></a> will throw, indicating that the\ncipher text should be discarded due to failed authentication.</p>\n<p>The <code>decipher.setAuthTag()</code> method must be called before\n<a href=\"#crypto_decipher_final_outputencoding\"><code>decipher.final()</code></a>.</p>\n"
+              "desc": "<p>When using an authenticated encryption mode (only <code>GCM</code> is currently\nsupported), the <code>decipher.setAuthTag()</code> method is used to pass in the\nreceived <em>authentication tag</em>. If no tag is provided, or if the cipher text\nhas been tampered with, <a href=\"#crypto_decipher_final_outputencoding\"><code>decipher.final()</code></a> will throw, indicating that the\ncipher text should be discarded due to failed authentication.</p>\n<p>Note that this Node.js version does not verify the length of GCM authentication\ntags. Such a check <em>must</em> be implemented by applications and is crucial to the\nauthenticity of the encrypted data, otherwise, an attacker can use an\narbitrarily short authentication tag to increase the chances of successfully\npassing authentication (up to 0.39%). It is highly recommended to associate one\nof the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit\nauthentication tags of that length, see <a href=\"http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf\">NIST SP 800-38D</a>.</p>\n<p>The <code>decipher.setAuthTag()</code> method must be called before\n<a href=\"#crypto_decipher_final_outputencoding\"><code>decipher.final()</code></a>.</p>\n"
             },
             {
               "textRaw": "decipher.setAutoPadding([autoPadding])",
@@ -2114,7 +2120,7 @@
                   ]
                 }
               ],
-              "desc": "<p>Returns the Diffie-Hellman generator in the specified <code>encoding</code>, which can\nbe <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If  <code>encoding</code> is provided a string is\nreturned; otherwise a <a href=\"buffer.html\"><code>Buffer</code></a> is returned.</p>\n"
+              "desc": "<p>Returns the Diffie-Hellman generator in the specified <code>encoding</code>, which can\nbe <code>&#39;latin1&#39;</code>, <code>&#39;hex&#39;</code>, or <code>&#39;base64&#39;</code>. If <code>encoding</code> is provided a string is\nreturned; otherwise a <a href=\"buffer.html\"><code>Buffer</code></a> is returned.</p>\n"
             },
             {
               "textRaw": "diffieHellman.getPrime([encoding])",

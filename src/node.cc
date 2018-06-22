@@ -184,7 +184,7 @@ static const int v8_default_thread_pool_size = 4;
 static int v8_thread_pool_size = v8_default_thread_pool_size;
 static bool prof_process = false;
 static bool v8_is_profiling = false;
-bool node_is_initialized = false;
+static bool node_is_initialized = false;
 static node_module* modpending;
 static node_module* modlist_builtin;
 static node_module* modlist_internal;
@@ -265,7 +265,7 @@ bool linux_at_secure = false;
 static double prog_start_time;
 
 static Mutex node_isolate_mutex;
-v8::Isolate* node_isolate;
+static v8::Isolate* node_isolate;
 
 node::DebugOptions debug_options;
 
@@ -1141,7 +1141,6 @@ bool DomainsStackHasErrorHandler(const Environment* env) {
   return false;
 }
 
-}
 
 bool ShouldAbortOnUncaughtException(Isolate* isolate) {
   HandleScope scope(isolate);
@@ -1156,7 +1155,6 @@ bool ShouldAbortOnUncaughtException(Isolate* isolate) {
   return isEmittingTopLevelDomainError || !DomainsStackHasErrorHandler(env);
 }
 
-namespace {
 
 Local<Value> GetDomainProperty(Environment* env, Local<Object> object) {
   Local<Value> domain_v =
@@ -3375,6 +3373,12 @@ void SetupProcessObject(Environment* env,
   READONLY_PROPERTY(versions,
                     "nghttp2",
                     FIXED_ONE_BYTE_STRING(env->isolate(), NGHTTP2_VERSION));
+
+  const char node_napi_version[] = NODE_STRINGIFY(NAPI_VERSION);
+  READONLY_PROPERTY(
+      versions,
+      "napi",
+      FIXED_ONE_BYTE_STRING(env->isolate(), node_napi_version));
 
   // process._promiseRejectEvent
   Local<Object> promiseRejectEvent = Object::New(env->isolate());

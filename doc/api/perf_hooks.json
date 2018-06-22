@@ -22,6 +22,27 @@
           "desc": "<p>The <code>Performance</code> provides access to performance metric data. A single\ninstance of this class is provided via the <code>performance</code> property.</p>\n",
           "methods": [
             {
+              "textRaw": "performance.clearEntries(name)",
+              "type": "method",
+              "name": "clearEntries",
+              "meta": {
+                "added": [
+                  "v8.11.2"
+                ],
+                "changes": []
+              },
+              "desc": "<p>Remove all performance entry objects with <code>entryType</code> equal to <code>name</code> from the\nPerformance Timeline.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "name"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "textRaw": "performance.clearFunctions([name])",
               "type": "method",
               "name": "clearFunctions",

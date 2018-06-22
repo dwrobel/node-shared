@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Zlib | Node.js v8.11.1 Documentation</title>
+  <title>Zlib | Node.js v8.11.3 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/sh.css">
@@ -82,7 +82,7 @@
 
     <div id="column1" data-id="zlib" class="interior">
       <header>
-        <h1>Node.js v8.11.1 Documentation</h1>
+        <h1>Node.js v8.11.3 Documentation</h1>
         <div id="gtoc">
           <ul>
             <li>
@@ -217,8 +217,8 @@ the compression encodings accepted by the client. The <a href="https://www.w3.or
 header is used to identify the compression encodings actually applied to a
 message.</p>
 <p><em>Note</em>: the examples given below are drastically simplified to show
-the basic concept.  Using <code>zlib</code> encoding can be expensive, and the results
-ought to be cached.  See <a href="#zlib_memory_usage_tuning">Memory Usage Tuning</a> for more information
+the basic concept. Using <code>zlib</code> encoding can be expensive, and the results
+ought to be cached. See <a href="#zlib_memory_usage_tuning">Memory Usage Tuning</a> for more information
 on the speed/memory/compression tradeoffs involved in <code>zlib</code> usage.</p>
 <pre><code class="lang-js">// client request example
 const zlib = require(&#39;zlib&#39;);
@@ -303,7 +303,7 @@ decompressed result is valid.</p>
 <!-- eslint-disable semi -->
 <pre><code class="lang-js">(1 &lt;&lt; (windowBits + 2)) + (1 &lt;&lt; (memLevel + 9))
 </code></pre>
-<p>That is: 128K for windowBits=15  +  128K for memLevel = 8
+<p>That is: 128K for windowBits = 15 + 128K for memLevel = 8
 (default values) plus a few kilobytes for small objects.</p>
 <p>For example, to reduce the default memory requirements from 256K to 128K, the
 options should be set to:</p>
@@ -311,17 +311,17 @@ options should be set to:</p>
 </code></pre>
 <p>This will, however, generally degrade compression.</p>
 <p>The memory requirements for inflate are (in bytes) <code>1 &lt;&lt; windowBits</code>.
-That is, 32K for windowBits=15 (default value) plus a few kilobytes
+That is, 32K for windowBits = 15 (default value) plus a few kilobytes
 for small objects.</p>
 <p>This is in addition to a single internal output slab buffer of size
 <code>chunkSize</code>, which defaults to 16K.</p>
 <p>The speed of <code>zlib</code> compression is affected most dramatically by the
-<code>level</code> setting.  A higher level will result in better compression, but
-will take longer to complete.  A lower level will result in less
+<code>level</code> setting. A higher level will result in better compression, but
+will take longer to complete. A lower level will result in less
 compression, but will be much faster.</p>
 <p>In general, greater memory usage options will mean that Node.js has to make
 fewer calls to <code>zlib</code> because it will be able to process more data on
-each <code>write</code> operation.  So, this is another factor that affects the
+each <code>write</code> operation. So, this is another factor that affects the
 speed, at the cost of memory usage.</p>
 <h2>Flushing<span><a class="mark" href="#zlib_flushing" id="zlib_flushing">#</a></span></h2>
 <p>Calling <a href="#zlib_zlib_flush_kind_callback"><code>.flush()</code></a> on a compression stream will make <code>zlib</code> return as much
@@ -355,9 +355,9 @@ http.createServer((request, response) =&gt; {
 </div><!--type=misc-->
 <p>All of the constants defined in <code>zlib.h</code> are also defined on
 <code>require(&#39;zlib&#39;).constants</code>. In the normal course of operations, it will not be
-necessary to use these  constants. They are documented so that their presence is
+necessary to use these constants. They are documented so that their presence is
 not surprising. This section is taken almost directly from the
-<a href="https://zlib.net/manual.html#Constants">zlib documentation</a>.  See <a href="https://zlib.net/manual.html#Constants">https://zlib.net/manual.html#Constants</a> for more
+<a href="https://zlib.net/manual.html#Constants">zlib documentation</a>. See <a href="https://zlib.net/manual.html#Constants">https://zlib.net/manual.html#Constants</a> for more
 details.</p>
 <p><em>Note</em>: Previously, the constants were available directly from
 <code>require(&#39;zlib&#39;)</code>, for instance <code>zlib.Z_NO_FLUSH</code>. Accessing the constants
@@ -419,7 +419,7 @@ events.</p>
 </table>
 </details>
 </div><!--type=misc-->
-<p>Each class takes an <code>options</code> object.  All options are optional.</p>
+<p>Each class takes an <code>options</code> object. All options are optional.</p>
 <p>Note that some options are only relevant when compressing, and are
 ignored by the decompression classes.</p>
 <ul>

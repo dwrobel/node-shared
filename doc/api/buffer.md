@@ -449,7 +449,7 @@ changes:
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes.  If the `size` is larger than
+Allocates a new `Buffer` of `size` bytes. If the `size` is larger than
 [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be
 thrown. A zero-length `Buffer` will be created if `size` is 0.
 
@@ -535,7 +535,7 @@ const buf = Buffer.alloc(5);
 console.log(buf);
 ```
 
-Allocates a new `Buffer` of `size` bytes.  If the `size` is larger than
+Allocates a new `Buffer` of `size` bytes. If the `size` is larger than
 [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be
 thrown. A zero-length `Buffer` will be created if `size` is 0.
 
@@ -580,7 +580,7 @@ changes:
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes.  If the `size` is larger than
+Allocates a new `Buffer` of `size` bytes. If the `size` is larger than
 [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be
 thrown. A zero-length `Buffer` will be created if `size` is 0.
 
@@ -626,7 +626,7 @@ added: v5.12.0
 
 * `size` {integer} The desired length of the new `Buffer`.
 
-Allocates a new `Buffer` of `size` bytes.  If the `size` is larger than
+Allocates a new `Buffer` of `size` bytes. If the `size` is larger than
 [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be
 thrown. A zero-length `Buffer` will be created if `size` is 0.
 
@@ -1257,8 +1257,12 @@ Example: Fill a `Buffer` with a two-byte character
 console.log(Buffer.allocUnsafe(3).fill('\u0222'));
 ```
 
-If `value` contains invalid characters, it is truncated; if no valid
-fill data remains, no filling is performed:
+If `value` contains invalid characters, it is truncated.
+
+If no valid fill data remains, then the buffer is either zero-filled or no
+filling is performed, depending on the input type. That behavior is dictated by
+compatibility reasons and was changed to throwing an exception in Node.js v10,
+so it's not recommended to rely on that.
 
 ```js
 const buf = Buffer.allocUnsafe(5);
@@ -2660,7 +2664,7 @@ deprecated: v6.0.0
 
 * `size` {integer} The desired length of the new `SlowBuffer`.
 
-Allocates a new `Buffer` of `size` bytes.  If the `size` is larger than
+Allocates a new `Buffer` of `size` bytes. If the `size` is larger than
 [`buffer.constants.MAX_LENGTH`] or smaller than 0, a [`RangeError`] will be
 thrown. A zero-length `Buffer` will be created if `size` is 0.
 
